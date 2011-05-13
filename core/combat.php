@@ -6,9 +6,9 @@ File:				combat.php
 Objective:			combat management file
 Version:			SR-RPG (Game Engine) 0.0.4
 Author:				Maugrim The Reaper
-Edited by:			Maugrim The Reaper
+Edited by:			resba
 Date Committed:		14 November 2004	
-Last Date Edited:	n/a
+Last Date Edited:	13 May 2011
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 Copyright (c) 2004 by:
