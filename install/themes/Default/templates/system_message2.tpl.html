@@ -1,0 +1,198 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+
+<!--
+Title:			Shadows Rising RPG "Install Default" Theme 
+Designed by:	Maugrim The Reaper (http://www.quantum-star.com)
+Compliance:		XHTML 1.1
+Optimisation:	1024x768 Resolution // Mozilla Firefox 0.8
+-->
+
+<!--Using UTF-8 as <?xml?> declaration missing to avoid IE "quirks" mode rendering. Do not remove !DOCTYPE. Ensure document is fully validated before implementing.-->
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<title>Shadows Rising RPG Install Utility :: Configuration</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="language" content="en" />
+<link rel="stylesheet" href="themes/Default/style_default.css" type="text/css" />
+
+{literal}
+<script type="text/javascript">
+            function mytip(tooltip_id)
+            {
+                messages= new Array()
+                messages[0]="Type of the SQL database. This can be anything supported by ADOdb. <p>NOTE: only guarenteed to work with MySQL and PostgreSQL 7+ right now. You can try it if you wish with other database types and let me know how you get on.<br /><br />Please also note the database *MUST* be pre-existing. If not, please use your hosts control panel equivalent to add the database you want, or choose a database already existing for your account."
+                messages[1]="Name of the SQL database. This database will be created or emptied of old Shadows Rising RPG server tables in the second part of the setup process. If you are unable/prevented from setting up new databases, you must set this to a currently existing database you have access to."
+                messages[2]="Username required (if any) to connect to the database"
+				messages[3]="Password required (if any) to connect to the database"
+				messages[4]="Hostname of the database server. This is default, you might not have to change this."
+				messages[5]="MySQL connection port. Leave blank to use the default."
+				messages[6]="Check this to use database persistent connections. This can be enabled if PHP is running in its Module configuration and may allow some overhead gains on servers."
+				messages[7]="Path on the filesystem where the Shadows Rising RPG files will reside."
+				messages[9]="Path to the /core/maps/ folder."
+				messages[11]="Decides whether an Authorization Code is emailed to the user."
+				messages[12]="The full name of the server."
+                messages[13]="The prefix e.g. http://mysite/shadowsrising from which all files are referenced in URLs, where /qsse/ is the folder containing all game files."
+                messages[14]="Enter the full title and version of your codebase. Please note that Shadows Rising RPG falls under copyright protection. It is a requirement that the copyright is preserved, although actual location and frequency is fully optional so long as displayed somewhere! Do not alter the copyright unless code is genuinely modified. Copyright encompasses Shadows Rising RPG alone."
+                messages[15]="The link to the main forum for your games. The Shadows Rising RPG Forum is highly recommended."
+                messages[16]="Email address of the overall Server Administrator."
+                messages[17]="The Server Administrator's password. Used to access Maints, the Install menu, Server Creation Menu and Game Management Menu. You will need this a few times in the next few minutes so remember it!!! Also please make it secure, a mixture of both uppercase letters, lowercase letters, and numerals."
+				messages[18]="If running PHP in Safe Mode, using a local file to read Game Variables from will not be possible. Enable this option if Safe Mode is enabled."
+				messages[19]="Path to the /core/sql/ folder. The folder contains the required SQL files to set up the various database tables. SQL files will be automatically run by the create_server.php and create_game.php scripts. You may make manual changes to these if absolutely required, or pass changes to the DB using phpMyAdmin."
+				messages[20]="Option to enable HTTP Compression using gzip. The output from the PHP scripts will be compressed before sending to the browser, and uncompressed by the browser prior to rendering. The advantage is that compressed HTML is transferred faster and can help speed up access to the game pages. The second option lets you set the compression level. This ranges from the minimum of 1 to a maximum of 9. The default is 5 if this is unset."
+                var w=window.open("","_blank","top=30,left=30,width=250,height=150,history=no,menubar=no,status=no,resizable=no")
+                var d=w.document
+                d.write("<HEAD><TITLE>Helper</TITLE><meta http-equiv=\"Content-Type\" content=\"text/html; charset=$local_charset\"><meta http-equiv=\"Pragma\" content=\"no-cache\"><link rel=\"stylesheet\" href=\"styles/style2.css\" type=\"text/css\"></HEAD>");
+                d.write("<body bgcolor=\"#0A2E48\" text=\"#FFFFFF\" link=\"#00ff00\" vlink=\"#00ff00\" alink=\"#ff0000\">");
+                d.write("<table border=\"0\" width=\"100%\" height=\"100%\"");
+                d.write("<tr><td valign=\"top\"><small>" + messages[tooltip_id] + "</small></td></tr>")
+                d.write("<tr align=\"center\"><td valign=\"bottom\"><br /><br /><input type=\"button\" value=\"Close Window\" onclick=\"window.close()\" ></td></tr></table>")
+                return false;
+            }
+
+            function validate()
+            {
+                if (document.forms[0]._database.value == "")
+                {
+                    alert("Database name cannot be empty!");
+                    return false;
+                }
+                if (document.forms[0]._gameroot.value == "")
+                {
+                    alert("Game Root cannot be empty!");
+                    return false;
+                }
+                if (document.forms[0]._admin_mail.value == "")
+                {
+                    alert("Admin Email cannot be empty!");
+                    return false;
+                }
+                if (document.forms[0]._adminpass.value == "")
+                {
+                    alert("Admin password cannot be empty!");
+                    return false;
+                }
+                if (document.forms[0]._adminpass.value != document.forms[0].adminpass2.value)
+                {
+                    alert("Admin passwords don't match!");
+                    return false;
+                }
+                if (document.forms[0]._map_path.value == "")
+                {
+                    alert("Map Path cannot be empty!");
+                    return false;
+                }
+                if (document.forms[0]._url_prefix.value == "")
+                {
+                    alert("Url Prefix cannot be empty!");
+                    return false;
+                }
+				if (document.forms[0]._code_base.value == "")
+                {
+                    alert("Code Base cannot be empty!");
+                    return false;
+                }
+				if (document.forms[0]._link_forums.value == "")
+                {
+                    alert("Forum Link cannot be empty!");
+                    return false;
+                }
+                document.forms[0].submit();
+            }
+            </script>
+{/literal}
+
+</head>
+<body id="default_body">
+
+<div id="pagetop_logo">
+	<img src="../core/themes/Deep_Blue/images/logo.gif" alt="{$code_base}"/>
+</div>
+
+<table cellspacing="0" class="invisible">
+<tr>
+<td id="page_leftpanel" style="text-align: left;">
+<!--This is the left side panel, for installation this is just a spacer-->
+
+
+
+
+<div>
+<br /><br /><br /><br />
+<ol>
+<li>Base Configuration</li>
+<li>Base Server Setup</li>
+<li>Installation of Server Database Tables</li>
+</ol>
+</div>
+
+
+
+
+<!--This is the end of the left side panel-->
+</td>
+<td id="page_centerpanel">
+<!--This is the center panel where user actions, text, and menus will appear-->
+
+<p class="h4">{$app_name} Install Utility</p>
+
+<p class="h5">System Message:</p>
+<p>
+{$system_message}
+<p>
+<p>
+<a href="{$http_referer}">[-Back-]</a>
+</p>
+
+
+
+
+<div>
+<!-- Insert a little space and keep the footer low -->
+<br /><br /><br /><br /><br />
+<br /><br /><br /><br /><br />
+<br /><br /><br /><br /><br />
+<br /><br /><br /><br /><br />
+</div>
+
+<!--This is the end of the center panel-->
+</td>
+<td id="page_rightpanel">
+<!--This is the right side panel - another spacer-->
+
+
+
+
+
+
+
+
+
+<!--This is the end of the right side panel-->
+</td>
+</tr>
+<tr>
+<td colspan="3" id="page_footer">
+<!--This is the footer cell visible at the bottom of all pages-->
+
+	<p>
+		<br /><br /><br /><br /><br />
+		{$this_version} &copy; 2004 <a onclick="window.open(this.href,'_blank');return false;" href="../docs/copyright.html">Shadows Rising Project Developers</a>
+		<br />
+		Default Install Theme &copy; 2004 Maugrim The Reaper and <a onclick="window.open(this.href,'_blank');return false;" href="../docs/copyright.html">Shadows Rising Project Developers</a>
+		<br />
+		Original Install Code &copy; 2003, 2004 <a href="../docs/tki-copyright.html" onclick="window.open(this.href,'_blank');return false;">TKI Developers</a>
+		<br /><br /><br /><br /><br />
+	</p>
+	<div style="text-align: center;">
+		<img src="../core/images/standards/valid-xhtml11.png" alt="Valid XHTML 1.1!" /><img src="../core/images/standards/vcss.png" alt="Valid CSS!" />
+	</div>
+
+<!--This is the end of the footer cell-->
+</td>
+</tr> 
+</table>
+<!--This is the end of the "holding" table created per Step Three-->
+
+</body>
+</html>

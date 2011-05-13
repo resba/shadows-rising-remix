@@ -1,0 +1,37 @@
+<table width="100%">
+ <tr>
+ <td>
+  <center>
+   <h2>Forum</h2>
+  </center>
+ </td>
+ </tr>
+ <tr>
+  <td>
+   {$forum_name}
+  </td>
+ </tr>
+ <tr>
+  <td>
+   <a href="post.php?post=t&forum={$forum_id}{$linkend}">New Topic</a>
+ <tr>
+ <td>
+
+ <table width="100%">
+ <tr bgcolor="Green"><td></td><td>Topic Title</td><td width="10%">Starter</td><td width="5%"><center>Posts</center></td><td><center>Last Post</center></td></tr>
+ 
+ {foreach from=$topics item=v key=k}
+ <tr bgcolor="Red">
+ <td></td>
+ <td><a href="viewtopic.php?t={$v.topic_id}{$linkend}">{$v.topic_name}</a></td>
+ <td><a href="profile.php?op=viewuser&id={$v.starter_id}{$linkend}">{$v.starter}</a></td>
+ <td><center>{$v.totalposts}</center></td>
+ <td width="20%"><center>{$v.lastposttime|date_format:"%A, %B %e, %Y"}<br /><a href="profile.php?op=viewuser&id={$v.lastposteruserid}{$linkend}">{$v.lastpostuser}</a></center></td>
+ </tr>
+ {/foreach}
+ 
+ </table>
+ 
+ </td>
+ </tr>
+</table>

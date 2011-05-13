@@ -1,0 +1,225 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+
+<!--
+Title:			Shadows Rising RPG "Deep Blue" Theme (experimental) 
+Designed by:	Maugrim The Reaper (http://www.quantum-star.com)
+Compliance:		XHTML 1.1
+Optimisation:	1024x768 Resolution // Mozilla Firefox 0.8
+-->
+
+<!--Using UTF-8 as <?xml?> declaration missing to avoid IE "quirks" mode rendering. Do not remove !DOCTYPE. Ensure document is fully validated before implementing.-->
+
+<!--Step One
+
+Create the heading. This contains all headers, meta tags and <html> attributes required by XHTML 1.1. Without ALL of these the page may not be recognised as XHTML by the browser, and so get rendered in "quirks" mode. "Quirks" mode may fall back on anything down to HTML 4, leading to varied display difference between IE and other browsers.
+
+See the style_deepblue.css stylesheet to where colours/borders/widths etc. are decided. Can edit this to change the properties of all elements in this page.
+
+Curly brackets indicate a variable to be replaced by the PHP script called using Smarty templating.
+
+-->
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<title>Shadows Rising :: Copyright and Credits</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="language" content="en" />
+<link rel="stylesheet" href="sr-styles/style_deepblue.css" type="text/css" />
+</head>
+<body id="default_body">
+
+<!--Step Two
+
+Need to create a standard menu bar at the top of the page.
+Just a simple color strip with equally spaced menu links - link here are examples
+Create an inline span for links floating left - i.e. fed from left to right in template version
+->Convert this to a block in the Smarty template version!
+
+-->
+
+<div id="pagetop_logo">
+	<img src="../core/themes/Deep_Blue/images/logo.gif" alt="Shadows Rising RPG Game Engine"/>
+</div>
+
+
+<!--Step Three
+
+Create the page structure. For this simple template I have created a single "holding" table. This consists of 4 cells. 3 cells make up the right panel, center panel, and left panel. A fourth cell beneath the others, with a colspan of 3, is the width of the full page and is used for footer information (copyright, validation link, etc.)
+
+In this form:
+
+<table>
+	<tr>
+		<td>RIGHT</td>
+		<td>CENTER</td>
+		<td>LEFT</td>
+	</tr>
+	<tr>
+		<td colspan="3">FOOTER</td>
+	</tr>
+</table
+
+-->
+
+
+<table cellspacing="0" class="invisible">
+<tr>
+<td id="page_leftpanel" style="background-color: transparent;">
+<!--This is the left side panel, this holding table cell will contain tables for user information-->
+
+
+
+<!--This is the end of the left side panel-->
+</td>
+<td id="page_centerpanel">
+<!--This is the center panel where user actions, text, and menus will appear-->
+
+
+
+
+
+<div class="h4">Copyright Notice, License and Other Notices<br /><br /></div>
+
+<div class="h5">Game Engine Details</div>
+
+<p>
+Shadows Rising was first founded as a project in May 2004, and added as a <a onclick="window.open(this.href,'_blank');return false;" href="http://www.sourceforge.net">SourceForge</a> project in the same month and year. The basic concept of the game engine is to create a highly configurable and extendable engine to support Role Playing games under a variety of ruleset regimes. The game engine therefore keeps all game content and data stored externally to the engine in what are known as "Game Modules". These Game Modules are basically XHTML and CSS template files, database stored data, content and game items. As a result individual users may create custom Game Modules tailored for specific game types, locations, plots, NPCs and timelines. This immense ability makes possible a large variety of RPG games, something deeply supported by the ability to configure almost any game engine settings, and add game engine "Plug-Ins" which extend both functionality and support for more complex Game Modules. The game engine is pre-packaged with the "Shadows Rising RPG Game" created by the game engine developers. A primary development objective is making both game engine configuration and Game Module creation as easy a process as possible - including the ability to use alternative RPG rulesets that users may be more comfortable and familiar with.
+</p>
+
+<p>
+Shadows Rising is written in the <a onclick="window.open(this.href,'_blank');return false;" href="http://www.php.net">PHP</a> language, with data stored and retrieved using either the <a onclick="window.open(this.href,'_blank');return false;" href="javascript:void();">MySQL</a> or <a onclick="window.open(this.href,'_blank');return false;" href="javascript:void();">PostgreSQL</a> Database Management Systems which use  <a onclick="window.open(this.href,'_blank');return false;" href="javascript:void();">SQL</a> (Simplified Query Language). Output conforms to the XHTML 1.0 Strict, XHTML 1.1 and CSS standards. Javascript is used on a limited basis.
+
+<p>
+The official website for the project which will eventually also host several Shadows Rising supported RPGs, can be found at <a onclick="window.open(this.href,'_blank');return false;" href="http://www.shadowsrising.net">http://www.shadowsrising.net</a>. Our forums are also located here for any questions or feedback users may wish to share.
+</p>
+
+<p>
+Shadows Rising is currently in Alpha (pre-Beta/Production) and planning is ongoing. Beta releases are expected to commence in late 2004.
+</p>
+
+<br /><div class="h5">Copyright Details</div>
+
+<p>
+All original files and source code and their associated copyrights are governed by the national laws and regulations of those countries to which the authors hold citizenships. The copyright for the Shadows Rising RPG Game Engine, all associated "Game Modules" created by the Developers, textual and graphical content, database schemas and data, output (excepting Player inputted messages, text, names and personal data), and all source code to the extent written by the Developers, is held jointly by all contributing developers as listed below. Additionally, the game engine concept and original code fall under the jurisdiction of the Republic of Ireland and the associated Irish Copyright legislation and any applicable European Union legislation and regulations governing copyrights due to the fact that the original author is an Irish citizen, and so holds "first author" rights. This jurisdictional governance therefore defines many of the legal positions underpinning the "Shadows Rising RPG Game Engine" copyright.
+</p>
+
+<p>
+It is noted that each and every original file and graphic distributed under the name "Shadows Rising RPG Game Engine" is copyrighted as a separate entity and separate "work in whole". This is a logical position, as these files are interchangeable with at least one other PHP based application, and are written as cross-compatible source code for a number of purposes. This means that "Shadows Rising RPG Game Engine" is a "collective" or "compilation" as defined under Irish Copyright legislation. Any question as to the validity of this position can and will only be questionable by direct reference to Irish Copyright legislation.
+<p>
+
+<div class="h5"><br />Governing License</div>
+
+<p>
+Furthermore, the copyright holders grant to all users of "Shadows Rising RPG Game Engine" and any associated Developer produced "Game Modules" the right to use, copy, modify and distribute the source code under the terms of the "Affero General Public License" and only under the terms of the afore mentioned license and no other for the version with which this file has been distributed. Any breach of the "Affero General Public License" immediately voids all of the user's rights to use, copy, modify or distribute the source code. Continued use of the source code while a breach is in evidence may result in legal proceedings, although the copyright holders reserve the right to delay legal actions against users, or allow the continued existence of a breach, under whatever circumstance they wish. Normally such a delay will be granted to a user to enable timely correction of a breach that may be in evidence.
+</p>
+
+<p>
+The "Affero General Public License" is an "open-source" license, designed to maximise the rights of the end user, and yet ensure that the original authors retain full copyright for the originally distributed source code. Users, regardless of the level of modifications or new content added, are obliged to make the modified source code available for download by the general public. There is no exception to this rule except one. This exception is that the copyright holders may grant, upon request, permission to withhold the modified source code from the general public on condition that the Developers have the option to request the modified source code, and integrate some or all of it into future releases. Additionally, users are obliged to retain and continue to display (with only minor modification such as appending an additional notice for modifications) all copyright notices. Again, the copyright holders retain the right, upon request, to waive this obligation as they see fit. Removal of any copyright notice will also void all of a user's rights under the license to use, copy, modify or distribute the source code unless a waiver has been secured from the Developers.
+</p>
+
+<p>
+For clarification, all waivers or special permissions granted by the Developers will be verified by email. Any revocation of a waiver or special permission will also be verified by email. If a written signed statement is required and requested by a user, it shall be provided in exchange for a small fee to cover stamp and postage, payable at the prevailing postage fees through the online Paypal service.
+</p>
+
+<div class="h5"><br />Third Party Original Content</div>
+
+<p>
+It is noted that any new or original "Game Modules" must also be licensed under the "Affero General Public License", however the author(s) and therefore copyright holder(s) of such new or original "Game Modules" are not obliged to distribute these "Game Modules" as long as they are not modified from original source code as distributed and copyrighted by the Developers of "Shadows Rising RPG Game Engine". The Developers do however encourage such distribution in the interests of supporting the project.
+</p>
+
+<div class="h5"><br />Third Party Code and Applications</div>
+
+<p>
+The copyright holders also recognise that "Shadows Rising RPG Game Engine" is packaged and distributed with third party code and applications, or modified versions of third party code and applications, over which no copyright is claimed by the Developers, except to the extent of any modifications. All copyrights on third party code remain intact and are displayed below for the benefit of end users, and for the purpose of meeting any burden of proof on the part of the Developers of "Shadows Rising RPG Game Engine".
+</p>
+
+<div class="h5"><br />The Copyright Holders</div>
+
+<p>
+The current list of copyright holders for "Shadows Rising RPG Game Engine" are:<br />
+<br /><a onclick="window.open(this.href,'_blank');return false;" href="http://www.quantum-star.com">Pádraic Brady</a> (aka Maugrim The Reaper)
+<br />Additional copyright holders to be added once details confirmed.
+</p>
+
+<p>
+The rights of all copyright holders as listed above are reserved.
+</p>
+
+<div class="h5"><br />The Copyright Holders (Third Party Code and Applications)</div>
+
+<p>
+The list of all third party code and applications is as follows:<br />
+<br /><a onclick="window.open(this.href,'_blank');return false;" href="http://smarty.php.net">Smarty Template Engine</a> - Copyright &copy; Smarty Developers, licensed under the GNU LGPL.
+
+<br /><a onclick="window.open(this.href,'_blank');return false;" href="javascript:void();">AdoDB Database Abstraction layer</a> - Copyright &copy; John Lim, dual licensed under the BSDL, and the GNU LGPL.
+
+<br /><a onclick="window.open(this.href,'_blank');return false;" href="tki-copyright.html">The Kabal Invasion (modified Install code)</a> - Copyright &copy; TKI Developers, licensed under the GNU GPL.
+
+<br /><a onclick="window.open(this.href,'_blank');return false;" href="http://www.lotgd.net">Legend of the Green Dragon 0.98 Module System code</a> - Copyright &copy; 2002-2004 Eric Stevens & JT Traub, licensed under a <a href="http://creativecommons.org/licenses/by-nc-sa/2.0/">Creative Commons License</a>
+</p>
+
+<p>
+For any questions related to the copyright or license, please contact the Developers on the forums at <a onclick="window.open(this.href,'_blank');return false;" href="http://www.shadowsrising.net">http://www.shadowsrising.net</a>.
+</p>
+
+<div class="h5"><br />To End Users</div>
+
+<p>
+The Developers would like to thank you for your interest in this project. As with all projects of this nature, development is constant and change inevitable. The developers appreciate any and all feedback posted to the forums, regardless of whether it is glowing praise or unending criticism. In the end we accept all of it, and strive to bring the needs of our users closer into the development process.
+</p>
+
+<p>
+We would also like to especially thank those willing to host the game engine. It's these people for whom we Developers are working for in the end. We hope your site visitors enjoy playing Shadows Rising, and if you ever have a question or feedback, just drop by our forums
+</p>
+
+<div class="h5"><br />Project Donations</div>
+
+<p>
+Shadows Rising RPG Game Engine is a non-profit project.
+</p>
+
+<p>
+We accept donations to cover some of the costs associated with our server and domain upkeep. For those willing to part with as little as $1 you may donate to the project either from our <a onclick="window.open(this.href,'_blank');return false;" href="http://www.sourceforge.net">SourceForge</a> project page at <a onclick="window.open(this.href,'_blank');return false;" href="http://www.sourceforge.net/projects/shadowsrising/">http://www.sourceforge.net/projects/shadowsrising/</a>, or from the paypal donation link on our main website at <a onclick="window.open(this.href,'_blank');return false;" href="http://www.shadowsrising.net">http://www.shadowsrising.net</a>. Excess donations, should they exceed our costs, will be donated to charity. The Developers will maintain a record of donations and costs available upon request to the general public. All charity donations will be made on behalf of Shadows Rising Users and Players. 
+<p>
+
+
+
+
+
+
+<!--This is the end of the center panel-->
+</td>
+<td id="page_rightpanel" style="background-color: transparent;">
+<!--This is the left side panel, this holding table cell will contain tables for user information-->
+
+
+
+<!--This is the end of the left side panel-->
+</td>
+<td id="page_centerpanel">
+
+</tr>
+<tr>
+<td colspan="3" id="page_footer">
+<!--This is the footer cell visible at the bottom of all pages-->
+
+	<p>
+		<br /><br /><br /><br /><br />
+		Shadows Rising RPG Game Engine &copy; 2004 <a onclick="window.open(this.href,'_blank');return false;" href="copyright.html">Shadows Rising Project Developers</a>
+		<br />
+		Deep Blue Theme &copy; 2004 Maugrim The Reaper and <a onclick="window.open(this.href,'_blank');return false;" href="copyright.html">Shadows Rising Project Developers</a>
+		<br /><br /><br /><br /><br />
+	</p>
+	<div style="text-align: center;">
+		<img src="../core/images/standards/valid-xhtml11.png" alt="Valid XHTML 1.1!" /><img src="../core/images/standards/vcss.png" alt="Valid CSS!" />
+	</div>
+	
+
+<!--This is the end of the footer cell-->
+</td>
+</tr> 
+</table>
+<!--This is the end of the "holding" table created per Step Three-->
+
+</body>
+</html>

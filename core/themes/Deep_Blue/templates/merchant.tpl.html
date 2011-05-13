@@ -1,0 +1,58 @@
+{include file="merchant_top.tpl.html"}
+
+<p>
+Welcome to the Merchant menu - being a bit scarce on supplies, this Merchant currently only sells a few items. These items are all essential tools for wannabe Adventurers!
+</p>
+<br />
+
+{* The following if/else statements go through all items types. If a type was passed by the Merchant Class function then the check_ variable will be set to true, and the $weapon/$misc/etc. arrays will contain data for items to be displayed *}
+
+{if $itemcheck == "true"}
+<table cellspacing="0" class="invisible">
+	<tr>
+		<td class="merchantpanel_left">
+		<div>|
+		{if $check_weapon == "true"}<a href="javascript:changeItemListPanel('weapon')">Weapons</a>|{/if}
+		{if $check_belt == "true"}<a href="javascript:changeItemListPanel('belt')">Belts</a>|{/if}
+		{if $check_bracer == "true"}<a href="javascript:changeItemListPanel('bracer')">Bracers</a>|{/if}
+		{if $check_ring == "true"}<a href="javascript:changeItemListPanel('ring')">Rings</a>|{/if}
+		{if $check_cloak == "true"}<a href="javascript:changeItemListPanel('cloak')">Cloaks</a>|{/if}
+		{if $check_drug == "true"}<a href="javascript:changeItemListPanel('drug')">Potions</a>|{/if}
+		</div>
+		<div id="lpanel">
+{/if}
+
+<!--Weapons displayed by default - other categories linked to as above-->
+{if $check_weapon == "true"}
+
+			<p class="h5">Weapons</p>
+
+			{section name=i loop=$weapon}
+
+				<div style="vertical-align: center;"><a href="javascript:changeMerchantPanel('weapon{$weapon[i].item_id}')"><img src="{$url_prefix}/core/themes/Deep_Blue/images/items/weapons/weapons_9.png" onMouseOver="javascript:changeStatusColour('weapon{$weapon[i].item_id}', '{$character.level}', '{$weapon[i].level}')" onMouseOut="javascript:defaultStatusColour('weapon{$weapon[i].item_id}')" style="" id="weapon{$weapon[i].item_id}" /></a> {$weapon[i].name}</div>
+
+			{/section}
+{else}
+			<p>Please select a category above to view available items.</p>
+{/if}
+
+
+{if $itemcheck == "false"}
+<p>
+Sorry, but this Merchant has no items available which they can sell to you!
+</p>
+{/if}
+
+{if $itemcheck == "true"}
+		</div>
+		</td>
+		<td class="merchantpanel_right">
+			<div id="mpanel">Clicking on any of the items to the left will display that item's description and details in this panel...<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /></div>
+		</td>
+	</tr>
+</table>
+{/if}
+
+
+
+{include file="location_bottom.tpl.html"}

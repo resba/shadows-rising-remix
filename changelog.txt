@@ -1,0 +1,252 @@
+Shadows Rising 0.0.5
+
+--------------------
+
+Wednesday, 22 December 2004
+	-Updated: Database Schema
+	-Completed: FORUM permission propagation ALPHA
+	-Started: CMS permission propagation
+	-Started: GAME permission propagation
+	-Realized: ProgrammerMatt (me) is horrible at GUI design.
+
+Saturday, 18 December 2004 to early 19 December 2004
+
+	-Updated: Forum database schema
+
+	-Consolidated: Forum database schema for easier use
+
+	-Updated: Forum code to reflect database schema changes
+
+	-Fixed: Viewtopic bug
+
+	-Theme: Started making forums look nicer
+
+
+
+Friday, 17 December 2004
+
+	-generic fixes for races, classes and skills
+
+	-addition of a small skilltest to each location
+
+	-Added: Skill mod form using javascript, enables increase/decreasing of stats more fluidly
+
+	-Schema update for Races/Classes/Skills
+
+	-Added: Apothecary Merchant type
+
+	-Added: Healing Potions - note cannot be purchased as yet due to a small template issue
+
+
+
+Monday, 13 December 2004
+
+	-Added: MySQL 5 and PostgreSQL 7.4 support
+
+	-Added: PostgreSQL 7.4.5 formatted SQL dumpfiles
+
+	-Fixed: PostgreSQL syntax errors - manual SQL additions missing default integer values
+
+	-Fixed: initial location setting for characters- it's a temp workaround
+
+	-Removed: third party directories - transferred to /qlib/thirdparty/
+
+
+
+Friday, 10 December 2004
+
+	-Fixed: character name bug per SF list
+
+	-Added: core/cpanel/mapset.php to transfer an edited map into the running game
+
+	-small change to Navigation class to allow full length uri's and directory changes
+
+	-cpanel.php moved to /core/, functions are instead stored in cpanel directory
+
+	-removed cpanel.inc.php, cpanel themes and includes
+
+	-fixed a bug in the wasd keys for movement
+
+	-all files re-edited to add back use of the location table for storing locations
+
+
+
+Wednesday, 8 December 2004
+
+	-ADDED: /qlib/lib/ directory to contain the qlib include library by Maugrim
+
+	-ADDED: basic user inputted text formatter. e.g. newline to xhtml paragraph converter, etc. by Maugrim
+
+	-some small fixes to forum base by programmermatt
+
+
+
+Monday, 6 December 2004
+
+	- misc fixes for PHP notice level errors by Maugrim
+
+
+
+Friday, 26 November 2004
+
+	- ADDED: plugins.class.php, the start of a plugin system by Maugrim
+
+
+
+All, November 16-25
+
+	- ADDED: Designed for Firefox Logo by programmermatt
+
+	- ADDED: Merchant Sales by Myrtel
+
+
+
+Monday, November 15, 2004
+
+	-permission code in the init files of CORE and QSITE edited to remove deprecated code, and standardise
+
+	-ANNIVERSARY: 12 Nov marked the end of 6 months planning and development from start of project. A lot of planning...:)
+
+	-navigation for terrain maps now added
+
+	-location maps now display a 5x3 grid of terrain
+
+	-NOTE: at present this runs from the maptiles table, not the locations table
+
+	-Travel links removed from center page, moved to main menu instead
+
+	-js function added to enable WASD navigation by keyboard keys
+
+	-language specific files for inline messages in PHP files added to /core/lang/
+
+	-all system mesages reduced to lang-en.inc.php file definitions
+
+
+
+Saturday, November 13, 2004
+
+	-THEME: Added some templates for the forum
+
+	-DATABASE: Added/modified some queries relating to the forums
+
+	-FORUM: Projected Completion ~ 5%
+
+
+
+-----------------------------------
+
+Shadows Rising RPG 0.0.4b (patched)
+
+-----------------------------------
+
+
+
+Tuesday, November 2, 2004
+
+	-THEME: altered the main game theme to reflect the Q-Site theme "Deep Blue". Pages now appear in a modular format - hopefully easier on the eyes :)
+
+	-DATABASE: class table updated
+
+
+
+Monday, November 1, 2004
+
+	-FIXED: a rendering of the MapGen editing page in IE showed a double-margin space at the bottom of selected tiles after they were selected. This "double-margin on DIV layers" is a KNOWN BUG in IE and has been resolved by adding to the altered DIV layer an extra style=> display: inline; not required by more compliant browsers.
+
+
+
+
+
+Saturday, October 30, 2004
+
+	-mapgen completed (with limited terrain tiles) to the point one can design, store, and later edit maps
+
+	-ADDED: /core/images/terrain/ + terrain graphics in 24x35 pixel size (these are not typical 32x32 tiles)
+
+	-DATABASE: patched the SQL files properly to add the required tables to use MapGen
+
+
+
+Friday, October 29, 2004
+
+	-ADDED: mapgen.php - aims to enable user design/editing of terrain maps
+
+	-CVS: initial commit of mapgen.php and templates
+
+
+
+------------------------
+
+Shadows Rising RPG 0.0.4
+
+------------------------
+
+
+
+Thursday, October 28, 2004
+
+	-minor change to remove a line of code now not required within auth.class.php
+
+	-CVS: 0.0.4 committed to SF
+
+	-CVS: loginfo CVSROOT edited to enable automated mailings of all commits to shadowsrising-developers mailing list on SF
+
+
+
+Saturday, October 23, 2004 (from October 9)
+
+	-Complete reworking of Q-CMS (now renamed Q-Site) - this composes Q-Site 0.2
+
+	-Database: Some extensive database reworking, mainly updating Q-Site tables, adding combat/creatures
+
+	-Fixed: Bugs 1009963, 959364, 958701 (see referenced Bugs on sf.net)
+
+	-all classes ported to new /core/classes/ directory
+
+	-Install Utility updated to 0.2 (to be merged with Q-Site) - now fully templated
+
+	-db_funcs.inc.php now uses include_once rather than require_once on config.inc.php, this prevents the script terminating when starting installation - i.e. when config file does not yet exist
+
+	-directory detection in install.php updated to prevent directories including the /install/ directory as base
+
+	-simple combat engine implemented in /core/classes/combat.class.php
+
+	-small rand based encounters added to /core/includes/location.inc.php
+
+	-Anti-Cheat System implemented, blocks player from all uri_requests except those developers explicitly approve from within each PHP script. Additional anti cheat measures to be added
+
+	-See above - using non-approved uri results in player being directed to a reconstructed version of the prior page they visited
+
+	-Templating: repeating HTML sections in templates ported to /templates/blocks/ directory
+
+	-Small changes to login process - a full review is scheduled to try simplifying the process some more - less steps = less potential for errors!
+
+
+
+Saturday, October 9, 2004
+
+	-Fixed: Some issues with previous fix to installer.
+
+
+
+
+
+Saturday, October 2, 2004
+
+	-FIXED: Login bug
+
+	-DATABASE: srbase_challange_record (sessid str(100), challenge str(100), timestamp str(100))
+
+	-FIXED: An annoying template bug. 
+
+	-Made common.inc.php check for config.inc.php (exist & read). Auto redirect.
+
+	-Touched up some rough edges in installer 
+
+	
+
+
+
+Tuesday, September 21, 2004
+
+	-Initial Commit of SR to CVS

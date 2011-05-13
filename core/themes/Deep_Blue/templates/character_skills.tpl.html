@@ -1,0 +1,39 @@
+{include file="setskills_top.tpl.html"}
+
+<div>
+
+<form method="post" action="{$url_prefix}/core/character_create.php" id="class_choice">
+<input type="hidden" name="op" value="save_skills" />
+<input type="hidden" name="skill_pts" id="skill_pts" value="{$character.skill_points}" />
+
+Please assign your free skill points to the skills as listed below. Any skill points which remain unassigned will be carried forward until you next level up.<br /><br />
+
+Your character currently has <span style="background-color: #ffffff; font-weight: bold; color: #000000; font-size: 10pt;" id="skill_pts_text">&nbsp;{$character.skill_points}&nbsp;</span> Skill points remaining.<br /><br />
+
+
+
+	<table cellpadding="0" cellspacing="0" class="invisible" style="border: 1px solid #c0c0c0; width: 600px; border-bottom: 0px;">
+	{section name=i loop=$char_skills}
+		<tr>
+			<td style="vertical-align: center; text-align: left; border-bottom: 1px solid #c0c0c0;">
+				<b style="font-size: 12pt;">{$char_skills[i].skill_name}</b><br /><br />
+				<span style="background-color: #ffffff; font-weight: bold; color: #000000; font-size: 10pt;" id="skill_{$char_skills[i].skill_id}">&nbsp;0&nbsp;</span>
+				<span style="font-size: 12pt;"><a href="javascript:incrementAllocatedPoints('skill_value_{$char_skills[i].skill_id}','skill_{$char_skills[i].skill_id}',{$character.level})">&nbsp;&uArr;&nbsp;</a>/<a href="javascript:decrementAllocatedPoints('skill_value_{$char_skills[i].skill_id}','skill_{$char_skills[i].skill_id}',0,{$character.skill_points})">&nbsp;&dArr;&nbsp;</a></span>
+				<input type="hidden" value="0" name="skill_value_{$char_skills[i].skill_id}" id="skill_value_{$char_skills[i].skill_id}" />
+			</td>
+			<td style="vertical-align: top; text-align: left; border-bottom: 1px solid #c0c0c0; padding: 5px;">
+				{$char_skills[i].description}
+			</td>
+		</tr>
+	{/section}
+	</table>
+	<br />
+
+
+
+<br />
+<input type="submit" value="Submit" />
+</form>
+</div>
+
+{include file="location_bottom.tpl.html"}

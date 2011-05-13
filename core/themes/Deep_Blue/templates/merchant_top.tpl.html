@@ -1,0 +1,251 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+
+<!--
+Title:			Shadows Rising RPG "Deep Blue" Theme (experimental) 
+Designed by:	Maugrim The Reaper (http://www.quantum-star.com)
+Compliance:		XHTML 1.1
+Optimisation:	1024x768 Resolution // Mozilla Firefox 0.8
+-->
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<title>{$game_name} :: {$location.loc_name}</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="language" content="en" />
+<link rel="stylesheet" href="{$url_prefix}/core/themes/Deep_Blue/style_deepblue.css" type="text/css" />
+
+<!--The ChangeMerchantPanel and changeItemListPanel javascript functions were written to create a changeable item info panel for Merchant Stores, and Character Backpack UI-->
+
+<!--We only need to use literal Smarty tags to surround non-Smarty curly braces such as those in Javascript - otherwise the Smarty engine would parse these by accident, cause an error, and return a blank page!-->
+
+{literal}
+
+<script type="text/javascript">
+<!--
+
+	function changeItemListPanel(type) {
+		var newList;
+		switch (type)
+		{
+
+		{/literal}
+
+		case "weapon":
+		{if $check_weapon == "true"}
+				newList='<p class="h5">Weapons</p>'
+				{section name=i loop=$weapon}
+					+ '<div style="vertical-align: center;"><a href="javascript:changeMerchantPanel(\'weapon{$weapon[i].item_id}\')"><img src="{$url_prefix}/core/themes/Deep_Blue/images/items/weapons/weapons_9.png" alt="weapon{$weapon[i].item_id}" onmouseover="javascript:changeStatusColour(\'weapon{$weapon[i].item_id}\', \'{$character.level}\', \'{$weapon[i].level}\')" onmouseout="javascript:defaultStatusColour(\'weapon{$weapon[i].item_id}\')" style="" id="weapon{$weapon[i].item_id}" /></a> {$weapon[i].name}</div>'
+				{/section}
+				+ '<br />';
+				break;
+		{else}
+				newList='<p>No Weapons available for purchase...</p>';
+				break;
+		{/if}
+
+		case "belt":
+		{if $check_belt == "true"}
+				newList='<p class="h5">Belts</p>'
+				{section name=i loop=$belt}
+					+ '<div style="vertical-align: center;"><a href="javascript:changeMerchantPanel(\'belt{$belt[i].item_id}\')"><img src="{$url_prefix}/core/themes/Deep_Blue/images/items/weapons/weapons_9.png" alt="belt{$belt[i].item_id}" onmouseover="javascript:changeStatusColour(\'belt{$belt[i].item_id}\', \'{$character.level}\', \'{$belt[i].level}\')" onmouseout="javascript:defaultStatusColour(\'belt{$belt[i].item_id}\')" style="" id="belt{$belt[i].item_id}" /></a> {$belt[i].name}</div>'
+				{/section}
+				+ '<br />';
+				break;
+		{else}
+				newList='<p>No Belts available for purchase...</p>';
+				break;
+		{/if}
+
+		case "bracer":
+		{if $check_bracer == "true"}
+				newList='<p class="h5">Bracers</p>'
+				{section name=i loop=$bracer}
+					+ '<div style="vertical-align: center;"><a href="javascript:changeMerchantPanel(\'bracer{$bracer[i].item_id}\')"><img src="{$url_prefix}/core/themes/Deep_Blue/images/items/weapons/weapons_9.png" alt="bracer{$bracer[i].item_id}" onmouseover="javascript:changeStatusColour(\'bracer{$bracer[i].item_id}\', \'{$character.level}\', \'{$bracer[i].level}\')" onmouseout="javascript:defaultStatusColour(\'bracer{$bracer[i].item_id}\')" style="" id="bracer{$bracer[i].item_id}" /></a> {$bracer[i].name}</div>'
+				{/section}
+				+ '<br />';
+				break;
+		{else}
+				newList='<p>No Bracers available for purchase...</p>';
+				break;
+		{/if}
+
+		case "ring":
+		{if $check_ring == "true"}
+				newList='<p class="h5">Ring</p>'
+				{section name=i loop=$ring}
+					+ '<div style="vertical-align: center;"><a href="javascript:changeMerchantPanel(\'ring{$ring[i].item_id}\')"><img src="{$url_prefix}/core/themes/Deep_Blue/images/items/weapons/weapons_9.png" alt="ring{$ring[i].item_id}" onmouseover="javascript:changeStatusColour(\'ring{$ring[i].item_id}\', \'{$character.level}\', \'{$ring[i].level}\')" onmouseout="javascript:defaultStatusColour(\'ring{$ring[i].item_id}\')" style="" id="ring{$ring[i].item_id}" /></a> {$ring[i].name}</div>'
+				{/section}
+				+ '<br />';
+				break;
+		{else}
+				newList='<p>No Rings available for purchase...</p>';
+				break;
+		{/if}
+
+		case "cloak":
+		{if $check_cloak == "true"}
+				newList='<p class="h5">Cloaks</p>'
+				{section name=i loop=$cloak}
+					+ '<div style="vertical-align: center;"><a href="javascript:changeMerchantPanel(\'cloak{$cloak[i].item_id}\')"><img src="{$url_prefix}/core/themes/Deep_Blue/images/items/weapons/weapons_9.png" alt="cloak{$cloak[i].item_id}" onmouseover="javascript:changeStatusColour(\'cloak{$cloak[i].item_id}\', \'{$character.level}\', \'{$cloak[i].level}\')" onmouseout="javascript:defaultStatusColour(\'cloak{$cloak[i].item_id}\')" style="" id="cloak{$cloak[i].item_id}" /></a> {$cloak[i].name}</div>'
+				{/section}
+				+ '<br />';
+				break;
+		{else}
+				newList='<p>No Cloaks available for purchase...</p>';
+				break;
+		{/if}
+
+		case "drug":
+		{if $check_drug == "true"}
+				newList='<p class="h5">Potions</p>'
+				{section name=i loop=$drug}
+					+ '<div style="vertical-align: center;"><a href="javascript:changeMerchantPanel(\'drug{$drug[i].item_id}\')"><img src="{$url_prefix}/core/themes/Deep_Blue/images/items/weapons/weapons_9.png" alt="drug{$drug[i].item_id}" onmouseover="javascript:changeStatusColour(\'drug{$drug[i].item_id}\', \'{$character.level}\', \'{$drug[i].level}\')" onmouseout="javascript:defaultStatusColour(\'drug{$drug[i].item_id}\')" style="" id="drug{$drug[i].item_id}" /></a> {$drug[i].name}</div>'
+				{/section}
+				+ '<br />';
+				break;
+		{else}
+				newList='<p>No Potions available for purchase...</p>';
+				break;
+		{/if}
+
+		{literal}
+		}
+		document.getElementById('lpanel').innerHTML=newList;
+	}
+
+	function changeMerchantPanel(itemType) {
+		var newDesc;
+		switch (itemType)
+		{
+
+		{/literal}
+
+		{if $check_weapon == "true"}
+			{section name=j loop=$weapon}
+			case "weapon{$weapon[j].item_id}":
+				newDesc='<p><span class="h5">{$weapon[j].name}</span></p><p>{$weapon[j].description}</p><p>Cost: <span style="font-weight: bold;">{$weapon[j].cost}</span> Credits</p><p><span class="h5">Details:</span></p><p>Weight: <span style="font-weight: bold;">{$weapon[j].weight}</span></p><p>Alignment: <span style="font-weight: bold;">{$weapon[j].alignment}</span></p><p>Damage: <span style="font-weight: bold;">1d{$weapon[j].max_damage}</span></p><p>Critical: <span style="font-weight: bold;">{$weapon[j].min_critical}-{$weapon[j].max_critical}/x{$weapon[j].critical_multiplier}</span></p><br /><p>Handling: <span style="font-weight: bold;">{$weapon[j].handle}</span></p><a href="{$url_prefix}/core/merchant.php?purchase=1&amp;purchase_weapon={$weapon[j].item_id}" style="font-size: 12px; font-weight: bold;">Purchase</a>';
+				break;
+			{/section}
+		{/if}
+		{if $check_ring == "true"}
+			{section name=j loop=$ring}
+			case "ring{$ring[j].item_id}":
+				newDesc='<p><span class="h5">{$ring[j].name}</span></p><p>{$ring[j].description}</p><p>Cost: <span style="font-weight: bold;">{$ring[j].cost}</span> Credits</p><p><span class="h5">Details:</span></p><p>Weight: <span style="font-weight: bold;">{$ring[j].weight}</span></p><p>Alignment: <span style="font-weight: bold;">{$ring[j].alignment}</span></p><p>Effects: <span style="font-weight: bold;">{$ring[j].effect}</span></p><p>Effect Bonus: <span style="font-weight: bold;">{$ring[j].effect_type} +{$ring[j].effect_amount}</span></p><a href="{$url_prefix}/core/merchant.php?purchase=1&amp;purchase_ring={$ring[j].item_id}" style="font-size: 12px; font-weight: bold;">Purchase</a>';
+				break;
+			{/section}
+		{/if}
+		{if $check_belt == "true"}
+			{section name=j loop=$belt}
+			case "belt{$belt[j].item_id}":
+				newDesc='<p><span class="h5">{$belt[j].name}</span></p><p>{$belt[j].description}</p><p>Cost: <span style="font-weight: bold;">{$belt[j].cost}</span> Credits</p><p><span class="h5">Details:</span></p><p>Weight: <span style="font-weight: bold;">{$belt[j].weight}</span></p><p>Alignment: <span style="font-weight: bold;">{$belt[j].alignment}</span></p><p>Effects: <span style="font-weight: bold;">{$belt[j].effect}</span></p><p>Effect Bonus: <span style="font-weight: bold;">{$belt[j].effect_type} +{$belt[j].effect_amount}</span></p><a href="{$url_prefix}/core/merchant.php?purchase=1&amp;purchase_belt={$belt[j].item_id}" style="font-size: 12px; font-weight: bold;">Purchase</a>';
+				break;
+			{/section}
+		{/if}
+		{if $check_bracer == "true"}
+			{section name=j loop=$belt}
+			case "bracer{$bracer[j].item_id}":
+				newDesc='<p><span class="h5">{$bracer[j].name}</span></p><p>{$bracer[j].description}</p><p>Cost: <span style="font-weight: bold;">{$bracer[j].cost}</span> Credits</p><p><span class="h5">Details:</span></p><p>Weight: <span style="font-weight: bold;">{$bracer[j].weight}</span></p><p>Alignment: <span style="font-weight: bold;">{$bracer[j].alignment}</span></p><p>Effects: <span style="font-weight: bold;">{$bracer[j].effect}</span></p><p>Effect Bonus: <span style="font-weight: bold;">{$bracer[j].effect_type} +{$bracer[j].effect_amount}</span></p><a href="{$url_prefix}/core/merchant.php?purchase=1&amp;purchase_bracer={$bracer[j].item_id}" style="font-size: 12px; font-weight: bold;">Purchase</a>';
+				break;
+			{/section}
+		{/if}
+		{if $check_cloak == "true"}
+			{section name=j loop=$cloak}
+			case "cloak{$cloak[j].item_id}":
+				newDesc='<p><span class="h5">{$cloak[j].name}</span></p><p>{$cloak[j].description}</p><p>Cost: <span style="font-weight: bold;">{$cloak[j].cost}</span> Credits</p><p><span class="h5">Details:</span></p><p>Weight: <span style="font-weight: bold;">{$cloak[j].weight}</span></p><p>Alignment: <span style="font-weight: bold;">{$cloak[j].alignment}</span></p><p>Effects: <span style="font-weight: bold;">{$cloak[j].effect}</span></p><p>Effect Bonus: <span style="font-weight: bold;">{$cloak[j].effect_type} +{$cloak[j].effect_amount}</span></p><a href="{$url_prefix}/core/merchant.php?purchase=1&amp;purchase_cloak={$cloak[j].item_id}" style="font-size: 12px; font-weight: bold;">Purchase</a>';
+				break;
+			{/section}
+		{/if}
+		{if $check_drug == "true"}
+			{section name=j loop=$drug}
+			case "drug{$drug[j].item_id}":
+				newDesc='<p><span class="h5">{$drug[j].name}</span></p><p>{$drug[j].description}</p><p>Cost: <span style="font-weight: bold;">{$drug[j].cost}</span> Credits</p><p><span class="h5">Details:</span></p><p>Weight: <span style="font-weight: bold;">{$drug[j].weight}</span></p><p>Alignment: <span style="font-weight: bold;">{$drug[j].alignment}</span></p><p>Effects: <span style="font-weight: bold;">{$drug[j].effect}</span></p><p>Effect Bonus: <span style="font-weight: bold;">{$drug[j].effect_type} +{$drug[j].effect_amount}</span></p><a href="{$url_prefix}/core/merchant.php?purchase=1&amp;purchase_drug={$drug[j].item_id}" style="font-size: 12px; font-weight: bold;">Purchase</a>';
+				break;
+			{/section}
+		{/if}
+
+		{literal}
+		}
+		document.getElementById('mpanel').innerHTML=newDesc;
+	}
+
+	function changeStatusColour(itemType, charLevel, itemLevel) {
+		var newStyle;
+		if (charLevel >= itemLevel) 
+		{
+			newColour='darkgreen';
+		}
+		else
+		{
+			newColour='darkred';
+		}
+		document.getElementById(itemType).style.backgroundColor = newColour;
+	}
+
+	function defaultStatusColour(itemType) {
+		defaultColour = 'transparent';
+		document.getElementById(itemType).style.backgroundColor = defaultColour;
+	}
+
+
+// -->
+</script>
+
+{/literal}
+
+<!--End of ChangeMerchantPanel javascript function-->
+
+</head>
+<body class="default">
+
+<table cellspacing="0" class="default" width="100%" style="text-align: center; border: 0px;">
+	<tr>
+		<td width="100%" colspan="5" class="internal" style="text-align: center; background-color: #000000;">
+			<img src="{$url_prefix}/core/themes/Deep_Blue/images/logo.gif" alt="Shadows Rising" title="Shadows Rising" />
+		</td>
+	</tr>
+	<tr>
+		<td width="100%" colspan="5" style="height: 5px">
+		</td>
+	</tr>
+</table>
+
+
+<table cellspacing="0" class="default" width="100%" style="text-align: center; border: 0px;">
+	<tr>
+		<td id="page_leftpanel">
+<!--This is the left side panel, this holding table cell will contain tables for user information-->
+
+	<table cellspacing="0" class="block">
+	<tr>
+		<td>
+		{include file="blocks/nav_menu.tpl.html"}
+		</td>
+	</tr>
+	</table><br />
+
+	<table cellspacing="0" class="block">
+	<tr>
+		<td>
+		{include file="blocks/character_details.tpl.html"}
+		</td>
+	</tr>
+	</table><br />
+
+	<table cellspacing="0" class="block">
+	<tr>
+		<td>
+		{include file="blocks/character_attributes.tpl.html"}
+		</td>
+	</tr>
+	</table><br />
+
+<!--This is the end of the left side panel-->
+		</td>
+		<td width="5">
+		&nbsp;
+		</td>
+		<td id="page_centerpanel">
+			<table cellspacing="0" class="module">
+				<tr>
+					<td>
+<!--This is the center panel where user actions, text, and menus will appear-->

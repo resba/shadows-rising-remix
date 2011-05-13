@@ -1,0 +1,260 @@
+/* "Deep Blue" Shadows Rising RPG Theme Stylesheet */
+
+body#default_body {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 8pt;
+	color: #FFFFFF;
+	font-weight: normal;
+	background-color: #0A2E48;
+	text-align: left;
+	margin: 0px;
+}
+
+
+div#pagetop_logo {
+	position: relative;
+	top: 0px;
+	width: 100%; 
+	height: 90px; 
+	background-color: #000000; 
+	text-align: center;
+}
+
+div#pagetop_menu {
+	position: relative; 
+	width: 100%;
+	height: 13px;
+	background-color: darkblue; 
+	text-align: center;
+	padding-top: 2px;
+	padding-bottom: 2px;
+}
+
+span.pagetop_menulinks {
+	background-color: green; 
+	text-align: center;
+	border: 1px dashed darkgreen;
+}
+
+table.invisible {
+	width: 100%;
+	padding: 0px;
+	text-align: center;
+	vertical-align: top;
+}
+
+td#page_leftpanel {
+	width: 175px;
+	text-align: center;
+	background-color: #0A2E48;
+	vertical-align: top;
+	border-right: 1px dashed darkblue;
+}
+
+td#page_centerpanel {
+	text-align: left;
+	background-color: #0A2E48;
+	vertical-align: top;
+}
+
+td#page_rightpanel {
+	width: 175px;
+	text-align: center;
+	background-color: #0A2E48;
+	vertical-align: top;
+	border-left: 1px dashed darkblue;
+}
+
+td.halfwidth {
+	width: 50%;
+	text-align: left;
+	vertical-align: top;
+	color: silver;
+}
+td.halfwidth2 {
+	width: 50%;
+	text-align: left;
+	vertical-align: top;
+}
+
+td.thirdwidth {
+	width: 34%;
+	text-align: left;
+	vertical-align: top;
+	color: silver;
+}
+td.thirdwidth2 {
+	width: 33%;
+	text-align: center;
+	vertical-align: top;
+}
+td.thirdwidth3 {
+	width: 33%;
+	text-align: right;
+	vertical-align: top;
+	color: green;
+}
+
+td.merchantpanel_left {
+	width: 40%;
+	text-align: left;
+	vertical-align: top;
+	border: 1px dashed darkblue;
+}
+td.merchantpanel_right {
+	width: 60%;
+	text-align: left;
+	vertical-align: top;
+	border: 1px dashed darkred;
+}
+
+/* Page Top Menu Link Styling */
+
+a:link.pagetop_menulinks {
+	text-decoration: none;
+	font-weight: normal;
+	color: maroon;
+}
+a:visited.pagetop_menulinks {
+	text-decoration: none;
+	font-weight: normal;
+	color: maroon;
+}
+a:hover.pagetop_menulinks {
+	text-decoration: underline;
+	font-weight: normal;
+	color: silver;
+}
+a:active.pagetop_menulinks {
+	text-decoration: none;
+	font-weight: normal;
+	color: red;
+}
+
+/* Body Default Link Styling */
+
+a:link {
+	text-decoration: none;
+	font-weight: normal;
+	color: blue;
+}
+a:visited {
+	text-decoration: none;
+	font-weight: normal;
+	color: blue;
+}
+a:hover {
+	text-decoration: underline;
+	font-weight: normal;
+	color: green;
+}
+a:active {
+	text-decoration: none;
+	font-weight: normal;
+	color: red;
+}
+
+/* Button Style Links for Actions (e.g. Purchase Links for merchant stores) */
+
+a:link.buttonstyle {
+	text-decoration: none;
+	font-weight: bold;
+	text-align: center;
+	color: #6666aa;
+	width: 180px;
+	height: 15px;
+	float: left;
+	clear: none;
+	background-color: #222233;
+	border: 0px;
+}
+a:visited.buttonstyle {
+	text-decoration: none;
+	font-weight: bold;
+	text-align: center;
+	color: #6666aa;
+	width: 180px;
+	height: 15px;
+	float: right;
+	clear: none;
+	background-color: #222233;
+	border: 0px;
+}
+a:hover.buttonstyle {
+text-decoration: none;
+	font-weight: bold;
+	text-align: center;
+	color: #6666aa;
+	height: 14px;
+	width: 180px;
+	background-color: #1D2247;
+	border-top: solid 1px #A9A9A9;
+	border-bottom: 0px;
+	border-right: 0px;
+	border-left: solid 1px A9A9A9;
+}
+a:active.buttonstyle {
+	text-decoration: none;
+	font-weight: bold;
+	text-align: center;
+	color: #6666aa;
+	width: 180px;
+	height: 14px;
+	float: left;
+	clear: none;
+	background-color: #222233;
+	border-top: 0px;
+	border-bottom: solid 1px #A9A9A9;
+	border-right: solid 1px #A9A9A9;
+	border-left: 0px;
+}
+
+/* Other defaults */
+
+img {
+	border: 0px;
+}
+
+th {
+	font-weight: bold; 
+	font-size: 10pt;
+	text-align: center;
+	color: grey;
+}
+
+table {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 8pt;
+	color: #FFFFFF;
+	font-weight: normal;
+}
+
+/* To maintain a standard heading size under browsers, use these in place of the <h1> to <h4> tags */
+
+.h1 {
+	font-size: 32pt; 
+	font-weight: bold;
+}
+.h2 { 
+	font-size: 24pt; 
+	font-weight: bold;
+}
+.h3 { 
+	font-size: 19pt; 
+	font-weight: bold;
+}
+.h4 {
+	font-size: 16pt; 
+	font-weight: bold;
+}
+.h5 {
+	font-size: 12pt; 
+	font-weight: bold;
+}
+
+
+/* Styling of both ordered and unordered lists */
+
+ul {
+	list-style-type: circle; 
+}

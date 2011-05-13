@@ -1,0 +1,13 @@
+	<div align="center">
+	Are you sure you wish to join this game? 
+	<br /><br /><b>{$game.name}</b>
+	<br /><br />
+	<form method="post" action="{$url_prefix}/qcms/module.php?dir=Game_Index">
+	<input type="hidden" name="op" value="do_join" />
+	<input type="hidden" name="sure" value="yes" />
+	<input type="hidden" name="confirm_join" value="1" />
+	<input type="submit" name="submit" value="Join!" />
+	</form>
+	<br /><br />
+	<a href="{$url_prefix}/qcms/index.php">Return to HomePage</a>
+	</div>

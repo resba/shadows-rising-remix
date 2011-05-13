@@ -1,0 +1,117 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<title> Shadows Rising RPG :: Index </title>
+<meta http-equiv="content-type" content="text/html; charset=ISO-8859-1" />
+<meta name="Author" content="The Open-Source Shadows Rising RPG project" />
+<meta name="Keywords" content="" />
+<meta name="Description" content="Server homepage for a Shadows Rising game." />
+<link rel="stylesheet" href="themes/Shadows_Rising_Default/style01.css" type="text/css" />
+{literal}
+<script language="javascript" src="themes/Shadows_Rising_Default/md5.js"></script>
+<script language="javascript">
+<!--
+  function doChallengeResponse() {
+    str = document.login_form.l_name.value.toLowerCase() + ":" +
+          MD5(document.login_form.passwd.value) + ":" +
+          document.login_form.challenge.value;
+    document.login_form.response.value = MD5(str);
+    document.login_form.passwd.value = "";
+    document.logintrue.l_name.value = document.login_form.l_name.value;
+    document.logintrue.response.value = MD5(str);
+    document.logintrue.submit();
+    return false;
+  }
+// -->
+</script>
+{/literal}
+</head>
+
+<!-- All tags styled through CSS rather than inline tags. See linked to CSS file. !-->
+
+<body class="default">
+
+<table cellspacing="0" class="default" width="100%" style="text-align: center; border: 0px;">
+	<tr>
+		<td width="100%" colspan="5" class="internal" style="text-align: center; background-color: #000000;">
+			<img src="themes/Shadows_Rising_Default/logo.gif" alt="Shadows Rising" title="Shadows Rising" />
+		</td>
+	</tr>
+	<tr>
+		<td width="100%" colspan="5" style="height: 5px">
+		</td>
+	</tr>
+</table>
+
+<table cellspacing="0" class="default" width="100%" style="text-align: center; border: 0px;">
+	<tr>
+		<td width="150" class="internal" style="border: 0px">
+
+
+		{section name=i loop=$left_blocks}
+			{include file=$left_blocks.template[i]}
+		{/section}
+
+
+		</td>
+		<td width="10">
+		&nbsp;
+		</td>
+		<td width="100%" class="internal" style="border: 0px;">
+			<table cellspacing="0" width="100% "class="internal" style="text-align: left; border: 0px;">
+				<tr>
+					<td>
+
+					{section name=i loop=$center_blocks}
+						{include file=$center_blocks.template[i]}
+					{/section}
+
+					</td>
+				</tr>
+			</table>
+		</td>
+		<td width="10">
+		&nbsp;
+		</td>
+		<td width="150" class="internal" style="border: 0px;">
+
+
+		{section name=k loop=$right_blocks}
+			{include file=$right_blocks.template[k]}
+		{/section}
+
+
+		</td>
+	</tr>
+	<tr>
+		<td width="100%" colspan="5" style="height: 5px">
+		</td>
+	</tr>
+</table>
+
+	<br /><br /><br />
+	<br /><br /><br />
+	<br /><br /><br />
+	<br /><br /><br />
+	<br /><br /><br />
+	<br /><br /><br />
+	<br /><br /><br />
+	<br /><br /><br />
+
+<div align="center">
+<a href="http://www.shadowsrising.net" target="_blank">Shadows Rising RPG Game Engine</a> &copy; Copyright 2004 Shadows Rising, Individual Authors<br />
+<br /><br />
+</div>
+<div align="center">
+<table class="default" style="border: 0px">
+	<tr>
+		<td>
+			<a href="http://validator.w3.org/check/referer"><img src="images/standards/valid-xhtml10.png" alt="Valid XHTML 1.0!" height="31" width="88" style="border: 0px" /></a>
+			<a href="http://jigsaw.w3.org/css-validator"><img src="images/standards/vcss.png" alt="Valid CSS 1/2!" height="31" width="88" style="border: 0px" /></a>
+		</td>
+	</tr>
+</table>
+</div>
+	
+</body>
+</html>

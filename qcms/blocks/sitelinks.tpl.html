@@ -1,0 +1,29 @@
+<table cellspacing="0" class="invisible">
+	<tr>
+		<td>
+			<a href="index.php" class="page_menu">::&nbsp;&nbsp;&nbsp;Home</a><br />
+		</td>
+	</tr>
+
+{foreach name=outer item=cat key=cat_title from=$categories}
+	<tr>
+		<th>
+		{$cat_title}
+		</th>
+	</tr>
+	<tr>
+		<td>
+		{foreach name=inner item=prelink from=$cat}
+
+			{foreach name=inner2 item=link from=$prelink}
+
+				<a href="{$link.href}" class="page_menu">::&nbsp;&nbsp;&nbsp;{$link.name}</a><br />
+
+			{/foreach}
+
+		{/foreach}
+
+		</td>
+	</tr>
+{/foreach}
+</table>

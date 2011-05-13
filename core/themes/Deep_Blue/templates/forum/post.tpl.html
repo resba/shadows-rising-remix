@@ -1,0 +1,20 @@
+{if $mode == "nopostmode"}
+ No post mode specified
+{elseif $mode == "invalidpostmode"}
+ Invalid post mode 
+{elseif $mode == "newpost"}
+ <table width="100%">
+ <form action="post.php?postmode={$smarty.request.postmode}&{if $smarty.request.f != ""}f={$smarty.request.f}{elseif $smarty.request.t !=""}t=g{$smarty.request.t}{/if}" method="POST">
+  <tr><td width="30%"></td><td>Subject: <input type="text" name="subject" id="subject" size="30"></td></tr>
+  <tr><td> 
+  <center><ul>Emotionicons</ul></center>
+  </td><td>
+   Message:
+   <br><textarea cols="40" rows="10" name="msg" id="msg"></textarea>
+  </td></tr>
+  <tr><td></td>
+  <td><input type="submit" value="Submit"></td>
+  </tr>
+ </table>
+</form>
+{/if}

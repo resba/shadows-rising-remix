@@ -1,0 +1,173 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+
+<!--
+Title:			Shadows Rising RPG "Install Default" Theme 
+Designed by:	Maugrim The Reaper (http://www.quantum-star.com)
+Compliance:		XHTML 1.1
+Optimisation:	1024x768 Resolution // Mozilla Firefox 0.8
+-->
+
+<!--Using UTF-8 as <?xml?> declaration missing to avoid IE "quirks" mode rendering. Do not remove !DOCTYPE. Ensure document is fully validated before implementing.-->
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<title>Shadows Rising RPG Install Utility :: Configuration</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="language" content="en" />
+<link rel="stylesheet" href="themes/Default/style_default.css" type="text/css" />
+</head>
+
+<body id="default_body">
+
+<div id="pagetop_logo">
+	<img src="../core/themes/Deep_Blue/images/logo.gif" alt="{$code_base}"/>
+</div>
+
+<table cellspacing="0" class="invisible">
+<tr>
+<td id="page_leftpanel" style="text-align: left;">
+<!--This is the left side panel, for installation this is just a spacer-->
+
+
+
+
+<div>
+<br /><br /><br /><br />
+<ol>
+<li style="font-weight: bold; color: lightgreen;">Base Configuration</li>
+<li>Base Server Setup</li>
+<li>Installation of Server Database Tables</li>
+</ol>
+</div>
+
+
+
+
+<!--This is the end of the left side panel-->
+</td>
+<td id="page_centerpanel">
+<!--This is the center panel where user actions, text, and menus will appear-->
+
+<p class="h4">{$app_name} Install Utility</p>
+
+
+{if $success == "true"}
+
+	<p>Configuration has been successful and your configuration settings have been saved.</p>
+	<p>
+	You should change the permissions on your &quot;config.inc.php&quot; file as soon as possible to ensure visitors to your website do not have access to this file.
+	</p>
+	<p>
+	You should ensure that permissions for &quot;config.inc.php&quot; are correctly set. Typically a setting of &quot;0740&quot; will be sufficient. If Apache has problems reading this file in correctly, you should try a permission setting of &quot;0744&quot;. This is an important step, because if the file is writeable by outside users, your server's configuration details may be compromised.
+	</p>
+	<p>
+	The next step in this installation is the installation of the base server database tables. Please click continue when you are ready
+	</p>
+	<p>
+	<form method="post" action="install_server.php" id="continuance">
+	<input type="submit" name="submit" value="Continue" />
+	</form>
+	</p>
+
+{elseif $success == "false"}
+
+	<script type="text/javascript">
+	{literal}
+	function enablebutton()
+	{
+		document.forms[1].secondbutton.disabled=false;
+	}
+	{/literal}
+	</script>
+
+	<p style="color: red;">Local settings could not be saved!</p>
+	<p>
+	Local configuration settings could not be saved. Please ensure that:
+	<ol>
+	<li>The &quot;/qlib/config/&quot; directory has permissions set to 0777; and</li>
+	<li>That the PHP directive &quot;safe_mode&quot; is disabled; or</li>
+	<li>If you already uploaded a copy of the file, please ensure the file's permissions are set as described below.</li>
+	</ol>
+	</p>
+	<p>
+	If you are unable to set permissions for some reason and/or safe_mode cannot be disabled you may attempt to download a copy of the &quot;config.inc.php&quot;. You should note that this alternative may not work under Internet Explorer (which is a little buggy, to put it mildly!) but should work under most other browsers. Alternatively you can find a template of this file in the &quot;/docs/&quot; directory.
+	<p>
+	<p>
+	<form method="post" action="install.php" name="dl_form">
+	<input type="hidden" name="rawdata" value="{$rawdata}" />
+	<input type="hidden" name="install_step" id="install_step" value="3" />
+	<input type="submit" value="Download File" onclick="enablebutton()" />
+	</form>
+	</p>
+	<p>
+	After downloading and saving the file to the server in the &quot;/qlib/config/&quot; directory, please click below to continue.
+	</p>
+	<p>
+	You should ensure that permissions for &quot;config.inc.php&quot; are correctly set. Typically a setting of &quot;0740&quot; will be sufficient. If Apache has problems reading this file in correctly, you should try a permission setting of &quot;0744&quot;. This is an important step, because if the file is writeable by outside users, your server's configuration details may be compromised.
+	</p>
+	<p>
+	<form method="post" action="install.php" name="cont_form">
+	<input type="hidden" name="rawdata" value="{$rawdata}" />
+	<input type="hidden" name="install_step" value="4" />
+	<input type="hidden" name="time_error" value="{$time_error}" />
+	<!--input type="hidden" name="_adminpass" value="$_POST[_adminpass]"-->
+	<input type="submit" name="secondbutton" value="Continue" disabled="disabled" />
+	</form>
+	</p>
+
+{/if}
+
+
+
+<div>
+<!-- Insert a little space and keep the footer low -->
+<br /><br /><br /><br /><br />
+<br /><br /><br /><br /><br />
+<br /><br /><br /><br /><br />
+<br /><br /><br /><br /><br />
+</div>
+
+<!--This is the end of the center panel-->
+</td>
+<td id="page_rightpanel">
+<!--This is the right side panel - another spacer-->
+
+
+{if $success2 == "false"}
+<p class="h5" style="color: red;">Warning!</p>
+<p style="color: red;">
+You were earlier given the option to download &quot;config.inc.php&quot;. However the Install Utility detects that this file has either not been uploaded, or has not been updated with the downloaded version. (Ignore this warning if you are certain this file exists, and is fully correct.)
+</p>
+{else}
+<p style="color: lightgreen;">No warnings noted.</p>
+{/if}
+
+
+<!--This is the end of the right side panel-->
+</td>
+</tr>
+<tr>
+<td colspan="3" id="page_footer">
+<!--This is the footer cell visible at the bottom of all pages-->
+
+	<p>
+		<br /><br /><br /><br /><br />
+		{$this_version} &copy; 2004 <a onclick="window.open(this.href,'_blank');return false;" href="../docs/copyright.html">Shadows Rising Project Developers</a>
+		<br />
+		Default Install Theme &copy; 2004 Maugrim The Reaper and <a onclick="window.open(this.href,'_blank');return false;" href="../docs/copyright.html">Shadows Rising Project Developers</a>
+		<br />
+		Original Install Code &copy; 2003, 2004 <a href="../docs/tki-copyright.html" onclick="window.open(this.href,'_blank');return false;">TKI Developers</a>
+		<br /><br /><br /><br /><br />
+	</p>
+	<div style="text-align: center;">
+		<img src="../core/images/standards/valid-xhtml11.png" alt="Valid XHTML 1.1!" /><img src="../core/images/standards/vcss.png" alt="Valid CSS!" />
+	</div>
+
+<!--This is the end of the footer cell-->
+</td>
+</tr> 
+</table>
+<!--This is the end of the "holding" table created per Step Three-->
+
+</body>
+</html>

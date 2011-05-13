@@ -1,0 +1,24 @@
+
+Ingame Forums
+==============
+Have cat_id's of '-1'
+
+Forum Statuses
+==============
+0-Normal
+1-Locked
+2-Closed
+
+Post Statuses
+=============
+0-Normal
+1-Locked
+
+Post types
+==========
+0-Normal
+1-Sticky
+2-Announcement
+3-Global Announcement
+4-System Message
+5-Auction

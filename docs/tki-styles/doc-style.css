@@ -1,0 +1,24 @@
+a:link            { color: #ADD8E6; text-decoration: none }
+a:visited         { color: #6495ED; text-decoration: none } 
+a:active          { color: #004761; text-decoration: none } 
+a:hover           { color: #40BAFF; text-decoration: none }
+body              { font-size: 8pt; background: #000000; color: #c0c0c0; font-family: verdana; }
+img.nav1          { height:2px; width:100px; border:0; }
+input             { font-size: 8pt; color: #999999; font-family: verdana; background-color: #555555; }
+table.collapse    { border-color: #111111; border: 0; width: 792px; border-collapse: collapse; width: 100%; margin: 0; padding: 0; border-spacing: 0; }
+table.collapse2   { border-color: #111111; border: 0; width: 444px; border-collapse: collapse; }
+table.collapse3   { border-color: #000000; border-collapse: collapse; margin:0 ; padding: 0; width: 100%; }
+table.collapse5   { border-color: #111111; border: 0; height: 28px; width: 791px; border-collapse: collapse; margin: 0px; padding: 0px; }
+table.main        { border-color: #c0c0c0; background-color: #393939;  height: 515px; width: 792px; border: 100; margin: 0; padding: 0; }
+td                { font-size: 8pt; color: #c0c0c0; font-family: verdana; }
+td.all_div        { background-image: url(images/all_div.png); background-color: #111111; width: 100%; }
+td.bg_title       { background-image: url(images/bg_title.png); background-color: #444444; width: 100%; font-family: verdana; }
+td.center         { align: center; }
+td.first          { background-color: #555555; width: 792px; }
+td.footer_bottom  { width:101px; background-image: url(images/bottom.png); height: 28px; }
+td.four_100       { background-color: #444444; width: 100%; }
+td.maxsize        { width: 100%; }
+td.news_back      { background-image: url(images/bg_news.png); background-color: #555555; }
+td.news_back_big  { background-image: url(images/bg_news_big.png); background-color: #555555; }
+td.updatebar      { width: 178px; vertical-align: top; }
+textarea          { font-size: 8pt; color: #999999; font-family: verdana; background-color: #444444 }

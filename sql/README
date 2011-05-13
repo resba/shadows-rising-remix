@@ -1,0 +1,35 @@
+SQL Dumpfiles and MySQL to PostgreSQL Translation
+=================================================
+
+Q-Site contains the ability to parse SQL files directly dumped from any MySQL/Postgres database.
+
+All installation procedures related to the database structure are operated using these SQL dumpfiles. The current databases supported are:
+
+* MySQL 3
+* MySQL 4
+* PostgreSQL 7
+
+The following versions will be supported in the near future:
+
+* MySQL 5
+* PostgreSQL 8
+
+Support for these new versions relies entirely on the generation of third party drivers for AdoDB.
+
+The /tools/ directory contains the perl script, my2pg.pl, utilised to transfer MySQL dumpfiles into PostgreSQL format. The following assumptions are made concerning mysql dumpfiles:
+
+1. table names are NOT surrounded by backquotes/backticks.
+2. "char" field types set to NOT NULL do not have an empty/blank default (otherwise use the -n option)
+3. MySQL dumpfile does not contain any "drop table if exists" statements - will not correctly port
+
+To convert any mysql dumpfile under the above assumptions, place the my2pg.pl script and your mysql dumpfiles in the same directory and run the command (from command line):
+
+ perl my2pg.pl -nd mysqlfile.sql > postgresfile.sql
+
+The postgresfile.sql (or whatever name you set) will be the translated postgres version, suitable for PostgreSQL. You should of course test the postgres translation to ensure there are no syntax errors.
+
+Checking for syntax errors is necessary when the dumpfile contains manually edited queries. 
+
+Normally the main syntax error is declaring a field as "integer", "not null" but with a default of "''" (otherwise empty). It is essential that any NOT NULL INT field type is given a default! 0 does nicely in most cases. Straight mySQL dumps should add in a default - check this is true before relying on it.
+
+Another common syntax error occurs with long table names - common to Shadows Rising. This occurs when postgres creates a SEQUENCE that is the same as a TABLE name. Resulting in an "relation already exists" error - the solution is to amend the SEQUENCE name to something less common.

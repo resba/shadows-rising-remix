@@ -1,0 +1,24 @@
+{include file="location_top.tpl.html"}
+
+<div>
+
+In order to begin designing a new map, please enter some basic information regarding the map you intend creating:
+<br /><br />
+<form method="post" action="mapgen.php" id="mapgen_details">
+<input type="hidden" name="op" value="save_details" />
+Please enter the dimensions of the map in "number of tiles" for height and width. To more easily translate this into pixels, please note that all terrain tiles are 35px in height, and 24px in width.
+<br /><br />
+Height:&nbsp;<input type="text" name="mp_height" size="3" value="" maxlength="3" />
+Width:&nbsp;<input type="text" name="mp_width" size="3" value="" maxlength="3" />
+<br /><br />
+Please enter a name by which you wish this map to be known:
+<br /><br />
+<input type="text" name="mp_name" value="" maxlength="32" />
+<small>(All maps stored on database automatically for future editing/removal)</small>
+<br /><br />
+<input type="submit" name="mp_submit" value="Start Editing!" />
+</form>
+
+</div>
+
+{include file="location_bottom.tpl.html"}

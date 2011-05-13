@@ -1,0 +1,229 @@
+Shadows Rising RPG Game Engine
+
+Source Code for the "Core Engine"
+
+1. General Information on Directory Structure
+2. The CORE (game engine files)
+3. Displaying output using the Smarty Templating Engine class
+4. The output Templates
+5. Database Interaction with Q-LIB
+
+
+
+1. General Information on Directory Structure
+
+The base directory of the Shadows Rising distribution is separated into several directories which loosely correspond to the separation of the CORE (game engine), Q-LIB (backend libraries) and Q-CMS (cms front-end). The directory strucure is of the form:
+
+- core (core game engine files, themes and includes)
+- docs (project documentation, copyright notices, licenses)
+- qcms (cms front-end files - i.e. the front pages of any online install)
+- qlib (backend libraries - database, templating, authentication - also location of configuration file)
+- sql  (sql dumpfiles used during the installation of SR)
+- plan_docs  (general planning documents for development purposes)
+
+The base directory also includes files to enable installation, as well as a standard index page to forward players to the Q-CMS upon first arrival to the site.
+
+
+
+2. The CORE (game engine files)
+
+All files related to the core game engine are located in the '/core/' directory or CORE. CORE contains the following in-use directories:
+
+- images    (general images such as compliance logos, SR logo)
+- includes  (a set of include and class files used in the base game functions)
+- maps      (used to store per-game directories containing map images generated for each game)
+- themes    (sets of CSS files, templates and images specific to a particular game - to be relocated to /core/modules/ in the future)
+
+The CORE directory contains the files for the game engine. Currently these CORE files, along with additional include/class files from '/core/includes/' are limited to the basic functions of a game. Also contained therein are some files specific to the default game. It is the intention of the project to move all game specific files to a separate Game Module with the directory '/core/modules/', leaving CORE to contain only non-game specific files.
+
+
+
+3. How CORE operates...
+
+Before CORE does anything useful in the game, it must load up all the backend functions it will require. Such backend functions include database interaction, authentication of users, session management, template management and loading the server configuration. All these backend functions are segregated from CORE and located in Q-LIB (i.e. the directory '/qlib/' from base). To initialise the Q-LIB backend, all standalone files within CORE will usually include the file 'core.inc.php'.
+
+'core.inc.php' is really the heart of the everything that CORE does. The first thing it will do is include the central Q-LIB file 'common.inc.php' using:
+
+//calculate path to common.inc.php - avoids use of relative paths as undependable
+$commonpath = eregi_replace("core", "", dirname(__FILE__)) . "common.inc.php";
+require_once($commonpath);
+
+All this piece of code does is create a reliable path to the 'common.inc.php' file. '__FILE__' is a PHP constant which contains the path to the current file being executed. The 'eregi_replace' function will replace the term 'core' in the directory path within '__FILE__' with an empty space. It may seem complicated, but the net result will produce the path to the common.inc.php file which lies in the base directory (it's actually located outside the '/qcms/' directory to be easier to reach). This file is then included using the 'require_once' call.
+
+The sole purpose of 'common.inc.php' is to fetch all the Q-LIB files and open a connection to the database. The fetched Q-LIB files enable all functions of Q-LIB to be available within the CORE files as needed.
+
+The second thing 'core.inc.php' will do is perform an authentication check on the current user. Users, in order to play any game, must access the CORE files. To access the CORE files however, the users must also be logged in with a valid PHP session in existence, and their authentication must not have timed out due to inactivity. This check ensures non-logged in users cannot access any part of the game. Authentication is controlled by a Q-LIB authentication class whose functions are referenced from the object '$check'.
+
+The third main function of 'core.inc.php' is to fetch the character data from the database. This also includes building a list of all modifiers granted a character because of items equipped - the modifier list is stored and manipulated from within an array stored as part of the user's PHP session in '$_SESSION[modifiers]'. Any changes to these modifiers causes this array to be updated, serialised (i.e. converted to a single string for easier database storage) and written back to the database. And also assigning permissions to a user (permissions are still very simplistic in the pre-alpha code).
+
+The fourth main function of 'core.inc.php' is to instantiate (i.e. startup) an occurance of three PHP classes contained in the '/core/includes/' directory in the files:
+
+- smarty.inc.php
+- character.class.php
+- location.class.php
+
+The Smarty class simple enables CORE to parse the template files in one of the available themes such as '/core/themes/Deep_Blue/' and insert any data (e.g. character information) to be displayed in the browser. The Character class contains functions to control a character's gold, statistics, attributes, and modifiers as well as enabling backpack and item management. Further functions will be added as development progresses. The Location class enables character navigation though a generated world map, display and use of Merchant Stores, etc.
+
+The functions contained in these classes are accessed using code in the form of:
+
+$classvar->function(foo, bar);
+
+where $classvar is the class variable/object (with which the class was called) and function is the class function being used. Within all the core code, Smarty is referenced using the '$sr' object, Character using '$char' and Location using '$loc'. These are reserved variable names for SR - so be careful not to use them anywhere you wrote code.
+
+For example: the URL to travel to another location links to the 'location.php' file in '/core/'. 'location.php' includes another file called 'location.inc.php' from '/core/includes/'. This include file checks for data passed in any URL pointing to its parent file ('location.php') which indicates a navigation link was clicked. If this data is found, the file will call the Location class function Travel() using the code:
+
+$loc->Travel($_GET['loc']);
+
+where $_GET['loc'] is the value of 'loc' passed through a url of the form 'http://myserver/core/location.php?loc=2 - $_GET is a superglobal which contains an array of all data passed through a URL.
+
+'core.inc.php' does a few other preparatory tasks which we can skip over for the moment.
+
+
+
+
+3. Displaying output using the Smarty Templating Engine class
+
+Keeping to the basics of how Shadows Rising operates, we'll now introduce a brief summary of the Smarty Templating Engine. For a far more insightful view of Smarty, you should visit their website and try a few basic tutorials.
+
+Smarty is a "heavyweight" templating engine. It's large, bulky, viewed by many as overkill - and yet when you want to control all, as in ALL, output outside the PHP source code it has some major advantages.
+
+Smarty is automatically instantiated by 'core.inc.php' through the creation of an object '$sr'. The Templates themselves are almost pure HTML (written to XHTML 1.1 compliance - though any HTML code will work, I simply like to keep things in compliance with the standards) and some Javascript. The main oddity with these templates is that contain 'Smarty' code - these are basically placeholders for data to be inserted when the template is parsed.
+
+As an example: We have instantiated Smarty into the '$sr' object in a PHP script and wish to display the data in the below PHP script through a template. First step is to assign this data to a template 'variable', then to parse/display the template.
+
+Here's our template, 'username.tpl.html':
+
+<html>
+<body>
+
+Your username is {$username}!
+
+Welcome to Shadows Rising...
+
+</body>
+</html>
+
+In the above html template, there is a template variable {$username}. To display the username, we must assign this template variable a value, and call a function to display the parsed template from within a PHP file as follows:
+
+<?php
+
+// set user_name = Dave
+$user_name = "Dave";
+
+// assign the value Dave to the template variable
+$sr->assign("username", $user_name);
+
+// display the parsed template in browser
+$sr->display("username.tpl.html");
+
+// use an exit function to end script execution
+exit();
+
+?>
+
+The above PHP script will now display a parsed form of the template, once Smarty has substituted the template variable $username with the value held in the PHP variable $user_name:
+
+Your username is Dave!
+
+Welcome to Shadows Rising...
+
+You will see $sr->assign() and $sr->display() liberally sprinkled throughout the CORE files. Because of the templating system, PHP's main function is to fetch and write data to the database, calculate equations and carry out operations for game actions while assigning values to a template called at the end of each PHP file using $sr->display().
+
+
+
+4. The output Templates
+
+The template files themselves are packaged as part of an individual 'theme'. To date there is currently only one theme available for the game - '/core/themes/Deep_Blue/'. Deep Blue is a very basic CSS enabled set of templates written in HTML (XHTML 1.1). Any HTML will do, but SR will eventually be made XHTML 1.1 standards compliant.
+
+Mixed in with this HTML are three basic Smarty structures:
+
+a) Template Variables
+b) IF...ELSE statements
+c) Sections
+
+Template variables we already covered in section 3.
+
+If...else statements are Smarty constructs based on their PHP equivalents. Their main function is to display only one of two optional template areas depending on the results in a PHP script. For example, a player may be either Dead or Alive. The template may state:
+
+{if $check_alive = "true"}
+
+You are <b>Alive</b>!
+
+{else}
+
+You are <b>Dead</b>!
+
+{/if}
+
+In this scenario, a PHP script to display this template may determine a player is indeed living - it would assign a value of "true" to the template variable '$check_alive' using:
+
+$sr->assign("check_alive", "true");
+
+If a player is dead the PHP script may set:
+
+$sr->assign("check_alive", "false");
+
+When the PHP script passes the '$sr->display()' function, the template is parsed by Smarty and the template engine will decide which sentence to display. This type of control is common in the Shadows Rising templates, but luckily it is quite simple to spot and understand.
+
+Sections are another extremely useful Smarty function. Sections allow the HTML within the {section}{/section} tags to be repeated and looping through an array of data - for example if listing players, sections allow you to enter a single HTML string as the template within the Section tags. PHP will pass an array of players to the template, and the Smarty templating engine will repeat this HTML string for all players in the array - updating the template variables in the HTML with each iteration.
+
+
+
+5. Database Interaction with Q-LIB
+
+Database fetching and writing is controlled using two Q-LIB backend elements:
+
+a) the Q-LIB 'db_funcs' library
+b) AdoDB 4.x.x
+
+To start with, AdoDB is an abstraction layer - it replaces all the database specific functions of PHP with a single common set of functions. The aim here is that the application will be able to operate under many different databases, using the same code. However the AdoDB functions are many, and a single operation can take from 2-10 steps. To cut down on complexity a second level set of functions was developed to simplify the entire process during development of the Quantum Star SE project. These functions are parcelled in the '/qlib/db_funcs.inc.php' file. The use of these functions is extremely simple and comprise the following key functions:
+
+a) db()
+b) dbr()
+c) dbn()
+d) db_connect()
+
+With these four functions almost every database operation is possible.
+
+db():
+
+db() is simply a function to send any fetch request to the database, i.e. use it for TAKING data FROM the database. It accepts standard SQL commands common to MySQL and PostgreSQL. It's form is:
+
+db(__FILE__,__LINE__,"select login_name from srbase_users_accounts where login_id = 1");
+
+dbr():
+
+dbr() is ALWAYS called after db(). Where db() selects the data, dbr() enters the table row fetched into a PHP array of values so they can be used and manipulated in PHP scripts. dbr() is used as:
+
+db(__FILE__,__LINE__,"select login_name from srbase_users_accounts where login_id = 1");
+$lname = dbr();
+
+In the above case - the 'login_name' value is stored in the '$lname' array - i.e. access it using '$lname[login_name]'.
+
+dbn():
+
+dbn() has one sole purpose - it WRITES to the database. It accepts standard SQL in the format:
+
+dbn(__FILE__,__LINE__,"update srbase_users_accounts set login_name = 'Maugrim' where login_id = 1");
+
+There are also number functions for db()/dbr(), e.g. db2()/dbr2(). These are used when looping through fetched data in a while loop. Within a loop like this you cannot use the same db/dbr combination, and must switch to another number within the loop. Example:
+
+// fetch all login names from database
+// use the name list to fetch each name's login_id
+// echo each login_id to browser
+
+db(__FILE__,__LINE__,"select login_name from srbase_users_accounts");
+while ($lname = dbr())
+{
+     $thisname = $lname['login_name'];
+     db2(__FILE__,__LINE__,"select login_id from srbase_users_accounts where login_name = '$thisname'");
+     $lid = dbr2();
+
+     echo("<br>This loop's login_id is $lid[login_id]");
+}
+
+db_connect:
+
+Rarely will you ever use this in files - it is called once from the Q-LIB 'common.inc.php' file to establish a database connection. There is no need to call it again, unless you are writing a file which will not call the 'common.inc.php' file.
+
+The use of db/dbr/dbn is fundamental to the Shadows Rising source code. It simplifies the entire process of using the database and cuts down on the amount code we need write. These functions also include some useful error reporting abilities which help pinpoint the exact location of database queries which failed in the PHP source code - hence the need to pass the '__FILE__' and '__LINE__' constants within these functions.

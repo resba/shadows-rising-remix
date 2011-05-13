@@ -1,0 +1,279 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+
+<!--
+Title:			Shadows Rising RPG "Deep Blue" Theme (experimental) 
+Designed by:	Maugrim The Reaper (http://www.quantum-star.com)
+Compliance:		XHTML 1.1
+Optimisation:	1024x768 Resolution // Mozilla Firefox 0.8
+-->
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<title>{$game_name} :: {$location.loc_name}</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="language" content="en" />
+<link rel="stylesheet" href="{$url_prefix}/core/themes/Deep_Blue/style_deepblue.css" type="text/css" />
+
+<!--The ChangeBackpackPanel javascript function was written to create a changeable item info panel for Character Backpack UI-->
+
+{literal}
+
+<script type="text/javascript">
+<!--
+
+	function changePackListPanel(type) {
+		var newList;
+		switch (type)
+		{
+
+		{/literal}
+
+		case "weapon":
+		{if $check_backpackweapon == "true"}
+				newList='<p class="h5">Weapons</p>'
+				{section name=i loop=$backpackweapon}
+					+ '<div style="vertical-align: center;"><a href="javascript:changeBackpackPanel(\'weapon{$backpackweapon[i].item_id}\', \'{$backpackweapon[i].equipped}\', \'{$backpackweapon[i].position}\', \'{$backpackweapon[i].pack_id}\')"><img src="{$url_prefix}/core/themes/Deep_Blue/images/items/weapons/weapons_9.png" alt="weapon{$backpackweapon[i].item_id}" onmouseover="javascript:changeStatusColour(\'weapon{$backpackweapon[i].pack_id}\', \'{$character.level}\', \'{$backpackweapon[i].level}\')" onmouseout="javascript:defaultStatusColour(\'weapon{$backpackweapon[i].pack_id}\')" style="" id="weapon{$backpackweapon[i].pack_id}" /></a> {$backpackweapon[i].item_name_eq}</div>'
+				{/section}
+				+ '<br />';
+				break;
+		{else}
+				newList='<p>No Weapons carried in Backpack...</p>';
+				break;
+		{/if}
+
+		case "belt":
+		{if $check_backpackbelt == "true"}
+				newList='<p class="h5">Belts</p>'
+				{section name=i loop=$backpackbelt}
+					+ '<div style="vertical-align: center;"><a href="javascript:changeBackpackPanel(\'belt{$backpackbelt[i].item_id}\', \'{$backpackbelt[i].equipped}\', \'{$backpackbelt[i].position}\', \'{$backpackbelt[i].pack_id}\')"><img src="{$url_prefix}/core/themes/Deep_Blue/images/items/weapons/weapons_9.png" alt="belt{$backpackbelt[i].item_id}" onmouseover="javascript:changeStatusColour(\'belt{$backpackbelt[i].pack_id}\', \'{$character.level}\', \'{$backpackbelt[i].level}\')" onmouseout="javascript:defaultStatusColour(\'belt{$backpackbelt[i].pack_id}\')" style="" id="belt{$backpackbelt[i].pack_id}" /></a> {$backpackbelt[i].item_name_eq}</div>'
+				{/section}
+				+ '<br />';
+				break;
+		{else}
+				newList='<p>No Belts carried in Backpack...</p>';
+				break;
+		{/if}
+
+		case "bracer":
+		{if $check_backpackbracer == "true"}
+				newList='<p class="h5">Bracers</p>'
+				{section name=i loop=$backpackbracer}
+					+ '<div style="vertical-align: center;"><a href="javascript:changeBackpackPanel(\'bracer{$backpackbracer[i].item_id}\', \'{$backpackbracer[i].equipped}\', \'{$backpackbracer[i].position}\', \'{$backpackbracer[i].pack_id}\')"><img src="{$url_prefix}/core/themes/Deep_Blue/images/items/weapons/weapons_9.png" alt="bracer{$backpackbracer[i].item_id}" onmouseover="javascript:changeStatusColour(\'bracer{$backpackbracer[i].pack_id}\', \'{$character.level}\', \'{$backpackbracer[i].level}\')" onmouseout="javascript:defaultStatusColour(\'bracer{$backpackbracer[i].pack_id}\')" style="" id="bracer{$backpackbracer[i].pack_id}" /></a> {$backpackbracer[i].item_name_eq}</div>'
+				{/section}
+				+ '<br />';
+				break;
+		{else}
+				newList='<p>No Bracers carried in Backpack...</p>';
+				break;
+		{/if}
+
+		case "ring":
+		{if $check_backpackring == "true"}
+				newList='<p class="h5">Ring</p>'
+				{section name=i loop=$backpackring}
+					+ '<div style="vertical-align: center;"><a href="javascript:changeBackpackPanel(\'ring{$backpackring[i].item_id}\', \'{$backpackring[i].equipped}\', \'{$backpackring[i].position}\', \'{$backpackring[i].pack_id}\')"><img src="{$url_prefix}/core/themes/Deep_Blue/images/items/weapons/weapons_9.png" alt="ring{$backpackring[i].item_id}" onmouseover="javascript:changeStatusColour(\'ring{$backpackring[i].pack_id}\', \'{$character.level}\', \'{$backpackring[i].level}\')" onmouseout="javascript:defaultStatusColour(\'ring{$backpackring[i].pack_id}\')" style="" id="ring{$backpackring[i].pack_id}" /></a> {$backpackring[i].item_name_eq}</div>'
+				{/section}
+				+ '<br />';
+				break;
+		{else}
+				newList='<p>No Rings carried in Backpack...</p>';
+				break;
+		{/if}
+
+		case "cloak":
+		{if $check_backpackcloak == "true"}
+				newList='<p class="h5">Cloaks</p>'
+				{section name=i loop=$backpackcloak}
+					+ '<div style="vertical-align: center;"><a href="javascript:changeBackpackPanel(\'cloak{$backpackcloak[i].item_id}\', \'{$backpackcloak[i].equipped}\', \'{$backpackcloak[i].position}\', \'{$backpackcloak[i].pack_id}\')"><img src="{$url_prefix}/core/themes/Deep_Blue/images/items/weapons/weapons_9.png" alt="cloak{$backpackcloak[i].item_id}" onmouseover="javascript:changeStatusColour(\'cloak{$backpackcloak[i].pack_id}\', \'{$character.level}\', \'{$backpackcloak[i].level}\')" onmouseout="javascript:defaultStatusColour(\'cloak{$backpackcloak[i].pack_id}\')" style="" id="cloak{$backpackcloak[i].pack_id}" /></a> {$backpackcloak[i].item_name_eq}</div>'
+				{/section}
+				+ '<br />';
+				break;
+		{else}
+				newList='<p>No Cloaks carried in Backpack...</p>';
+				break;
+		{/if}
+
+		{literal}
+		}
+		document.getElementById('lpanel').innerHTML=newList;
+	}
+
+	function changeBackpackPanel(itemType, equipStatus, itemPosition, packID) {
+		var newDesc;
+		switch (itemType)
+		{
+
+		{/literal}
+
+		{if $check_weapon == "true"}
+			{section name=j loop=$weapon}
+			case "weapon{$weapon[j].item_id}":
+				newDesc='<p><span class="h5">{$weapon[j].name}</span></p><p>{$weapon[j].description}</p><p>Cost: <span style="font-weight: bold;">{$weapon[j].cost}</span> Credits</p><p><span class="h5">Details:</span></p><p>Weight: <span style="font-weight: bold;">{$weapon[j].weight}</span></p><p>Alignment: <span style="font-weight: bold;">{$weapon[j].alignment}</span></p><p>Damage: <span style="font-weight: bold;">1d{$weapon[j].max_damage}</span></p><p>Critical: <span style="font-weight: bold;">{$weapon[j].min_critical}-{$weapon[j].max_critical}/x{$weapon[j].critical_multiplier}</span></p><br /><p>Handling: <span style="font-weight: bold;">{$weapon[j].handle}</span></p>';
+				{literal}
+				if (equipStatus == 1 || equipStatus == 2)
+				{
+					newDesc = newDesc + '<a href="item_equip.php?op=unequip&amp;position=' + itemPosition + '">Unequip</a>';
+				}
+				else
+				{
+					newDesc = newDesc + '<a href="item_equip.php?op=equip&amp;type=weapon&amp;pack_id=' + packID + '">Equip</a> <a href="merchant.php?sell=1&amp;sell_weapon=' + packID + '">Sell Item</a>';
+				}
+				{/literal}
+				break;
+			{/section}
+		{/if}
+		{if $check_ring == "true"}
+			{section name=j loop=$ring}
+			case "ring{$ring[j].item_id}":
+				newDesc='<p><span class="h5">{$ring[j].name}</span></p><p>{$ring[j].description}</p><p>Cost: <span style="font-weight: bold;">{$ring[j].cost}</span> Credits</p><p><span class="h5">Details:</span></p><p>Weight: <span style="font-weight: bold;">{$ring[j].weight}</span></p><p>Alignment: <span style="font-weight: bold;">{$ring[j].alignment}</span></p><p>Effects: <span style="font-weight: bold;">{$ring[j].effect}</span></p><p>Effect Bonus: <span style="font-weight: bold;">{$ring[j].effect_type} +{$ring[j].effect_amount}</span></p>';
+				{literal}
+				if (equipStatus == 1)
+				{
+					newDesc = newDesc + '<a href="item_equip.php?op=unequip&amp;position=' + itemPosition + '">Unequip</a>';
+				}
+				else
+				{
+					newDesc = newDesc + '<a href="item_equip.php?op=equip&amp;type=ring&amp;pack_id=' + packID + '">Equip</a> <a href="merchant.php?sell=1&amp;sell_ring=' + packID + '">Sell Item</a>';
+				}
+				{/literal}
+				break;
+			{/section}
+		{/if}
+		{if $check_belt == "true"}
+			{section name=j loop=$belt}
+			case "belt{$belt[j].item_id}":
+				newDesc='<p><span class="h5">{$belt[j].name}</span></p><p>{$belt[j].description}</p><p>Cost: <span style="font-weight: bold;">{$belt[j].cost}</span> Credits</p><p><span class="h5">Details:</span></p><p>Weight: <span style="font-weight: bold;">{$belt[j].weight}</span></p><p>Alignment: <span style="font-weight: bold;">{$belt[j].alignment}</span></p><p>Effects: <span style="font-weight: bold;">{$belt[j].effect}</span></p><p>Effect Bonus: <span style="font-weight: bold;">{$belt[j].effect_type} +{$belt[j].effect_amount}</span></p>';
+				{literal}
+				if (equipStatus == 1)
+				{
+					newDesc = newDesc + '<a href="item_equip.php?op=unequip&amp;position=' + itemPosition + '">Unequip</a>';
+				}
+				else
+				{
+					newDesc = newDesc + '<a href="item_equip.php?op=equip&amp;type=belt&amp;pack_id=' + packID + '">Equip</a> <a href="merchant.php?sell=1&amp;sell_belt=' + packID + '">Sell Item</a>';
+				}
+				{/literal}
+				break;
+			{/section}
+		{/if}
+		{if $check_bracer == "true"}
+			{section name=j loop=$bracer}
+			case "bracer{$bracer[j].item_id}":
+				newDesc='<p><span class="h5">{$bracer[j].name}</span></p><p>{$bracer[j].description}</p><p>Cost: <span style="font-weight: bold;">{$bracer[j].cost}</span> Credits</p><p><span class="h5">Details:</span></p><p>Weight: <span style="font-weight: bold;">{$bracer[j].weight}</span></p><p>Alignment: <span style="font-weight: bold;">{$bracer[j].alignment}</span></p><p>Effects: <span style="font-weight: bold;">{$bracer[j].effect}</span></p><p>Effect Bonus: <span style="font-weight: bold;">{$bracer[j].effect_type} +{$bracer[j].effect_amount}</span></p>';
+				{literal}
+				if (equipStatus == 1)
+				{
+					newDesc = newDesc + '<a href="item_equip.php?op=unequip&amp;position=' + itemPosition + '">Unequip</a>';
+				}
+				else
+				{
+					newDesc = newDesc + '<a href="item_equip.php?op=equip&amp;type=bracer&amp;pack_id=' + packID + '">Equip</a> <a href="merchant.php?sell=1&amp;sell_bracer=' + packID + '">Sell Item</a>';
+				}
+				{/literal}
+				break;
+			{/section}
+		{/if}
+		{if $check_cloak == "true"}
+			{section name=j loop=$cloak}
+			case "cloak{$cloak[j].item_id}":
+				newDesc='<p><span class="h5">{$cloak[j].name}</span></p><p>{$cloak[j].description}</p><p>Cost: <span style="font-weight: bold;">{$cloak[j].cost}</span> Credits</p><p><span class="h5">Details:</span></p><p>Weight: <span style="font-weight: bold;">{$cloak[j].weight}</span></p><p>Alignment: <span style="font-weight: bold;">{$cloak[j].alignment}</span></p><p>Effects: <span style="font-weight: bold;">{$cloak[j].effect}</span></p><p>Effect Bonus: <span style="font-weight: bold;">{$cloak[j].effect_type} +{$cloak[j].effect_amount}</span></p>';
+				{literal}
+				if (equipStatus == 1)
+				{
+					newDesc = newDesc + '<a href="item_equip.php?op=unequip&amp;position=' + itemPosition + '">Unequip</a>';
+				}
+				else
+				{
+					newDesc = newDesc + '<a href="item_equip.php?op=equip&amp;type=cloak&amp;pack_id=' + packID + '">Equip</a> <a href="merchant.php?sell=1&amp;sell_cloak=' + packID + '">Sell Item</a>';
+				}
+				{/literal}
+				break;
+			{/section}
+		{/if}
+
+		{literal}
+		}
+		document.getElementById('mpanel').innerHTML=newDesc;
+	}
+
+	function changeStatusColour(packType, charLevel, itemLevel) {
+		var newColour;
+		if (charLevel >= itemLevel) 
+		{
+			newColour='darkgreen';
+		}
+		else
+		{
+			newColour='darkred';
+		}
+		document.getElementById(packType).style.backgroundColor = newColour;
+	}
+
+	function defaultStatusColour(packType) {
+		defaultColour = 'transparent';
+		document.getElementById(packType).style.backgroundColor = defaultColour;
+	}
+
+
+// -->
+</script>
+
+{/literal}
+
+<!--End of ChangeBackpackPanel javascript function-->
+
+</head>
+<body class="default">
+
+<table cellspacing="0" class="default" width="100%" style="text-align: center; border: 0px;">
+	<tr>
+		<td width="100%" colspan="5" class="internal" style="text-align: center; background-color: #000000;">
+			<img src="{$url_prefix}/core/themes/Deep_Blue/images/logo.gif" alt="Shadows Rising" title="Shadows Rising" />
+		</td>
+	</tr>
+	<tr>
+		<td width="100%" colspan="5" style="height: 5px">
+		</td>
+	</tr>
+</table>
+
+
+<table cellspacing="0" class="default" width="100%" style="text-align: center; border: 0px;">
+	<tr>
+		<td id="page_leftpanel">
+<!--This is the left side panel, this holding table cell will contain tables for user information-->
+
+	<table cellspacing="0" class="block">
+	<tr>
+		<td>
+		{include file="blocks/nav_menu.tpl.html"}
+		</td>
+	</tr>
+	</table><br />
+
+	<table cellspacing="0" class="block">
+	<tr>
+		<td>
+		{include file="blocks/character_details.tpl.html"}
+		</td>
+	</tr>
+	</table><br />
+
+	<table cellspacing="0" class="block">
+	<tr>
+		<td>
+		{include file="blocks/character_attributes.tpl.html"}
+		</td>
+	</tr>
+	</table><br />
+
+<!--This is the end of the left side panel-->
+		</td>
+		<td width="5">
+		&nbsp;
+		</td>
+		<td id="page_centerpanel">
+			<table cellspacing="0" class="module">
+				<tr>
+					<td>
+<!--This is the center panel where user actions, text, and menus will appear-->

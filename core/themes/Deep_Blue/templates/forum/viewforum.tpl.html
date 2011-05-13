@@ -1,0 +1,43 @@
+<table width="100%">
+ <tr>
+ <td>
+  <center>
+   <h2>Forum</h2>
+  </center>
+ </td>
+ </tr>
+ <tr>
+  <td>
+   {$forum_name}
+  </td>
+ </tr>
+ <tr>
+  <td>
+   <a href="post.php?postmode=topic&f={$forum_id}">New Topic</a>
+  </td>
+ </tr>
+ <tr>
+ <td>
+
+ <table width="100%" class="viewtopics">
+ <tr class="viewtopicstitle"><td></td><td>Topic Title</td><td width="10%">Starter</td><td width="5%"><center>Posts</center></td><td><center>Last Post</center></td></tr>
+ 
+ {foreach from=$topics item=v key=k}
+ <tr>
+ <td class="viewtopicstd"></td>
+ <td class="viewtopicstd"><a href="viewtopic.php?t={$v.topic_id}">{$v.topic_name}</a></td>
+ <td class="viewtopicstd"><a href="profile.php?op=viewuser&id={$v.starter_id}">{$v.starter}</a></td>
+ <td class="viewtopicstd"><center>{$v.totalposts}</center></td>
+ <td width="20%" class="viewtopicstd"><center>{$v.lastposttime|date_format:"%A, %B %e, %Y"}<br /><a href="profile.php?op=viewuser&id={$v.lastposteruserid}">{$v.lastpostuser}</a></center></td>
+ </tr>
+ {/foreach}
+ 
+ </table>
+ </td>
+ </tr>
+ <tr>
+ <td>
+ <a href="post.php?postmode=topic&f={$forum_id}">New Topic</a>
+ </td>
+ </tr>
+</table>

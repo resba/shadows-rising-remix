@@ -1,0 +1,111 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+
+<!--
+Title:			Shadows Rising RPG "Deep Blue" Theme (experimental) 
+Designed by:	Maugrim The Reaper (http://www.quantum-star.com)
+Compliance:		XHTML 1.1
+Optimisation:	1024x768 Resolution // Mozilla Firefox 0.8
+-->
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<title>{$game_name} :: {$location.loc_name}</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="language" content="en" />
+<link rel="stylesheet" href="{$url_prefix}/core/themes/Deep_Blue/style_deepblue.css" type="text/css" />
+
+	{literal}<script language='JavaScript'>
+	<!--
+	document.onkeypress=keyevent;
+	function keyevent(e){
+		var c;
+		var target;
+		var altKey;
+		var ctrlKey;
+		if (window.event != null) {
+			c=String.fromCharCode(window.event.keyCode).toUpperCase(); 
+			altKey=window.event.altKey;
+			ctrlKey=window.event.ctrlKey;
+		}else{
+			c=String.fromCharCode(e.charCode).toUpperCase();
+			altKey=e.altKey;
+			ctrlKey=e.ctrlKey;
+		}
+		if (window.event != null)
+			target=window.event.srcElement;
+		else
+			target=e.originalTarget;
+		if (target.nodeName.toUpperCase()=='INPUT' || target.nodeName.toUpperCase()=='TEXTAREA' || altKey || ctrlKey){
+		}else{
+				{/literal}{if $nlink_valid == "true"}{literal}
+			if (c == 'W') { window.location='location.php?loc={/literal}{$map_point_north.loc_id}{literal}'; return false; }
+				{/literal}{/if}
+				{if $elink_valid == "true"}{literal}
+			if (c == 'D') { window.location='location.php?loc={/literal}{$map_point_east.loc_id}{literal}'; return false; }
+				{/literal}{/if}
+				{if $slink_valid == "true"}{literal}
+			if (c == 'S') { window.location='location.php?loc={/literal}{$map_point_south.loc_id}{literal}'; return false; }
+				{/literal}{/if}
+				{if $wlink_valid == "true"}{literal}
+			if (c == 'A') { window.location='location.php?loc={/literal}{$map_point_west.loc_id}{literal}'; return false; }
+				{/literal}{/if}{literal}
+		}
+	}
+	//-->
+	</script>{/literal}
+
+</head>
+<body class="default">
+
+<table cellspacing="0" class="default" width="100%" style="text-align: center; border: 0px;">
+	<tr>
+		<td width="100%" colspan="5" class="internal" style="text-align: center; background-color: #000000;">
+			<img src="{$url_prefix}/core/themes/Deep_Blue/images/logo.gif" alt="Shadows Rising" title="Shadows Rising" />
+		</td>
+	</tr>
+	<tr>
+		<td width="100%" colspan="5" style="height: 5px">
+		</td>
+	</tr>
+</table>
+
+
+<table cellspacing="0" class="default" width="100%" style="text-align: center; border: 0px;">
+	<tr>
+		<td id="page_leftpanel">
+<!--This is the left side panel, this holding table cell will contain tables for user information-->
+
+	<table cellspacing="0" class="block">
+	<tr>
+		<td>
+		{include file="blocks/nav_menu.tpl.html"}
+		</td>
+	</tr>
+	</table><br />
+
+	<table cellspacing="0" class="block">
+	<tr>
+		<td>
+		{include file="blocks/character_details.tpl.html"}
+		</td>
+	</tr>
+	</table><br />
+
+	<table cellspacing="0" class="block">
+	<tr>
+		<td>
+		{include file="blocks/character_attributes.tpl.html"}
+		</td>
+	</tr>
+	</table><br />
+
+<!--This is the end of the left side panel-->
+		</td>
+		<td width="5">
+		&nbsp;
+		</td>
+		<td id="page_centerpanel">
+			<table cellspacing="0" class="module">
+				<tr>
+					<td>
+<!--This is the center panel where user actions, text, and menus will appear-->

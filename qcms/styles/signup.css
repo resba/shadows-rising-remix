@@ -1,0 +1,75 @@
+	SELECT
+	{
+	    font-family: Arial, Helvetica, sans-serif;
+		font-size: 9pt;
+		background : #a0a0a0;
+		
+	}
+	.CHECKBOX
+	{
+		height: 13px;
+		align: center;
+	}
+	/* other form elements */
+	.FORM
+	{
+	    font-family: Arial, Helvetica, sans-serif;
+		font-size: 9pt;
+		background : #a0a0a0;
+		
+	}
+	/* Submit button */
+	.SUBMIT
+	{
+	    font-family: Arial, Helvetica, sans-serif;
+		font-size: 9pt;
+		background : #a0a0a0;
+		Color : #000000;
+		font-weight : bold;
+	}
+	.slink {
+		color: #F0E68C;
+		text-decoration: none;
+		FONT-SIZE: 10pt
+	}
+
+	TEXTAREA {
+		background : #6F6F6F;
+	}
+
+	TABLE {font : Arial, Helvetica, sans-serif;text-decoration: none;FONT-SIZE: 10pt}
+	.rlink {color: Red;text-decoration: none;FONT-SIZE: 10pt}
+	.rlink:visited {color: Red;text-decoration: none;FONT-SIZE: 10pt}
+	.rlink:active {color: Red;text-decoration: none;FONT-SIZE: 10pt}
+	.rlink:hover {color: Silver;text-decoration: none;FONT-SIZE: 10pt}
+	.ylink {color: Yellow;text-decoration: none;FONT-SIZE: 10pt}
+	.ylink:visited {color: Yellow;text-decoration: none;FONT-SIZE: 10pt}
+	.ylink:active {color: Yellow;text-decoration: none;FONT-SIZE: 10pt}
+	.ylink:hover {color: Silver;text-decoration: none;FONT-SIZE: 10pt}
+	.glink {color: Lime;text-decoration: none;FONT-SIZE: 10pt}
+	.glink:visited {color: Lime;text-decoration: none;FONT-SIZE: 10pt}
+	.glink:active {color: Lime;text-decoration: none;FONT-SIZE: 10pt}
+	.glink:hover {color: #00FF00;text-decoration: none;FONT-SIZE: 10pt}
+	.slink:visited {color: #F0E68C;text-decoration: none;FONT-SIZE: 10pt}
+	.slink:active {color:#F0E68C;text-decoration: none;FONT-SIZE: 10pt}
+	.slink:hover {color: Red ;text-decoration: none;FONT-SIZE: 10pt}
+	.flink {color: #DAA520;text-decoration: none;FONT-SIZE: 10pt}
+	.flink:visited {color: #AAAAAA;text-decoration: none;FONT-SIZE: 10pt}
+	.flink:active {color:#DAA520;text-decoration: none;FONT-SIZE: 10pt}
+	.flink:hover {color: Red ;text-decoration: none;FONT-SIZE: 10pt}
+	BODY {
+		font : Arial, Helvetica, sans-serif;
+		text-decoration: none;
+		FONT-SIZE: 10pt;
+		color : #FFFFFF;
+		scrollbar-face-color:#2E2E2E;
+		scrollbar-arrow-color:#DAA520;
+		scrollbar-track-color:#1E1E1E;
+		scrollbar-shadow-color:'#4E4E4E';
+		scrollbar-highlight-color:'#4E4E4E';
+		scrollbar-3dlight-color:'#6E6E6E';
+		scrollbar-darkshadow-Color:'#4E4E4E';
+	}
+	HR {
+		color : #2E2E2E;
+	}

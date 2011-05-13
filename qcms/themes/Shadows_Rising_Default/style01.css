@@ -1,0 +1,196 @@
+/* Default Shadows Rising CSS Stylesheet v0.0.3 */
+
+body.default {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 8pt;
+	color: #ffffff;
+	font-weight: normal;
+	background-color: #0A2E48;
+	text-align: left;
+	margin: 10px;
+}
+
+
+table.default {
+	font-size: 8pt;
+	text-align: center; 
+	vertical-align: middle; 
+	border: solid 1px #777777;
+	padding: 0px;
+}
+table.internal {
+	font-size: 8pt;
+	text-align: center; 
+	vertical-align: middle; 
+	border: 0px; 
+	padding: 0px;
+	background-color: #0A2E48;
+}
+table.block {
+	font-size: 8pt;
+	text-align: center; 
+	vertical-align: middle; 
+	border: solid 1px #777777;
+	width: 100%;
+	padding: 0px;
+	background-color: #08253b;
+}
+table.module {
+	font-size: 8pt;
+	text-align: left; 
+	vertical-align: top; 
+	border: solid 1px #777777;
+	width: 100%;
+	padding: 5px;
+	background-color: #08253b;
+}
+table.invisible {
+	font-size: 8pt;
+	text-align: center; 
+	vertical-align: middle; 
+	padding: 0px;
+	width: 100%;
+}
+table.mtable {
+	font-size: 8pt;
+	text-align: left; 
+	vertical-align: top; 
+	padding: 0px;
+	width: 100%;
+}
+table.inner_mtable {
+	font-size: 8pt;
+	text-align: left; 
+	vertical-align: top; 
+	border: solid 1px #777777;
+	width: 100%;
+	padding: 10px;
+	background-color: #0A2E48;
+}
+
+
+th{
+	font-weight: bold; 
+	font-size: 10pt;
+}
+th.default {
+	font-weight: bold; 
+	font-size: 10pt;
+	background-color: #777777;
+}
+
+td.internal {
+	vertical-align: top;
+	border: solid 1px #777777;
+}
+td.news_footer {
+	text-align: center;
+	font-size: 8pt;
+	font-style: italic;
+}
+
+
+
+/* To maintain a standard heading size under browsers, use these in place of the <h1> to <h4> tags */
+
+.h1 {
+	font-size: 32pt; 
+	font-weight: bold;
+}
+.h2 { 
+	font-size: 24pt; 
+	font-weight: bold;
+}
+.h3 { 
+	font-size: 19pt; 
+	font-weight: bold;
+}
+.h4 {
+	font-size: 16pt; 
+	font-weight: bold;
+}
+.h5 {
+	font-size: 12pt; 
+	font-weight: bold;
+}
+.th {
+	font-weight: bold; 
+	font-size: 10pt;
+}
+
+
+/* Styling of both ordered and unordered lists */
+
+ul {
+	list-style-type: circle; 
+	font-size: 8pt;
+}
+
+/* Internal Page menus scheme - e.g. see sub-menu in Ship Transfer pages - IE and Mozilla compatible */
+a:link.page_menu {
+	text-decoration: none;
+	font-weight: bold;
+	text-align: left;
+	color: #c0c0c0;
+	width: 145px;
+	height: 18px;
+	float: left;
+	border: solid 1px #08253b;
+	padding-left: 5px;
+}
+a:visited.page_menu {
+	text-decoration: none;
+	font-weight: bold;
+	text-align: left;
+	color: #c0c0c0;
+	width: 145px;
+	height: 18px;
+	float: left;
+	border: solid 1px #08253b;
+	padding-left: 5px;
+}
+a:hover.page_menu {
+	text-decoration: none;
+	font-weight: bold;
+	text-align: left;
+	color: #ffffff;
+	width: 145px;
+	height: 18px;
+	float: left;
+	background-color: #777777;
+	border: solid 1px #555555;
+	padding-left: 5px;
+}
+a:active.page_menu {
+	text-decoration: none;
+	font-weight: bold;
+	text-align: left;
+	color: green;
+	width: 145px;
+	height: 18px;
+	float: left;
+	background-color: #777777;
+	border: solid 1px #555555;
+	padding-left: 5px;
+}
+
+
+/* Default link styling for normal URIs */
+
+a:link {text-decoration: none;font-weight: normal;color: #c0c0c0;}
+a:visited {text-decoration: none;font-weight: normal;color: #c0c0c0;}
+a:hover {text-decoration: underline;font-weight: normal;color: #ffffff;}
+a:active {text-decoration: none;font-weight: normal;color: green;}
+
+
+/* Default image style */
+
+img {
+	border: 0px;
+}
+
+img.bullet {
+	border: 0px;
+	padding-right: 5px;
+	vertical-align: middle;
+}

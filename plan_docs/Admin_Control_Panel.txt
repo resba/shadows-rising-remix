@@ -1,0 +1,46 @@
+Planning Outline - SR 0.0.6+
+
+Control Panel
+================
+
+The control panel of SR is a major supporting function for the end user. It should contain everything required to administer a game, and also include tools to enable the editing and creation of Game Modules.
+
+
+Dependencies
+---------------
+
+Unlike many areas of the game, the Control Panel requires a standard format within the game structure to operate. Without a standard structure, control panel functions will need to be adapted to a temporary fit. As a result, it will be necessary to finalise the segregation of Game Modules from the Core Engine before proceeding - which is a good idea in any case before the code becomes too settled to be easily changed.
+
+Segmentation
+---------------
+
+The control panel will be created independent of the Game Engine to cover Game Modules, Core Engine and CMS Frontend. Access to varying functions will rely on permission level of the user. The control panel will also manage user account options, settings and password recovery processes.
+
+List of Administration Functions
+-----------------------------------
+
+Administration will be the core focus of the early control panel versions. Game Module editing/creation will be secondary until such time as a stable platform for Game Modules is available. Development currently prevent such stability due to rapidity of changes.
+
+The list of Admin Functions over a Game will consist of:
+
+1. Multiple Account detection and analysis
+2. IP/User Agent lists concerning those who have attempted any invalid actions - data doping, XSS, etc., details of the invalid action, time, frequency of similar attempts from same IP. This will be an analysis tool as such to enable informed Admin decisions concerning IP bans, or user account bans.
+3. Limited editing control over game locations and their properties - e.g. to enable interactive management of the Game World for greater range of variety.
+4. Bans - by IP, User Account, IP/User Agent combination, Open Proxy address, etc.
+5. Access to Game Action History - basically a summary of important user actions - stress important...:)
+6. Access to detailed character information - including items carried
+7. Game Resetting
+8. Editing of Game Variables
+9. Access to mass messaging, in-game Admin News Items
+10. Moderation of all in-game forums/straight line messaging
+11. Editing of game details, description, etc.
+
+There's bound to be more...
+
+
+Control Panel - PHP Structure
+--------------------------------
+
+The control panel will rely on a straightforward class. The holding PHP file will call a method once it has been assured the user has valid permissions. Presentation of the Control Panel will use the standard menu list but a separate template for each permission level. As the CP is independent of both games and frontend, it will only be necessary to log into the frontend to access.
+
+Regarding use of OOP, a more structured approach will be used to eliminate the necessity of global; usage within methods which should not be required if the use of OOP is done correctly. There's a reason why classes have constructors and a $this self-pointing reference to methods and defined variables...:)

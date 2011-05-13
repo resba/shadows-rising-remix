@@ -1,0 +1,142 @@
+Items:
+------
+
+Types:
+------
+
+1. Weapons
+2. Necklaces/Amulets
+3. Belts
+4. Bracers
+5. Cloaks
+6. Gauntlets/Gloves
+7. Potions/Kits
+8. Headgear
+9. Rings
+10. Tools
+11. Scrolls/Pads
+
+Each item type will have it's own database table - consolidation though possible is relatively complex and difficult to manage effectively.
+
+
+Schemas:
+--------
+
+A. Weapons: srbase_srmodule_weapons
+
+DROP TABLE IF EXISTS srbase_srmodule_items_weapons;
+CREATE TABLE srbase_srmodule_items_wepons (
+  item_id int(11) unsigned NOT NULL default '0',		<unique id for item>
+  type varchar(32) NOT NULL default 'miscellaneous',		<type: defunct>
+  name varchar(64) NOT NULL default 'Unidentified',		<name of weapon>
+  description text NOT NULL,					<description>
+  level tinyint(4) unsigned NOT NULL default '1',		<minimum required level of character>
+  cost int(11) unsigned NOT NULL default '10',			<cost gold/credits>
+  weight tinyint(4) unsigned NOT NULL default '1',		<item weight when in backpack>
+  class_special tinyint(4) unsigned NOT NULL default '0',	<required class of character>
+  alignment varchar(7) NOT NULL default 'neutral',		<whether item is aligned>
+  equip_penalty varchar(4) NOT NULL default 'none',		<penalty for equipping wrong aligned weapon>
+  penalty_amount tinyint(4) unsigned NOT NULL default '0',	<amount of penalty if applicable>
+  max_damage tinyint(4) unsigned NOT NULL default '0',		<max damage of weapon>
+  min_critical tinyint(4) unsigned NOT NULL default '0',	<min critical range>
+  max_critical tinyint(4) unsigned NOT NULL default '0',	<max critical range>
+  critical_multiplier tinyint(4) unsigned NOT NULL default '0', <critical multiplier>
+  handle varchar(32) NOT NULL default 'single',			<single/double hand weapons - also if double headed>
+  UNIQUE KEY item_id (item_id,name)
+) TYPE=MyISAM;
+
+B. Necklaces/Amulets: srbase_srmodule_items_amulets
+
+DROP TABLE IF EXISTS srbase_srmodule_items_weapons;
+CREATE TABLE srbase_srmodule_items_wepons (
+  item_id int(11) unsigned NOT NULL default '0',		<unique id for item>
+  type varchar(32) NOT NULL default 'miscellaneous',		<type: defunct>
+  name varchar(64) NOT NULL default 'Unidentified',		<name of weapon>
+  description text NOT NULL,					<description>
+  level tinyint(4) unsigned NOT NULL default '1',		<minimum required level of character>
+  cost int(11) unsigned NOT NULL default '10',			<cost gold/credits>
+  weight tinyint(4) unsigned NOT NULL default '1',		<item weight when in backpack>
+  class_special tinyint(4) unsigned NOT NULL default '0',	<required class of character>
+  alignment varchar(7) NOT NULL default 'neutral',		<whether item is aligned>
+  equip_penalty varchar(4) NOT NULL default 'none',		<penalty for equipping wrong aligned weapon>
+  penalty_amount tinyint(4) unsigned NOT NULL default '0',	<amount of penalty if applicable>
+  effect varchar(32) NOT NULL default 'nothing',		<states what the item affects - attr/will/fort/etc>
+  effect_type varchar(32) NOT NULL default 'none',		<state sub-division of effect - if save, fort/will?>
+  effect_amount tinyint(2) unsigned NOT NULL default '0',	<amount of effect, e.g. +1 or -2, etc.>
+  UNIQUE KEY item_id (item_id,name)
+) TYPE=MyISAM;
+
+C. Belts: srbase_srmodule_items_belts
+
+DROP TABLE IF EXISTS srbase_srmodule_items_weapons;
+CREATE TABLE srbase_srmodule_items_weapons (
+  item_id int(11) unsigned NOT NULL default '0',		<unique id for item>
+  type varchar(32) NOT NULL default 'miscellaneous',		<type: defunct>
+  name varchar(64) NOT NULL default 'Unidentified',		<name of item>
+  description text NOT NULL,					<description>
+  level tinyint(4) unsigned NOT NULL default '1',		<minimum required level of character>
+  cost int(11) unsigned NOT NULL default '10',			<cost gold/credits>
+  weight tinyint(4) unsigned NOT NULL default '1',		<item weight when in backpack>
+  class_special tinyint(4) unsigned NOT NULL default '0',	<required class of character>
+  alignment varchar(7) NOT NULL default 'neutral',		<whether item is aligned>
+  equip_penalty varchar(4) NOT NULL default 'none',		<penalty for equipping wrong aligned weapon>
+  penalty_amount tinyint(4) unsigned NOT NULL default '0',	<amount of penalty if applicable>
+  effect varchar(32) NOT NULL default 'nothing',		<states what the item affects - attr/will/fort/etc>
+  effect_type varchar(32) NOT NULL default 'none',		<state sub-division of effect - if save, fort/will?>
+  effect_amount tinyint(2) unsigned NOT NULL default '0',	<amount of effect, e.g. +1 or -2, etc.>
+  UNIQUE KEY item_id (item_id,name)
+) TYPE=MyISAM;
+
+D/E/F/G: bracers, gauntlets, headgear, cloaks and rings same as C.
+
+H. Potions/Kits
+
+DROP TABLE IF EXISTS srbase_srmodule_items_drugs;
+CREATE TABLE srbase_srmodule_items_drugs (
+  item_id int(11) unsigned NOT NULL default '0',		<unique id for item>
+  type varchar(32) NOT NULL default 'miscellaneous',		<type: determines overall effect, healing, physical enhancement, attribute enhancement, etc.>
+  name varchar(64) NOT NULL default 'Unidentified',		<name of item>
+  description text NOT NULL,					<description>
+  level tinyint(4) unsigned NOT NULL default '1',		<minimum required level of character>
+  cost int(11) unsigned NOT NULL default '10',			<cost gold/credits>
+  weight tinyint(4) unsigned NOT NULL default '1',		<item weight when in backpack>
+  class_special tinyint(4) unsigned NOT NULL default '0',	<required class of character>
+  effect varchar(32) NOT NULL default 'nothing',		<states what the item affects - attr/will/fort/etc>
+  effect_type varchar(32) NOT NULL default 'none',		<state sub-division of effect - if save, fort/will?>
+  effect_amount tinyint(2) unsigned NOT NULL default '0',	<amount of effect, e.g. +1 or -2, etc.>
+  physical varchar(32) NOT NULL default 'nothing',		<whether for healing/poison/disease>
+  physical_amount tinyint(2) unsigned NOT NULL default '0',	<amount of physical effect>
+  UNIQUE KEY item_id (item_id,name)
+) TYPE=MyISAM;
+
+I. Tools (lockpicks and such): srbase_srmodule_items_tools
+
+DROP TABLE IF EXISTS srbase_srmodule_items_tools;
+CREATE TABLE srbase_srmodule_items_tools (
+  item_id int(11) unsigned NOT NULL default '0',		<unique id for item>
+  type varchar(32) NOT NULL default 'miscellaneous',		<type: defunct>
+  name varchar(64) NOT NULL default 'Unidentified',		<name of weapon>
+  description text NOT NULL,					<description>
+  level tinyint(4) unsigned NOT NULL default '1',		<minimum required level of character>
+  cost int(11) unsigned NOT NULL default '10',			<cost gold/credits>
+  weight tinyint(4) unsigned NOT NULL default '1',		<item weight when in backpack>
+  class_special tinyint(4) unsigned NOT NULL default '0',	<required class of character>
+  skill_id int(11) unsigned NOT NULL default '0',		<ID of skill tool benefits>
+  skill_amount tinyint(2) unsigned NOT NULL default '0',	<amount of benefit to skill from tool>
+  UNIQUE KEY item_id (item_id,name)
+) TYPE=MyISAM;
+
+J. Scrolls/Datapads: srbase_srmodule_items_literature
+
+DROP TABLE IF EXISTS srbase_srmodule_items_literature;
+CREATE TABLE srbase_srmodule_items_literature (
+  item_id int(11) unsigned NOT NULL default '0',		<unique id for item>
+  type varchar(32) NOT NULL default 'miscellaneous',		<book/scroll/letter etc.>
+  name varchar(64) NOT NULL default 'Unidentified',		<name of weapon>
+  description text NOT NULL,					<description>
+  level tinyint(4) unsigned NOT NULL default '1',		<minimum required level of character>
+  cost int(11) unsigned NOT NULL default '10',			<cost gold/credits>
+  weight tinyint(4) unsigned NOT NULL default '1',		<item weight when in backpack>
+  class_special tinyint(4) unsigned NOT NULL default '0',	<required class of character>
+  UNIQUE KEY item_id (item_id,name)
+) TYPE=MyISAM;

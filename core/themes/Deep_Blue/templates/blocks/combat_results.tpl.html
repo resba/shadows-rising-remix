@@ -1,0 +1,52 @@
+<!--Start: Combat Results Block-->
+
+{section name=i loop=$template_combat_vars}
+
+<div>
+
+<br />Your Health: <span style="color: lightgreen;">{$template_combat_vars[i].char_health}</span><br />
+Creature's Health: <span style="color: orange;">{$template_combat_vars[i].creat_health}</span><br />
+
+{if $template_combat_vars[i].char_stats.damage > 0 && $template_combat_vars[i].char_stats.critical > 0}
+
+	You scored a <span style="color: green;">CRITICAL HIT</span> doing <span style="color: blue;">{$template_combat_vars[i].char_stats.damage}</span> damage.<br />
+
+{elseif $template_combat_vars[i].char_stats.damage > 0}
+
+	You have struck the creature doing <span style="color: blue;">{$template_combat_vars[i].char_stats.damage}</span> damage.<br />
+
+{elseif $template_combat_vars[i].char_stats.nohit == "true"}
+
+	You missed and did no damage!<br />
+
+{/if}
+
+{if $template_combat_vars[i].creat_stats.damage > 0}
+
+	The <span style="color: red;">{$creature.name}</span> hit you for <span style="color: blue;">{$template_combat_vars[i].creat_stats.damage}</span> damage.<br />
+
+{elseif $template_combat_vars[i].creat_stats.nohit == "true"}
+
+	The <span style="color: red;">{$creature.name}</span> missed and did no damage!<br />
+
+{/if}
+
+{if $template_combat_vars[i].char_stats.victory == "true"}
+
+	<br />You defeated the <span style="color: red;">{$creature.name}</span>!!!<br />
+	<br />You search the <span style="color: red;">{$creature.name}</span>'s body and discover <span style="color: yellow;">{$template_combat_vars[i].cash_award}</span> Gold!<br />
+	You gain <span style="color: green;">{$template_combat_vars[i].exp_award}</span> Experience!
+
+{/if}
+
+{if $template_combat_vars[i].char_stats.defeat == "true"}
+
+	<br />You have been defeated by the <span style="color: red;">{$creature.name}</span>!!!
+
+{/if}
+
+</div>
+
+{/section}
+
+<!--End: Combat Results Block-->

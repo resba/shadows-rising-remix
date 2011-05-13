@@ -1,0 +1,49 @@
+class Plugin_Modules {
+
+
+	function Plugin_Modules {
+		// definitions and default for all class variables
+	}
+
+	function check_module {
+		// perform a number of checks to ensure module can be used
+		is_installed()
+		is_active()
+		check_version()
+		check_dependencies()
+	}
+
+	function is_installed {
+		// check to ensure module installed to DB
+		// check plugin file exists
+	}
+
+	function is_active {
+		// check plugin settings are available and plugin is activated
+	}
+
+	function check_version {
+		// each plugin to have a version for comparison against other modules dependencies
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}

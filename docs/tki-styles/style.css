@@ -1,0 +1,36 @@
+img              { border: 0px;}
+a:link           { color: #00ff00;}
+a:visited        { color: #00ff00;}
+a:active         { color: #ff0000;}
+body             { font-family: Verdana, Arial, sans-serif; font-size: x-small; color: #c0c0c0;}
+a.dis            { text-decoration:none; font-size: 8pt; font-family: verdana; color:#C0C0C0; font-weight:bold;}
+a.dis:hover      { text-decoration:none; font-size: 8pt; font-family: verdana; color:#3366ff; font-weight:bold;}
+a.mnu            { text-decoration:none; font-size: 8pt; font-family: verdana; color:#ffffff; font-weight:bold;}
+a.mnu:hover      { text-decoration:none; font-size: 8pt; font-family: verdana; color:#3366ff; font-weight:bold;}
+div.mnu          { text-decoration:none; font-size: 8pt; font-family: verdana; color:#ffffff; font-weight:bold;}
+span.mnu         { text-decoration:none; font-size: 8pt; font-family: verdana; color:#ffffff; font-weight:bold;}
+table.dis        { text-decoration:none; font-size: 8pt; font-family: verdana; color:#C0C0C0; font-weight:bold;}
+td.footer        { color: #C0C0C0; font-size: xx-small;}
+.faderlines      { background-color:#400040; width:490px;}
+.headlines       { text-decoration:none; font-size:8pt; font-family: Verdana, Arial, sans-serif; font-weight:bold; color:#ffffff;}
+.headlines:hover { text-decoration:none; color:#3366ff;}
+.nav             { text-decoration: none; }
+.nav:link        { text-decoration: none; color: #00ff00;}
+.nav:visited     { text-decoration: none; color: #00ff00;}
+.nav:hover       { text-decoration: none; color: #ffff00;}
+.portcosts1      { width:7em;border-style:none;font-family: verdana;font-size:12pt;background-color:#300030;color:#c0c0c0;}
+.portcosts2      { width:7em;border-style:none;font-family: verdana;font-size:12pt;background-color:#400040;color:#c0c0c0;}
+.rsform          { font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 100%; font-weight: bold; color: #FFFFFF; background-color:#500050;}
+td.loginbox      { background-image: url(images/loginbox.png);}
+.highlightcolor { color: #ffffff;}
+span.textcolor      { color: #C0C0C0;}
+div#test
+{
+    font-family: verdana;
+    font-size: 1.5em;
+    color: black;
+    margin: 0em;
+    padding: 0.5em;
+    border: 1px dashed purple;
+    background-color: #f5f5f5;
+}

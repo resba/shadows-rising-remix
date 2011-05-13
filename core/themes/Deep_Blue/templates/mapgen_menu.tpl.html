@@ -1,0 +1,17 @@
+{include file="location_top.tpl.html"}
+
+<p>
+<b>Map Generation Menu</b>
+<br />
+<br />
+<a href="mapgen.php?op=newmap">Design New Map</a>
+<br />
+<br />
+Previously Stored Maps:
+<br /><br />
+{section name=i loop=$allmaps}
+{$allmaps[i].name} ({$allmaps[i].width} x {$allmaps[i].height}) - <a href="mapgen.php?op=edit_savedmap&amp;name={$allmaps[i].name}">Edit</a><br />
+{/section}
+</p>
+
+{include file="location_bottom.tpl.html"}

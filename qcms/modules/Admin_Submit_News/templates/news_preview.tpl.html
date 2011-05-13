@@ -1,0 +1,34 @@
+<div style="padding-left: 30px; padding-right: 30px;">
+<span class="th">Preview:</span>
+<br />
+<table cellspacing="0" class="inner_mtable">
+	<tr>
+		<th>
+		{$n_title}<br />
+		</th>
+	</tr>
+	<tr>
+		<td>
+		{$news_text}
+		</td>
+	</tr>
+</table>
+</div>
+
+<div>
+
+<br /><br />
+
+<form method="post" action="{$M_URL}" name="conf_news">
+<input type="hidden" name="op" value="save" />
+<input type="hidden" name="n_title" value="{$n_title}" />
+<input type="hidden" name="n_text" value="{$n_text}" />
+Are you sure you wish to save this News Item?
+<br />
+<br />
+<input type="submit" value="Save" name="submit" />
+</form>
+<br />
+<br />
+Otherwise, return <a href="index.php">Home</a>.
+</div>

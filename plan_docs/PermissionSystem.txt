@@ -1,0 +1,33 @@
+Permission System. (This overview is modified to include global scope)
+
+There would be several levels of permission (listed in order of precedence{i.e.:level 6 overrides level 4}):
+
+
+      1. Super Globals
+      2. Globals (Game specifice)
+      3. Category (Forum Specific)
+      4. Forum (Forum specific)
+      5. Group
+      6. User
+
+
+
+The example permission will be "Can post news", the database value for this permission will be 4. This is the permission value referenced in the code. (i.e.: $_SESSION['perms'][4])
+
+All permission will have 3 levels: Yes | Unset | No With values, respectively: 1 | 0 | -1. Unset will default to no. This works well because statements like:
+Code:
+if( $_SESSION['perm'][4] ) {
+
+Notice how it is testing for that permission and the only value in the set of possible values that will eval to TRUE is 1. This works rather well for making UNSET default to No. (By default I mean that if the permission is not set anywhere, it will be no)
+
+You can see how flexable in permission giving this style of system would give. We wouldn't be limited by the traditional 'rank' style system with hardcoded allowances. It would be also very simple to implement, as shown in the code above. The only downsides I can see are: painfully difficult for the admin to assign, easy to misconfigure and a huge pain to implement coding wise (propagation only, actual use of the system should be easy).
+
+Now I think a summary of how the propagation system will work is in order. The propagation system will only run once per user session due to the rather large toll I expect it will but on the database and the resultant permissions will be stored in $_SESSION['perm'] with the permissions respective integeral value in the array. The propagation system will probably have to be rerun each time the user enters/leaves a game to make sure permissions in that game do not carry over. The permissions will have integeral values simply due to the ease of using numbers over words. This will mean that a table with 'numbers----effects' will have to be constructed, but it shouldn't be too difficult.
+
+As to the propagation system, it will first load 'super globals', then 'globals', and so on up the propagation chart. The super globals are just there so that new items (like new forums), will have a default permission set. Considering that all users will be members of a default user group I am still debating wether super globals are required or not. 'Globals' are local to the individual game that the user is in, and should possibly move up above the 'Groups' permissions set (see how much I need contribution to this idea?).
+
+It is possible, for example, that a user exists in more than one user group, so a certain rule set for propagation must be set in. It works like this:
+
+1. In the same level, Yes overrides No, but No does not override Yes. Both override 'Unset'.
+2. In different propagation levels, Yes and No override a lower level's setting.
+3. Unset never overrides any setting. 

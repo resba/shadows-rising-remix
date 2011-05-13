@@ -1,0 +1,72 @@
+<table width="100%">
+ <tr>
+ <td>
+  <center>
+   <h2>Forum</h2>
+  </center>
+ </td>
+ </tr>
+ <tr>
+  <td>
+   <a href="viewforum.php?f={$forum_id}">{$forum_name}</a> >> <a href="viewtopic.php?t={$topic_id}">{$topic_name}</a>
+  </td>
+ </tr>
+ <tr>
+  <td>
+   <a href="post.php?postmode=reply&t={$smarty.get.t}">Post Reply</a>
+  </td>
+ </tr>
+ <tr class="viewtopictitle">
+ <td>
+ <center><font size="+1">{$topic_name}</font></center>
+ </td>
+ </tr>
+ <tr>
+ <td>
+ 
+{foreach from=$post item=v key=k}
+<table width="100%" cellpadding="5" cellspacing="5">
+ <tr class="viewposttitlebar">
+  <td width="17%">
+  </td>
+  <td>
+   <b>Title:</b> "{$v.post_title}" &nbsp;&nbsp;&nbsp;  <b>Posted:</b> "{$v.post_time|date_format:"%A, %B %e, %Y  %H:%M"}"
+  </td>
+ </tr>
+ <tr>
+  <td class="viewpostuserinfo" height="150">
+      <a href="profile.php?op=viewuser&id={$v.user_id}">{if $ingame}{$v.name}{else}{$v.login_name}{/if}</a><br>
+      User Details HERE
+  </td>
+  <td class="viewpostmsg">
+  {$v.post_message}   
+
+  {if $v.forum_signature != ""}
+    <table width="100%"><tr valign="bottom"><td valign="bottom">
+       <hr width="50%" align="left">
+      {$v.forum_signature}
+    </td></tr></table>
+  {/if}
+  </td>
+ </tr>
+ <tr>
+  <td class="viewpostbottom">
+  </td>
+  <td class="viewpostbottom">
+  {if $v.email_address != ""}<a href="mailto:{$v.email_address}"><img src="" alt="email"></a> {/if}
+  {if $v.aim != ""}<a href="aim:goim?screenname={$v.aim}&message=Hello+Are+you+there?"><img src="" alt="AIM"></a>{/if} 
+  {if $v.yim != ""}<a href="http://edit.yahoo.com/config/send_webmesg?.target={$v.yim}&.src=pg"><img src="" alt="AIM"></a> {/if}
+  {if $v.icq != 0}<a href="http://wwp.icq.com/scripts/search.dll?to={$v.icq}"><img src="" alt="ICQ"></a> {/if}
+  {if $v.msn != ""}<a href=""><img src="" alt="MSNM"></a> {/if}
+  {if $v.forum_www != ""}<a href="{$v.forum_www}"><img src="" alt="WWW"></a>{/if}
+  <a href="ucp.php?mode=privmsg&op=send&u={$v.login_id}"><img src="" alt="PM"></a>
+  <a href="tradelink"><img src="" alt="TRADE"></a>
+  <br />
+  </td>
+ </tr>
+</table>
+{/foreach}
+ 
+ </td>
+ </tr>
+</table>

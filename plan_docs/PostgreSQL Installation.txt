@@ -1,0 +1,174 @@
+== Installation of PostgreSQL on Windows XP/2000/NT ==
+
+
+
+=== Introduction ===
+
+
+This installation document concerns the installation, and use, of the PostgreSQL (postgres) Database Management System. PostgreSQL is an excellent alternative to MySQL, and is just as easy to use with PHP. There is however a problem in that PostgreSQL binaries are not immediately available for Windows. As a result, PostgreSQL requires the use of Cygwin, a linux API emulation layer.
+
+Installation is NOT difficult. However most (if not all) online guides are either couched in *nix speak or so short as to be useless to a linux novice. Apparently many people forget not everyone using Windows knows what a compiler is...:)
+
+This document is aimed at being a step by step guide, with a lot of explanatory text - just enough so users won't get lost in the linux jargon... It's written for a complete novice, not that everyone will be. If any user feels another few points needs coverage - by all means contact me and I'll add those areas to the document.
+
+
+
+=== Requirements ===
+
+
+* Windows XP/2000/NT
+* Cygwin Base Installation
+* Cygipc (ipc daemon)
+* gcc-c++ (GNU C++ Compiler)
+* make (GNU make utility)[also gmake on some systems]
+* PostgreSQL DBMS
+* phpPgAdmin (browser based administration tool)
+
+For the express purposes of this guide, at December 2004, the following versions have been used. Updated version should be just as valid, so don't get too hooked up on copying these versions exactly! One exception is PostgreSQL itself - all versions from 7.4.2 to 8.0.0RC-1 cannot be compiled/installed on Cygwin. A Cygwin update for this issue is outstanding. As a result, 7.4.1 has been utilised below.
+
+* Windows 2000
+* Cygwin 1.5.12-1
+* cygipc 2.03-2
+* gcc-c++ / gcc-core 3.3.3-3
+* make 3.80-1
+* PostgreSQL 7.4.1
+* phpPgAdmin 3.5.1
+
+
+
+=== Downloads ===
+
+
+Almost everything required is downloaded through the Cygwin Setup utility available from http://www.cygwin.com.
+
+Installing Cygwin (a linux API emulation layer):
+
+Cygwin is basically a utility which mimics a linux environment on top of windows. It runs from a console window, and is capable of running almost any supported linux application. Installation is very simple. First of all start up the setup utility you downloaded earlier. You'll be requested to set both an installation directory and a directory for storing downloaded install files. You'll also need to select a download mirror.
+
+Once done, the setup utility will display a list of all packages available for download. Check through the categories, and select the following for installation:
+
+* cygipc
+* gcc-c++
+* make
+* tar
+* postgresql
+
+The latest version for each are recommended, and indeed insisted upon by Cygwin...
+
+Instalation will take some time. Cygwin will automatically download all the selected application, their dependencies, and any libraries they require. Once completed, Cygwin will be ready to go.
+
+
+
+=== Setting the Environment Variables ===
+
+
+This area is one which seems lacking in the Windows/Cygwin/PostgreSQL guides posted on the internet. Many of these guides recommend using a bash (a console language for cygwin) to create a startup cygwin file to create certain environment variables. There is no doubt such a measure eases post-installation setup, but Windows itself has a workable solution to storing such variables (which somewhat dubiously appears more reliable).
+
+You may wonder what environment variables are? Basically these are configurable options for certain actions processed by Windows. For example, starting any program requires you to know the path to that program. But what if you don't? What if you know it's in a folder, but you don't wan't to continually navigate to that folder every time you want to start an application? The solution is store that folder with the PATH variable - which Windows searches automatically.
+
+There are 5 variable changes to make for PostgreSQL to operate most efficiently. All may be changed by accessing the Environment Variables window. To do so, right click on "My Computer" and select Properties. From the Properties menu, select the Advanced tab. Here you will see a button marked "Environment Variables" - click it!
+
+We are interested in the first pane - User Variables. System Variables is also valid - but let's stick to sorting out our own user account.
+
+Our first step is to EDIT the PATH variable - and add the following folder paths. Note that all paths must be separated by a semi-colon ";", the addresses already stored on PATH will show how this is done if you are uncertain. Do not delete addresses already contained in the PATH variable.
+
+ C:\Other\cygwin\bin
+ C:\Other\cygwin\usr\local\bin
+
+Note that here, "Other\cygwin" will be your own computer's path to "bin" and "usr\local\bin" - check it's correct by copying the path address for your own "bin" folders.
+
+Secondly we require four other variables. You'll need to create these and set the variables to those as below. Note that these variable names must be in capital letters.
+
+
+ Variable		Value
+ -----------		--------
+
+ PGDATA			/usr/local/pgsql/data
+ PGLIB			C:\Other\cygwin\lib\postgresql;C:\Other\cygwin\lib
+ LD_LIBRARY_PATH	/usr/local/pgsql/lib;/usr/local/lib
+ CYGWIN			server
+
+
+It's important to note that PGDATA and LD_LIBRARY_PATH are taken from root "/" and all use forward slashes. This is because these variables are used by Cygwin - not Windows - and therefore must be in Linux format. FYI - root is generally the "cygwin" folder to which your applications were installed, and which contains the bin, etc, lib, tmp, usr and var folders.
+
+For PGLIB - replace "Other\cygwin" with the actual path to your base cygwin folder.
+
+
+
+=== Starting the Supporting Processes ===
+
+
+Before we can actually start PostgreSQL, we must initialise the starting directory. To do this create a folder within "/usr/local" called "pgsql". Within "pgsql" create another folder called "data". These correspond to the value we earlier set for the environment variable PGDATA. This DATA folder will actually store all our database files.
+
+Now comes the main feature - starting Cygwin.
+
+Double click the Cygwin link on your desktop to start Cygwin. It will automatically log you in using your current Windows user account. If this is your first time starting Cygwin, you'll notice some messages at the top of the console window - you can ignore these quite safely unless you intend accessing Cygwin from another computer on a network.
+
+Cygwin is presented using a "bash" shell or console (Bourne Again SHell). Bash is a shell script language, and makes up the basic commands used within the console. It'll be quite familiar if you've ever tinkered with MS-DOS. The console allows commands to be typed into cygwin. Most Linux applications have a console mode - come's in handy for creating complex tasks and scheduled tasks.
+
+Anyway - back to our Post Installation procedures. At this point in time we have installed Cygwin and PostgreSQL binaries. We have also created or edited our Environment Variables, and created a folder to store our databases.
+
+Next we need to start up two services from cygwin which PostgreSQL requires. These are cygipc and cygserver. These run in the background, but must be started always before we start using PostgreSQL. Later I'll demonstrate an example script written using bash, which automates all these steps into a single command.
+
+First of we start cygipc, also the IPC Daemon. To do this we issue the command, and also add a "&" ampersand character - this informs the console to run the program in the background. Once it starts you'll see it's resource id, and it will show up on Windows Task Manager. Type:
+
+ ipc-daemon2 &
+
+and press return. I note that the command is "ipc-daemon2", not "ipc-daemon". The second turns up in many other PostgreSQL/Cygwin guides even though it's invalid. You can liken the daemon to a communication layer - allowing programs to interact with each other.
+
+Secondly we start up the cygserver - cygserver is basically support for application running in the background which operate while no cygwin console is open. Type:
+
+ /usr/sbin/cygserver &
+
+Another background process, this time we include the full unix path to "cygserver". This is because, the path "/usr/sbin/" was not added to our environmental PATH variable. Feel free to add it if you wish.
+
+
+Note that all these can be added as Windows Services - more information can be found on the web on using services with cygrunsrv.
+
+
+
+=== Post Installation Procedures ===
+
+
+Finally, we are closing in on our elusive aim of starting PostgreSQL! To complete installation, we must initialise the database. Now that we have set our environmental variables, and presumably started IPC-DAEMON and CYGSERVER we just issue one command, type:
+
+initdb
+
+This should result in the initialisation of a database and files in our previously created DATA folder.
+
+And that is it - post installation is now finished!
+
+
+
+=== Starting PostgreSQL ===
+
+
+There are numerous options for starting PostgreSQL - some enable error logging, etc. The simplest method, which starts PostgreSQL and prints any log entries to our console is:
+
+ postmaster -i &
+
+This will start PostgreSQL in the backround - to await any queries we send it's way. Later we'll take a stab at installing phpPgAdmin which is a browser based utility for viewing out database. It's written in PHP being web based, but there are other Window's based Admin Applications.
+
+You should note, that in the future, to start postgreSQL from Windows (assuming no processes have been added as a service) you will need to type the following three commands one after the other:
+
+ ipc-daemon2 &
+ /usr/sbin/cygserver &
+ postmaster -i &
+
+
+
+=== Creating a single startup script ===
+
+
+To make things even easier - you can add the startup command into a plain text file saved with the ".sh" extension. Simple type in the three commands above, save as poststart.sh, and save into your user directory on cygwin - i.e. the directory you find yourself in when you start cygwin. Then whenever you start cygwin, simply run the command:
+
+ sh poststart.sh
+
+and watch PostgreSQL startup...
+
+
+
+=== In Conclusion ===
+
+
+PostgreSQL is without doubt a complex application to install on Windows. But it is entirely possible and fairly straightforward once you do it once. At present the vast majority of PHP development focuses on MySQL - in many cases to the exclusion of all other database options. This is a fairly large sinkhole to fall into from a broad support point of view. Even now, I see some popular PHP applications and games move towards specialised MySQL support - which is a shame. MySQL and PostgreSQL are entirely compatible - both are based in the same SQL principles, and standards. It's worth supporting.

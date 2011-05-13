@@ -1,0 +1,21 @@
+{include file="location_top.tpl.html"}
+
+<p>
+<b>MapSet Menu</b>
+<br />
+<br />
+Please select the map you wish to use for the current game. Note that altering maps during gameplay will likely cause numerous problems - so complete this before starting a game.
+<br /><br />
+<form method="post" action="mapset.php" name="mapset_form" id="mapset_form">
+<input type="hidden" name="op" value="setmap" />
+{section name=i loop=$allmaps}
+<input type="radio" name="mpname" value="{$allmaps[i].name}" /> {$allmaps[i].name} ({$allmaps[i].width} x {$allmaps[i].height}) - <a href="mapgen.php?op=setmap&amp;name={$allmaps[i].name}">Edit</a><br />
+{/section}
+<br />
+Are you sure your choice is correct? <input type="checkbox" name="mapset_sure" value="yes" />
+<br /><br />
+<input type="submit" value="Set Map!" />
+</form>
+</p>
+
+{include file="location_bottom.tpl.html"}

@@ -1,0 +1,141 @@
+{include file="backpack_top.tpl.html"}
+
+<p>
+Your character's backpack contains all items they are currently carrying, plus contains an overview of any equipped items not directly carried in the backpack. Eventually you'll be able to equip and unequip items from this page.
+</p>
+<br />
+
+<p class="h5">Equipped Items<br /></p>
+
+<table cellspacing="0" class="invisible">
+	<tr>
+		<th>Head<th>
+		{if $equipped_head_check == "true"}
+		<td>{$equipped_head.item_name}</td>
+		<td><a href="{$url_prefix}/core/item_equip.php?op=unequip&amp;position=head">Unequip &quot;{$equipped_head.item_name}&quot;</a>
+		{else}
+		<td>--empty--</td>
+		{/if}
+	</tr>
+	<tr>
+		<th>Waist<th>
+		{if $equipped_belt_check == "true"}
+		<td>{$equipped_belt.item_name}</td>
+		<td><a href="{$url_prefix}/core/item_equip.php?op=unequip&amp;position=belt">Unequip &quot;{$equipped_belt.item_name}&quot;</a>
+		{else}
+		<td>--empty--</td>
+		{/if}
+	</tr>
+	<tr>
+		<th>Left Ring Finger<th>
+		{if $equipped_ringl_check == "true"}
+		<td>{$equipped_ringl.item_name}</td>
+		<td><a href="{$url_prefix}/core/item_equip.php?op=unequip&amp;position=ringl">Unequip &quot;{$equipped_ringl.item_name}&quot;</a>
+		{else}
+		<td>--empty--</td>
+		{/if}
+	</tr>
+	<tr>
+		<th>Right Ring Finger<th>
+		{if $equipped_ringr_check == "true"}
+		<td>{$equipped_ringr.item_name}</td>
+		<td><a href="{$url_prefix}/core/item_equip.php?op=unequip&amp;position=ringr">Unequip &quot;{$equipped_ringr.item_name}&quot;</a>
+		{else}
+		<td>--empty--</td>
+		{/if}
+	</tr>
+	<tr>
+		<th>Cloak<th>
+		{if $equipped_cloak_check == "true"}
+		<td>{$equipped_cloak.item_name}</td>
+		<td><a href="{$url_prefix}/core/item_equip.php?op=unequip&amp;position=cloak">Unequip &quot;{$equipped_cloak.item_name}&quot;</a>
+		{else}
+		<td>--empty--</td>
+		{/if}
+	</tr>
+	<tr>
+		<th>Forearms<th>
+		{if $equipped_bracer_check == "true"}
+		<td>{$equipped_bracer.item_name}</td>
+		<td><a href="{$url_prefix}/core/item_equip.php?op=unequip&amp;position=bracer">Unequip &quot;{$equipped_bracer.item_name}&quot;</a>
+		{else}
+		<td>--empty--</td>
+		{/if}
+	</tr>
+	<tr>
+		<th>Torso<th>
+		{if $equipped_armour_check == "true"}
+		<td>{$equipped_armour.item_name}</td>
+		<td><a href="{$url_prefix}/core/item_equip.php?op=unequip&amp;position=armour">Unequip &quot;{$equipped_armour.item_name}&quot;</a>
+		{else}
+		<td>--empty--</td>
+		{/if}
+	</tr>
+	<tr>
+		<th>Left Hand<th>
+		{if $equipped_weaponl_check == "true"}
+		<td>{$equipped_weaponl.item_name}</td>
+		<td><a href="{$url_prefix}/core/item_equip.php?op=unequip&amp;position=weaponl">Unequip &quot;{$equipped_weaponl.item_name}&quot;</a>
+		{else}
+		<td>--empty--</td>
+		{/if}
+	</tr>
+	<tr>
+		<th>Right Hand<th>
+		{if $equipped_weaponr_check == "true"}
+		<td>{$equipped_weaponr.item_name}</td>
+		<td><a href="{$url_prefix}/core/item_equip.php?op=unequip&amp;position=weaponr">Unequip &quot;{$equipped_weaponr.item_name}&quot;</a>
+		{else}
+		<td>--empty--</td>
+		{/if}
+	</tr>
+</table>
+
+<div>
+<br /><br />
+</div>
+
+<p class="h5">Backpack Items<br /></p>
+
+{* The following if/else statements go through all items types. If a type was passed by the Character Class function "Display_Backpack_Graphical()" then the check_ variable will be set to true, and the $weapon/$misc/etc. arrays will contain data for items to be displayed *}
+
+{if $itemcheck == "true"}
+<table cellspacing="0" class="invisible">
+	<tr>
+		<td class="merchantpanel_left">
+		<div>|<a href="javascript:changePackListPanel('weapon')">Weapons</a>|<a href="javascript:changePackListPanel('belt')">Belts</a>|<a href="javascript:changePackListPanel('bracer')">Bracers</a>|<a href="javascript:changePackListPanel('ring')">Rings</a>|<a href="javascript:changePackListPanel('cloak')">Cloaks</a>|</div>
+		<div id="lpanel">
+{/if}
+
+<!--Weapons displayed by default - other categories linked to as above-->
+{if $check_backpackweapon == "true"}
+
+			<p class="h5">Weapons</p>
+
+			{section name=i loop=$backpackweapon}
+
+				<div style="vertical-align: center;"><a href="javascript:changeBackpackPanel('weapon{$backpackweapon[i].item_id}', '{$backpackweapon[i].equipped}', '{$backpackweapon[i].position}', '{$backpackweapon[i].pack_id}')"><img src="{$url_prefix}/core/themes/Deep_Blue/images/items/weapons/weapons_9.png" onMouseOver="javascript:changeStatusColour('weapon{$backpackweapon[i].pack_id}', '{$character.level}', '{$backpackweapon[i].level}')" onMouseOut="javascript:defaultStatusColour('weapon{$backpackweapon[i].pack_id}')" style="" id="weapon{$backpackweapon[i].pack_id}" /></a> {$backpackweapon[i].item_name_eq}</div>
+
+			{/section}
+{else}
+			<p>No weapons carried in backpack... Please check the other categories.</p>
+{/if}
+
+
+{if $itemcheck == "false"}
+<p>
+Your backpack contains no items!!!
+</p>
+{/if}
+
+{if $itemcheck == "true"}
+		</div>
+		</td>
+		<td class="merchantpanel_right">
+			<div id="mpanel">Clicking on any of the items to the left will display that item's description and details in this panel...<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /></div>
+		</td>
+	</tr>
+</table>
+{/if}
+
+{include file="location_bottom.tpl.html"}

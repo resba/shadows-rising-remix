@@ -1,0 +1,47 @@
+<div style="text-align: center">
+<table cellspacing="0" width="75%" class="default" style="text-align: left; padding: 2px;">
+	<tr>
+		<th>Game Index</th>
+	</tr>
+	<tr>
+		<td>Game Name</td>
+		<td>Type</td>
+		<td>Start Date</td>
+		<td>Player Count</td>
+		<td>Location Count</td>
+		<td>Status</td>
+		<td>Action</td>
+	</tr>
+	
+{section name=i loop=$gameindex}
+
+	<tr>
+		<td>{$gameindex[i].name}</td>
+		<td>{$gameindex[i].type|capitalize}</td>
+		<td>{$gameindex[i].start_date|date_format}</td>
+		<td>{$gameindex[i].player_count}</td>
+		<td>{$gameindex[i].location_count}</td>
+		{if $gameindex[i].paused == 1}
+		    <td><i>Paused</i></td>
+		{else}
+		    <td><b>Active</b></td>
+		{/if}
+		{if $gameindex[i].showlink == "true"}
+			<td><a href="{$gameindex[i].link}">{$gameindex[i].link_name}</a></td>
+		{else}
+			<td><em>Not Logged In</em></td>
+		{/if}
+	</tr>
+
+{/section}
+
+</table>
+</div>
+
+<div style="text-align: left;">
+
+<br /><br /><br /><br />
+
+You are viewing the Game_Index module of Q-CMS. This module for Shadows Rising lists all games available on this server. This is the second test of the module code for Q-CMS. Modules are separate pages to be displayed within the CMS. You can create and add modules at any time - just add to the database with a new id, and create a link for that id, similar to the one used here for Game List.
+
+</div>

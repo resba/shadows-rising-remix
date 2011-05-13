@@ -1,0 +1,89 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+
+<!--
+Title:			Shadows Rising RPG "Install Default" Theme 
+Designed by:	Maugrim The Reaper (http://www.quantum-star.com)
+Compliance:		XHTML 1.1
+Optimisation:	1024x768 Resolution // Mozilla Firefox 0.8
+-->
+
+<!--Using UTF-8 as <?xml?> declaration missing to avoid IE "quirks" mode rendering. Do not remove !DOCTYPE. Ensure document is fully validated before implementing.-->
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<title>Shadows Rising RPG Install Utility</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="language" content="en" />
+<link rel="stylesheet" href="themes/Default/style_default.css" type="text/css" />
+</head>
+<body id="default_body">
+
+<div id="pagetop_logo">
+	<img src="../core/themes/Deep_Blue/images/logo.gif" alt="{$code_base}"/>
+</div>
+
+<table cellspacing="0" class="invisible">
+<tr>
+<td id="page_leftpanel">
+<!--This is the left side panel, for installation this is just a spacer-->
+
+
+<!--This is the end of the left side panel-->
+</td>
+<td id="page_centerpanel">
+<!--This is the center panel where user actions, text, and menus will appear-->
+
+<p class="h4">{$app_name} Install Utility</p>
+
+<div>
+In order to access any of the Install Utility's functions you are required to enter the Server Administrator Password. Please enter this password below to continue.
+</div>
+
+<div>
+<form method="post" action="{$post_action}" id="sp_from"><br />
+Server Administrator Password: <input type="password" name="server_passwd" value="" size="15" /><br /><br />
+<input type="submit" name="submit" value="Submit" />
+</form>
+</div>
+
+<div>
+<!-- Insert a little space and keep the footer low -->
+<br /><br /><br /><br /><br />
+<br /><br /><br /><br /><br />
+<br /><br /><br /><br /><br />
+<br /><br /><br /><br /><br />
+<br /><br /><br /><br /><br />
+
+
+<!--This is the end of the center panel-->
+</td>
+<td id="page_rightpanel">
+<!--This is the right side panel - another spacer-->
+
+
+<!--This is the end of the right side panel-->
+</td>
+</tr>
+<tr>
+<td colspan="3" id="page_footer">
+<!--This is the footer cell visible at the bottom of all pages-->
+
+	<p>
+		<br /><br /><br /><br /><br />
+		{$this_version} &copy; 2004 <a onclick="window.open(this.href,'_blank');return false;" href="../docs/copyright.html">Shadows Rising Project Developers</a>
+		<br />
+		Default Install Theme &copy; 2004 Maugrim The Reaper and <a onclick="window.open(this.href,'_blank');return false;" href="../docs/copyright.html">Shadows Rising Project Developers</a>
+		<br /><br /><br /><br /><br />
+	</p>
+	<div style="text-align: center;">
+		<img src="../core/images/standards/valid-xhtml11.png" alt="Valid XHTML 1.1!" /><img src="../core/images/standards/vcss.png" alt="Valid CSS!" />
+	</div>
+
+<!--This is the end of the footer cell-->
+</td>
+</tr> 
+</table>
+<!--This is the end of the "holding" table created per Step Three-->
+
+</body>
+</html>

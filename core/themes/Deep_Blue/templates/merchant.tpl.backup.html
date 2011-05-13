@@ -1,0 +1,145 @@
+{include file="location_top.tpl.html"}
+
+<p>
+Welcome to the Merchant menu - being a bit scarce on supplies, this Merchant currently only sells one item. This item is an essential tool for all wannabe Adventurers - an Ancient Rusty Dagger!
+</p>
+<br />
+
+{* The following if/else statements go through all items types. If a type was passed by the Merchant Class function then the check_ variable will be set to true, and the $weapon/$misc/etc. arrays will contain data for items to be displayed *}
+
+{if $itemcheck == "true"}
+<form method="post" action="merchant.php" name="item_purchase" id="item_purchase">
+<input type="hidden" name="purchase" value="1" />
+{/if}
+
+{if $check_weapon == "true"}
+<table cellspacing="0" class="invisible">
+	<tr>
+		<th class="h5" colspan="8">Weapons</th>
+	</tr>
+	<tr>
+		<th>Name</th>
+		<th>Description</th>
+		<th>Cost</th>
+		<th>Weight</th>
+		<th>Alignment</th>
+		<th>Damage</th>
+		<th>Critical</th>
+		<th>Handling</th>
+		<th>Purchase?</th>
+	</tr>
+
+		{section name=i loop=$weapon}
+
+		<tr>
+			<td>{$weapon[i].name}</td>
+			<td width="200px">{$weapon[i].description}</td>
+			<td>{$weapon[i].cost}</td>
+			<td>{$weapon[i].weight}</td>
+			<td>{$weapon[i].alignment}</td>
+			<td>{$weapon[i].max_damage}</td>	<td>{$weapon[i].min_critical}-{$weapon[i].max_critical}/x{$weapon[i].critical_multiplier}</td>
+			<td>{$weapon[i].handle}</td>
+			<td><input type="radio" name="purchase_weapon" value="{$weapon[i].item_id}" />
+		</tr>
+
+		{/section}
+
+</table>
+<input type="reset" name="reset" value="Reset" />&nbsp;<input type="submit" name="submit" value="Purchase" />
+<br />
+
+{/if}
+
+
+
+
+{if $check_ring == "true"}
+<table cellspacing="0" class="invisible">
+	<tr>
+		<th class="h5" colspan="8">Rings</th>
+	</tr>
+	<tr>
+		<th>Name</th>
+		<th>Description</th>
+		<th>Cost</th>
+		<th>Weight</th>
+		<th>Alignment</th>
+		<th>Effects</th>
+		<th>Effect Value</th>
+		<th>Purchase?</th>
+	</tr>
+
+		{section name=i loop=$ring}
+
+		<tr>
+			<td>{$ring[i].name}</td>
+			<td width="200px">{$ring[i].description}</td>
+			<td>{$ring[i].cost}</td>
+			<td>{$ring[i].weight}</td>
+			<td>{$ring[i].alignment}</td>
+			<td>{$ring[i].effect}</td>	
+			<td>{$ring[i].effect_type} +{$ring[i].effect_amount}</td>
+			<td><input type="radio" name="purchase_ring" value="{$ring[i].item_id}" />
+		</tr>
+
+		{/section}
+
+</table>
+<input type="reset" name="reset" value="Reset" />&nbsp;<input type="submit" name="submit" value="Purchase" />
+<br />
+
+{/if}
+
+
+
+
+{if $check_misc == "true"}
+
+<table cellspacing="0" class="invisible">
+	<tr>
+		<th class="h5" colspan="8">Miscellaneous</th>
+	</tr>
+	<tr>
+		<th>Name</th>
+		<th>Description</th>
+		<th>Cost</th>
+		<th>Weight</th>
+		<th>Alignment</th>
+		<th>Damage</th>
+		<th>Critical</th>
+		<th>Purchase?</th>
+	</tr>
+
+		{section name=i loop=$misc}
+
+		<tr>
+			<td>{$misc[i].name}</td>
+			<td width="200px">{$misc[i].description}</td>
+			<td>{$misc[i].cost}</td>
+			<td>{$misc[i].weight}</td>
+			<td>{$misc[i].alignment}</td>
+			<td>{$misc[i].max_damage}</td>	<td>{$misc[i].min_critical}-{$misc[i].max_critical}/x{$misc[i].critical_multiplier}</td>
+			<td><input type="radio" name="purchase_item" value="{$misc[i].item_id}" />
+		</tr>
+
+		{/section}
+
+</table>
+<input type="reset" name="reset" value="Reset" />&nbsp;<input type="submit" name="submit" value="Purchase" />
+<br />
+
+{/if}
+
+{if $itemcheck == "false"}
+<p>
+Sorry, but this Merchant has no items available which they can sell to you!
+</p>
+{/if}
+
+{if $itemcheck == "true"}
+</form>
+{/if}
+
+
+
+{include file="location_bottom.tpl.html"}

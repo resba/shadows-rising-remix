@@ -1,0 +1,37 @@
+Planning Outline - SR 0.0.5+
+
+Terrain Map Generator
+=====================
+
+Steps?
+------
+
+1. Obtain 32x32 pixel non-edged tiles (i.e. can be joined to all other tiles seamlessly) for all terrain types:
+
+a) Grassland
+b) Forest
+c) Mountains
+d) Low Hills
+e) Snow Expanse
+f) Ocean
+
+2. Enable end-user to define a map size in terms of tiles (height&width). Generate initial map array for all positions, store on database as a serialised array.
+
+3. Allow user to define each tile in terms of what terrain type it holds. This will allow us to assign which terrain tile graphic will occupy that tiles once the final map is generated. At this stage we also allow user to assign un-named cities, towns, villages, etc (these have separate tiles). User will create custom information and contents for each at a later stage.
+
+4. Assuming we now have everything stored on the database... We allow user to execute a PHP mapgen script. This will generate a blank canvas map with side equal to number of tiles per side multiplied by tile size (generally 32x32 pixels). It will then overlay a full-colour tile across each tile-space defined previously by user. The contructed terrain (composed of side by side tiles) is then merged into a single GIF/PNG image and saved.
+
+5. User can view map, store map, or delete - same with the database entry which in essence is the source data for all steps following. It is important the mepgen phase take as little processing time as possible - though it's likely to be partially fixed (main work is merging tiles, assigning tile coordinates on blank canvas)
+
+6. At this stage we have a large 2d terrain map to the user's specifications. To enable map points we generate a grid of points with each map point lying at the center of a tile-space. Since we should know each tile's coordinates on the map, this is a simple exercise - but may have some trial-and-error to finish properly.
+
+7. Finally we generate mini-maps (similar to those existing) for display (one for each tile).
+
+Additional Comments:
+--------------------
+
+1. May be possible to use scaled down tiles to enable larger maps using less filesize - e.g for mini-maps
+2. May be possible to reduce by 5/6 the number of mini-maps by assigning all tiles in groups of 6, and only changing mini-maps for locations outside these tiles.
+3. An overall full map for user consumption can take the form of a constructed table of tiles - i.e allows us to display only those tiles explored, and simply not load those not-explored. Advantage here is that using a limited source number of tiles, we do not need to re-gen a full map evertime a user wants to look at the total map explored to date.
+
+

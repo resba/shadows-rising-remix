@@ -1,0 +1,165 @@
+/* "Deep Blue" Shadows Rising RPG Theme Stylesheet */
+
+body#default_body {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 8pt;
+	color: #FFFFFF;
+	font-weight: normal;
+	background-color: #0A2E48;
+	text-align: left;
+	margin: 0px;
+}
+
+
+div#pagetop_logo {
+	position: relative;
+	top: 0px;
+	width: 100%; 
+	height: 90px; 
+	background-color: #000000; 
+	text-align: center;
+}
+
+div#pagetop_menu {
+	position: relative; 
+	width: 100%;
+	height: 16px;
+	background-color: darkblue; 
+	text-align: center;
+	padding-top: 1px;
+	padding-bottom: 1px;
+}
+
+span.pagetop_menulinks {
+	background-color: green; 
+	text-align: center;
+	border: 1px dashed darkgreen;
+}
+
+table.invisible {
+	width: 100%;
+	padding: 0px;
+	text-align: center;
+	vertical-align: top;
+}
+
+td#page_leftpanel {
+	width: 175px;
+	text-align: center;
+	background-color: maroon;
+	vertical-align: top;
+	border-right: 1px dashed darkblue;
+}
+
+td#page_centerpanel {
+	text-align: left;
+	background-color: #0A2E48;
+	vertical-align: top;
+}
+
+td#page_rightpanel {
+	width: 175px;
+	text-align: center;
+	background-color: maroon;
+	vertical-align: top;
+	border-left: 1px dashed darkblue;
+}
+
+td.halfwidth {
+	width: 50%;
+	text-align: left;
+	vertical-align: top;
+	color: silver
+}
+td.halfwidth2 {
+	width: 50%;
+	text-align: left;
+	vertical-align: top;
+}
+
+/* Page Top Menu Link Styling */
+
+a:link.pagetop_menulinks {
+	text-decoration: none;
+	font-weight: normal;
+	color: maroon;
+}
+a:visited.pagetop_menulinks {
+	text-decoration: none;
+	font-weight: normal;
+	color: maroon;
+}
+a:hover.pagetop_menulinks {
+	text-decoration: underline;
+	font-weight: normal;
+	color: silver;
+}
+a:active.pagetop_menulinks {
+	text-decoration: none;
+	font-weight: normal;
+	color: red;
+}
+
+/* Body Default Link Styling */
+
+a:link {
+	text-decoration: none;
+	font-weight: normal;
+	color: blue;
+}
+a:visited {
+	text-decoration: none;
+	font-weight: normal;
+	color: blue;
+}
+a:hover {
+	text-decoration: underline;
+	font-weight: normal;
+	color: green;
+}
+a:active {
+	text-decoration: none;
+	font-weight: normal;
+	color: red;
+}
+
+img {
+	border: 0px;
+}
+
+th {
+	font-weight: bold; 
+	font-size: 10pt;
+	text-align: center;
+	color: grey;
+}
+
+/* To maintain a standard heading size under browsers, use these in place of the <h1> to <h4> tags */
+
+.h1 {
+	font-size: 32pt; 
+	font-weight: bold;
+}
+.h2 { 
+	font-size: 24pt; 
+	font-weight: bold;
+}
+.h3 { 
+	font-size: 19pt; 
+	font-weight: bold;
+}
+.h4 {
+	font-size: 16pt; 
+	font-weight: bold;
+}
+.h5 {
+	font-size: 12pt; 
+	font-weight: bold;
+}
+
+
+/* Styling of both ordered and unordered lists */
+
+ul {
+	list-style-type: circle; 
+}

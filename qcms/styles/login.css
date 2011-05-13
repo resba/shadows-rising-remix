@@ -1,0 +1,91 @@
+/* Control of font colour and size in bold text, b1 should be a font tag */
+
+b {color: #C0C0C0;}
+b.b1 {color: #FF3333;font-weight: normal;}
+b.b2 {color: #FFFFFF;}
+b.b3 {color: #00FF00;}
+b.cloak{color: #555555;}
+
+/* Hyperlink properties */
+
+A:link {text-decoration: none;font-weight: bold;color:#FF6666;}
+A:visited {text-decoration: none;font-weight: bold;color:#FF6666;}
+A:hover {text-decoration: underline;font-weight: bold;color:#FF3333;}
+	
+	SELECT
+	{
+	    font-family: Arial, Helvetica, sans-serif;
+		font-size: 9pt;
+		background : #a0a0a0;
+		
+	}
+	.CHECKBOX
+	{
+		height: 13px;
+		align: center;
+	}
+	/* other form elements */
+	.FORM
+	{
+	    font-family: Arial, Helvetica, sans-serif;
+		font-size: 9pt;
+		background : #a0a0a0;
+		
+	}
+	/* Submit button */
+	.SUBMIT
+	{
+	    font-family: Arial, Helvetica, sans-serif;
+		font-size: 9pt;
+		background : #a0a0a0;
+		Color : #000000;
+		font-weight : bold;
+	}
+	.slink {
+		color: #F0E68C;
+		text-decoration: none;
+		FONT-SIZE: 8pt
+	}
+
+	TEXTAREA {
+		background : #6F6F6F;
+	}
+
+	TABLE {font : Arial, Helvetica, sans-serif;text-decoration: none;FONT-SIZE: 8pt}
+	.rlink {color: Red;text-decoration: none;FONT-SIZE: 8pt}
+	.rlink:visited {color: Red;text-decoration: none;FONT-SIZE: 8pt}
+	.rlink:active {color: Red;text-decoration: none;FONT-SIZE: 8pt}
+	.rlink:hover {color: Silver;text-decoration: none;FONT-SIZE: 8pt}
+	.ylink {color: Yellow;text-decoration: none;FONT-SIZE: 8pt}
+	.ylink:visited {color: Yellow;text-decoration: none;FONT-SIZE: 8pt}
+	.ylink:active {color: Yellow;text-decoration: none;FONT-SIZE: 8pt}
+	.ylink:hover {color: Silver;text-decoration: none;FONT-SIZE: 8pt}
+	.glink {color: Lime;text-decoration: none;FONT-SIZE: 8pt}
+	.glink:visited {color: Lime;text-decoration: none;FONT-SIZE: 8pt}
+	.glink:active {color: Lime;text-decoration: none;FONT-SIZE: 8pt}
+	.glink:hover {color: #00FF00;text-decoration: none;FONT-SIZE: 8pt}
+	.slink:visited {color: #F0E68C;text-decoration: none;FONT-SIZE: 8pt}
+	.slink:active {color:#F0E68C;text-decoration: none;FONT-SIZE: 8pt}
+	.slink:hover {color: Red ;text-decoration: none;FONT-SIZE: 8pt}
+	.flink {color: #DAA520;text-decoration: none;FONT-SIZE: 8pt}
+	.flink:visited {color: #AAAAAA;text-decoration: none;FONT-SIZE: 8pt}
+	.flink:active {color:#DAA520;text-decoration: none;FONT-SIZE: 8pt}
+	.flink:hover {color: Red ;text-decoration: none;FONT-SIZE: 8pt}
+body {
+font-family: Arial, Helvetica, sans-serif;
+font-size: 10pt;
+background-color:#000000;
+#background-image: url(../images/starfield.gif);
+color:#FFFFFF;
+scrollbar-3d-light-color: #000000;
+scrollbar-arrow-color: #FF6666;
+scrollbar-dark-shadow-color: Gray;
+scrollbar-shadow-color: #A9A9A9;
+scrollbar-highlight-color: #000000;
+scrollbar-base-color: #F5F5DC;
+scrollbar-face-color: #4F4F4F;
+margin: 1px;
+}
+	HR {
+		color : #2E2E2E;
+	}

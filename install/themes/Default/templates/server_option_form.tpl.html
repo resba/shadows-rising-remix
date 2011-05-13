@@ -1,0 +1,137 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+
+<!--
+Title:			Shadows Rising RPG "Install Default" Theme 
+Designed by:	Maugrim The Reaper (http://www.quantum-star.com)
+Compliance:		XHTML 1.1
+Optimisation:	1024x768 Resolution // Mozilla Firefox 0.8
+-->
+
+<!--Using UTF-8 as <?xml?> declaration missing to avoid IE "quirks" mode rendering. Do not remove !DOCTYPE. Ensure document is fully validated before implementing.-->
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<title>Shadows Rising RPG Install Utility :: Base Server Options</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="language" content="en" />
+<link rel="stylesheet" href="themes/Default/style_default.css" type="text/css" />
+</head>
+
+<body id="default_body">
+
+<div id="pagetop_logo">
+	<img src="../core/themes/Deep_Blue/images/logo.gif" alt="{$code_base}"/>
+</div>
+
+<table cellspacing="0" class="invisible">
+<tr>
+<td id="page_leftpanel" style="text-align: left;">
+<!--This is the left side panel, for installation this is just a spacer-->
+
+
+
+
+<div>
+<br /><br /><br /><br />
+<ol>
+<li><a href="install.php">Base Configuration</a></li>
+<li style="font-weight: bold; color: lightgreen;">Base Server Setup</li>
+<li>Installation of Server Database Tables</li>
+</ol>
+</div>
+
+
+
+
+<!--This is the end of the left side panel-->
+</td>
+<td id="page_centerpanel">
+<!--This is the center panel where user actions, text, and menus will appear-->
+
+<p class="h4">{$app_name} Install Utility</p>
+
+<p>
+This section will install all the database tables required to allow the Shadows Rising RPG Game Engine to operate. As of version <b>0.0.4</b> this section will also install default tables to allow access to the default Shadows Rising Game which is in development. Over time, Game Installation will be transferred to a separate section.
+</p>
+<p>
+Please complete the options below. For those upgrading from prior versions, you may wish to keep your current list of registered players and users. To facilitate this you may select the &quot;Retain User Accounts?&quot; option below. The Administrator Password you enter is the password that will be set for the default &quot;Admin&quot; account.
+</p>
+<p style="text-weight: bold;">
+It is strongly suggested you backup your current database before proceeding!
+</p>
+
+<div>
+<form method="post" action="install_server.php" id="server_options">
+Retain User Accounts? <input type="checkbox" name="keep_users" value="0" />
+<br /><br />
+Enter an Administrator Password: <input type="password" name="p_admpass" value="" />
+<br /><br />
+<input type="hidden" name="install_step" value="2" />
+<input type="submit" name="submit_button" value="Submit!" />
+</form>
+</div>
+
+
+<div>
+<!-- Insert a little space and keep the footer low -->
+<br /><br /><br /><br /><br />
+<br /><br /><br /><br /><br />
+<br /><br /><br /><br /><br />
+<br /><br /><br /><br /><br />
+</div>
+
+<!--This is the end of the center panel-->
+</td>
+<td id="page_rightpanel">
+<!--This is the right side panel - another spacer-->
+
+
+{if $reglobals_warning == "true"}
+<p class="h5" style="color: red;">Warning!</p>
+<p style="color: red;">
+{$configwarning_reglobals}
+</p>
+{/if}
+
+{if $safemode_warning == "true"}
+<p class="h5" style="color: red;">Warning!</p>
+<p style="color: red;">
+{$configwarning_safemode}
+</p>
+{/if}
+
+{if $reglobals_warning != "true" && $safemode_warning != "true"}
+<p style="color: lightgreen;">
+No warnings noted.
+</p>
+{/if}
+
+
+<!--This is the end of the right side panel-->
+</td>
+</tr>
+<tr>
+<td colspan="3" id="page_footer">
+<!--This is the footer cell visible at the bottom of all pages-->
+
+	<p>
+		<br /><br /><br /><br /><br />
+		{$this_version} &copy; 2004 <a onclick="window.open(this.href,'_blank');return false;" href="../docs/copyright.html">Shadows Rising Project Developers</a>
+		<br />
+		Default Install Theme &copy; 2004 Maugrim The Reaper and <a onclick="window.open(this.href,'_blank');return false;" href="../docs/copyright.html">Shadows Rising Project Developers</a>
+		<br />
+		Original Install Code &copy; 2003, 2004 <a href="../docs/tki-copyright.html" onclick="window.open(this.href,'_blank');return false;">TKI Developers</a>
+		<br /><br /><br /><br /><br />
+	</p>
+	<div style="text-align: center;">
+		<img src="../core/images/standards/valid-xhtml11.png" alt="Valid XHTML 1.1!" /><img src="../core/images/standards/vcss.png" alt="Valid CSS!" />
+	</div>
+
+<!--This is the end of the footer cell-->
+</td>
+</tr> 
+</table>
+<!--This is the end of the "holding" table created per Step Three-->
+
+</body>
+</html>

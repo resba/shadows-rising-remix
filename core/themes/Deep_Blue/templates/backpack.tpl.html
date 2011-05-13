@@ -1,0 +1,144 @@
+{include file="location_top.tpl.html"}
+
+<p>
+Your character's backpack contains all items they are currently carrying, plus contains an overview of any equipped items not directly carried in the backpack. Eventually you'll be able to equip and unequip items from this page.
+</p>
+<br />
+
+<p class="h5">Equipped Items<br /></p>
+
+<table cellspacing="0" class="invisible">
+	<tr>
+		<th>Head<th>
+		{if $equipped_head_check == "true"}
+		<td>{$equipped_head.item_name}</td>
+		<td><a href="{$url_prefix}/core/item_equip.php?op=unequip&amp;position=head">Unequip &quot;{$equipped_head.item_name}&quot;</a>
+		{else}
+		<td>--empty--</td>
+		{/if}
+	</tr>
+	<tr>
+		<th>Waist<th>
+		{if $equipped_belt_check == "true"}
+		<td>{$equipped_belt.item_name}</td>
+		<td><a href="{$url_prefix}/core/item_equip.php?op=unequip&amp;position=belt">Unequip &quot;{$equipped_belt.item_name}&quot;</a>
+		{else}
+		<td>--empty--</td>
+		{/if}
+	</tr>
+	<tr>
+		<th>Left Ring Finger<th>
+		{if $equipped_ringl_check == "true"}
+		<td>{$equipped_ringl.item_name}</td>
+		<td><a href="{$url_prefix}/core/item_equip.php?op=unequip&amp;position=ringl">Unequip &quot;{$equipped_ringl.item_name}&quot;</a>
+		{else}
+		<td>--empty--</td>
+		{/if}
+	</tr>
+	<tr>
+		<th>Right Ring Finger<th>
+		{if $equipped_ringr_check == "true"}
+		<td>{$equipped_ringr.item_name}</td>
+		<td><a href="{$url_prefix}/core/item_equip.php?op=unequip&amp;position=ringr">Unequip &quot;{$equipped_ringr.item_name}&quot;</a>
+		{else}
+		<td>--empty--</td>
+		{/if}
+	</tr>
+	<tr>
+		<th>Cloak<th>
+		{if $equipped_cloak_check == "true"}
+		<td>{$equipped_cloak.item_name}</td>
+		<td><a href="{$url_prefix}/core/item_equip.php?op=unequip&amp;position=cloak">Unequip &quot;{$equipped_cloak.item_name}&quot;</a>
+		{else}
+		<td>--empty--</td>
+		{/if}
+	</tr>
+	<tr>
+		<th>Forearms<th>
+		{if $equipped_bracer_check == "true"}
+		<td>{$equipped_bracer.item_name}</td>
+		<td><a href="{$url_prefix}/core/item_equip.php?op=unequip&amp;position=bracer">Unequip &quot;{$equipped_bracer.item_name}&quot;</a>
+		{else}
+		<td>--empty--</td>
+		{/if}
+	</tr>
+	<tr>
+		<th>Torso<th>
+		{if $equipped_armour_check == "true"}
+		<td>{$equipped_armour.item_name}</td>
+		<td><a href="{$url_prefix}/core/item_equip.php?op=unequip&amp;position=armour">Unequip &quot;{$equipped_armour.item_name}&quot;</a>
+		{else}
+		<td>--empty--</td>
+		{/if}
+	</tr>
+	<tr>
+		<th>Left Hand<th>
+		{if $equipped_weaponl_check == "true"}
+			{if $equipped_weaponl_italics == "true"}
+				<td><em>{$equipped_weaponl.item_name}</em></td>
+			{else}
+				<td>{$equipped_weaponl.item_name}</td>
+				<td><a href="{$url_prefix}/core/item_equip.php?op=unequip&amp;position=weaponl">Unequip &quot;{$equipped_weaponl.item_name}&quot;</a>
+			{/if}
+		{else}
+		<td>--empty--</td>
+		{/if}
+	</tr>
+	<tr>
+		<th>Right Hand<th>
+		{if $equipped_weaponr_check == "true"}
+		<td>{$equipped_weaponr.item_name}</td>
+		<td><a href="{$url_prefix}/core/item_equip.php?op=unequip&amp;position=weaponr">Unequip &quot;{$equipped_weaponr.item_name}&quot;</a>
+		{else}
+		<td>--empty--</td>
+		{/if}
+	</tr>
+</table>
+
+<div>
+<br /><br />
+</div>
+
+<p class="h5">Backpack Items<br /></p>
+
+<table cellspacing="0" class="invisible">
+	<tr>
+		<th>Type</th>
+		<th>Name</th>
+		<th>Level</th>
+		<th>Weight</th>
+		<th>Handling</th>
+		<th>Cost</th>
+		<th>Position</th>
+	</tr>
+
+{section name=i loop=$backpack}
+
+	<tr>
+		<td>{$backpack[i].type}</td>
+		<td>{$backpack[i].item_name_eq}</td>
+		<td>{$backpack[i].level}</td>
+		<td>{$backpack[i].weight}</td>
+		<td>{$backpack[i].handle}</td>
+		<td>{$backpack[i].cost}</td>
+		<td>{$backpack[i].position}</td>
+		<td>
+			{if $backpack[i].equipped == 1}
+			<a href="{$url_prefix}/core/item_equip.php?op=unequip&amp;position={$backpack[i].position}">Unequip</a>
+			{else}
+			<a href="{$url_prefix}/core/item_equip.php?op=equip&amp;type={$backpack[i].type}&amp;pack_id={$backpack[i].pack_id}">Equip</a>
+			{/if}
+		</td>
+	</tr>
+
+{/section}
+
+	<tr>
+		<td colspan="5" style="text-align: left;">
+			<p>Total Weight is: {$backpack_weight}</p>
+		</td>
+	<tr>
+
+</table>
+
+{include file="location_bottom.tpl.html"}

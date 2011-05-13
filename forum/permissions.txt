@@ -1,0 +1,47 @@
+Order of application of permissions:
+	1. Super Globals
+	2. Category Permissions
+	3. Forum Permissions
+	4. Group Permissions
+	5. User Permissions
+
+If `forum_id` is set to -1, that permission propagates throughout the forum system for that level.
+
+Yes overrides No, or vice versa.
+
+-1 	= NO
+0 	= Not Set
+1 	= YES
+
+For example: In forum permissions, 1 is set to -1, but in user permissions 1 is set to 1. User
+permissions take precedence over forum permissions, so they get 1 = 1.
+
+
+In places where `ingame` is set, -1 means only in qCMS. 0 Means superglobal. #'s mean what game 
+they are in.
+
+Not set defaults to no if not set by one of the other levels
+ 
+Global permissions
+Option ID	Option Name/Effect
+=========	===========
+   1		Can View Forum	
+   2		Can Read Forum
+   3		Can Post Topics In Forum
+   4		Can Reply to Topics In Forum
+   5		Can Delete Own Posts
+   6		Can Delete Other Posts
+   7		Can Modify Own Posts
+   8		Can Modify Other Posts
+
+Category Specific
+Option ID	Option Name/Effect
+=========	==================
+
+Forum Specific
+Option ID	Option Name/Effect
+=========	===================
+
+User Specific
+Option ID	Option Name/Effect
+=========	==================

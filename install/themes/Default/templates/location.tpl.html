@@ -1,0 +1,342 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+
+<!--
+Title:			Shadows Rising RPG "Deep Blue" Theme (experimental) 
+Designed by:	Maugrim The Reaper (http://www.quantum-star.com)
+Compliance:		XHTML 1.1
+Optimisation:	1024x768 Resolution // Mozilla Firefox 0.8
+-->
+
+<!--Using UTF-8 as <?xml?> declaration missing to avoid IE "quirks" mode rendering. Do not remove !DOCTYPE. Ensure document is fully validated before implementing.-->
+
+<!--Step One
+
+Create the heading. This contains all headers, meta tags and <html> attributes required by XHTML 1.1. Without ALL of these the page may not be recognised as XHTML by the browser, and so get rendered in "quirks" mode. "Quirks" mode may fall back on anything down to HTML 4, leading to varied display difference between IE and other browsers.
+
+See the style_deepblue.css stylesheet to where colours/borders/widths etc. are decided. Can edit this to change the properties of all elements in this page.
+
+Curly brackets indicate a variable to be replaced by the PHP script called using Smarty templating.
+
+-->
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<title>{$game_name} :: {$location.loc_name}</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="language" content="en" />
+<link rel="stylesheet" href="{$url_prefix}/core/themes/Deep_Blue/style_deepblue.css" type="text/css" />
+</head>
+<body id="default_body">
+
+<!--Step Two
+
+Need to create a standard menu bar at the top of the page.
+Just a simple color strip with equally spaced menu links - link here are examples
+Create an inline span for links floating left - i.e. fed from left to right in template version
+->Convert this to a block in the Smarty template version!
+
+-->
+
+<div id="pagetop_logo">
+	<img src="{$url_prefix}/core/themes/Deep_Blue/images/logo.gif" alt="{$code_base}"/>
+</div>
+
+<div id="pagetop_menu">
+	<span style="font-weight: bold;">Menu:&nbsp;</span>
+
+	<span class="pagetop_menulinks">
+		&nbsp;<a href="{$url_prefix}/core/location.php" class="pagetop_menulinks">Location</a>&nbsp;
+	</span>
+	<span class="pagetop_menulinks">
+		&nbsp;<a href="{$url_prefix}/core/backpack.php?op=show" class="pagetop_menulinks">Backpack</a>&nbsp;
+	</span>
+	<span class="pagetop_menulinks">
+		&nbsp;<a href="{$url_prefix}/core/logout.php" class="pagetop_menulinks">Logout</a>&nbsp;
+	</span>
+</div>
+
+<!--Step Three
+
+Create the page structure. For this simple template I have created a single "holding" table. This consists of 4 cells. 3 cells make up the right panel, center panel, and left panel. A fourth cell beneath the others, with a colspan of 3, is the width of the full page and is used for footer information (copyright, validation link, etc.)
+
+In this form:
+
+<table>
+	<tr>
+		<td>RIGHT</td>
+		<td>CENTER</td>
+		<td>LEFT</td>
+	</tr>
+	<tr>
+		<td colspan="3">FOOTER</td>
+	</tr>
+</table
+
+-->
+
+
+<table cellspacing="0" class="invisible">
+<tr>
+<td id="page_leftpanel">
+<!--This is the left side panel, this holding table cell will contain tables for user information-->
+
+		<!--Display Control Panel Access for Permitted Users-->
+		{if $userlevel >= 2}
+		<table cellspacing="0" class="invisible">
+		<tr>
+			<td>
+				<a onclick="window.open(this.href,'_blank');return false;" href="{$url_prefix}/core/cpanel/index.php">Control Panel</a>
+			</td>
+		</tr>
+		</table>
+		<br />
+		{/if}
+
+		<!--A sample UserInfo Table-->
+		<table cellspacing="0" class="invisible">
+			<tr>
+				<th colspan="2">{$character.name}</th>
+			</tr>
+			<tr>
+				<td class="halfwidth">Race:</td>
+				<td class="halfwidth2">{$character.race_name} ({$character.sex})</td>
+			</tr>
+			<tr>
+				<td class="halfwidth">Class:</td>
+				<td class="halfwidth2">{$character.class_name}</td>
+			</tr>
+			<tr>
+				<td class="halfwidth">Rank:</td>
+				<td class="halfwidth2">{$character.rank_name}</td>
+			</tr>
+			<tr>
+				<td class="halfwidth">Level:</td>
+				<td class="halfwidth2">{$character.level}</td>
+			</tr>
+			<tr>
+				<td class="halfwidth">Hit Points:</td>
+				<td class="halfwidth2">{$character.hp}</td>
+			</tr>
+			<tr>
+				<td class="halfwidth">Exp:</td>
+				<td class="halfwidth2">{$character.exp}</td>
+			</tr>
+			<tr>
+				<td class="halfwidth">Gold:</td>
+				<td class="halfwidth2">{$character.gold}</td>
+			</tr>
+		</table>
+
+		<br /><br />
+
+		<!--A sample Attributes Table-->
+		<table cellspacing="0" class="invisible">
+			<tr>
+				<th colspan="3">Attributes</th>
+			</tr>
+			<tr>
+				<td class="thirdwidth">Strength:</td>
+				<td class="thirdwidth2">{$character.str}</td>
+				<td class="thirdwidth3">{$ability_modifiers.str}</td>
+			</tr>
+			<tr>
+				<td class="thirdwidth">Dexterity:</td>
+				<td class="thirdwidth2">{$character.dex}</td>
+				<td class="thirdwidth3">{$ability_modifiers.dex}</td>
+			</tr>
+			<tr>
+				<td class="thirdwidth">Constitution:</td>
+				<td class="thirdwidth2">{$character.con}</td>
+				<td class="thirdwidth3">{$ability_modifiers.con}</td>
+			</tr>
+			<tr>
+				<td class="thirdwidth">Intelligence:</td>
+				<td class="thirdwidth2">{$character.intel}</td>
+				<td class="thirdwidth3">{$ability_modifiers.intel}</td>
+			</tr>
+			<tr>
+				<td class="thirdwidth">Wisdom:</td>
+				<td class="thirdwidth2">{$character.wis}</td>
+				<td class="thirdwidth3">{$ability_modifiers.wis}</td>
+			</tr>
+			<tr>
+				<td class="thirdwidth">Charisma:</td>
+				<td class="thirdwidth2">{$character.cha}</td>
+				<td class="thirdwidth3">{$ability_modifiers.cha}</td>
+			</tr>
+		</table>
+
+		<!--A list of available shops (if any)-->
+		{if $shop_check == "true"}
+		<br /><br />
+		<table cellspacing="0" class="invisible">
+			<tr>
+				<th colspan="1">Local Merchants</th>
+			</tr>
+			{section name=i loop=$shops}
+			<tr>
+				<td><a href="{$url_prefix}/core/merchant.php?id={$shops[i].shop_id}">{$shops[i].name}</a></td>
+			</tr>
+			{/section}
+		</table>
+		{/if}
+
+<!--This is the end of the left side panel-->
+</td>
+<td id="page_centerpanel">
+<!--This is the center panel where user actions, text, and menus will appear-->
+
+		<!--The all new singing and dancing navigation panel for the new map formatted as a grid-->
+		<div style="text-align: center;">
+			<span style="font-weight: bold;">Travel:&nbsp;</span><br />
+			<table cellspacing="0" class="invisible">
+				<tr>
+					<td>
+					<span class="pagetop_menulinks">
+						&nbsp;<a href="{$url_prefix}/core/location.php?loc={$map_point_north.loc_id}" class="pagetop_menulinks">{$map_point_north.loc_pos}</a>&nbsp;
+					</span>
+					</td>
+				<tr>
+				<tr>
+					<td>
+					<span class="pagetop_menulinks">
+						&nbsp;<a href="{$url_prefix}/core/location.php?loc={$map_point_west.loc_id}" class="pagetop_menulinks">{$map_point_west.loc_pos}</a>&nbsp;
+					</span>
+					<span class="pagetop_menulinks">
+						&nbsp;<a href="{$url_prefix}/core/location.php?loc={$map_point_east.loc_id}" class="pagetop_menulinks">{$map_point_east.loc_pos}</a>&nbsp;
+					</span>
+					</td>
+				</tr>
+				<tr>
+					<td>
+					<span class="pagetop_menulinks">
+						&nbsp;<a href="{$url_prefix}/core/location.php?loc={$map_point_south.loc_id}" class="pagetop_menulinks">{$map_point_south.loc_pos}</a>&nbsp;
+					</span>
+					</td>
+				</tr>
+			</table>
+		</div>
+
+		<!--Sample text for the center panel-->
+		<div style="text-align: center;">
+		This is the Location ({$location_name}) page. You have been redirected to this "CORE" file, from a "Q-CMS" Sitelink. "CORE" files are those forming part of the game engine in the /core/ directory.<br /><br />
+
+		But we have no content yet!<br />
+		I knew we forgot something...:)<br /><br />
+		For your information, you are logged in with the following rank(s):<br />
+		<ul style="text-align: left;">
+			
+			<!--This is the Smarty repeatable "section" for ranks-->
+			{section name=i loop=$user_rank}
+			<li>{$user_rank[i]}</li>
+			{/section}
+
+		</ul>
+
+		<b>{$code_base}</b> is purely a demonstration of the following areas:
+		<ul style="text-align: left;">
+
+			<li>Installation</li>
+			<li>Configuration</li>
+			<li>Auto-Setup of Database Structure</li>
+			<li>Signup Function</li>
+			<li>Sending of Email Authentication</li>
+			<li>Login &amp; Authentication</li>
+			<li>Display of a location pages</li>
+			<li>Logging Out</li>
+			<li>Generation of Locations</li>
+			<li>Creation of Full and Local Maps</li>
+			<li>Saving of Location data to database</li>
+			<li>Creating a Character</li>
+			<li>Using Smarty Template Engine</li>
+			<li>Displaying Merchants</li>
+			<li>Purchasing Weapons</li>
+			<li>Displaying a Character Backpack</li>
+			<li>Movement Between Locations</li>
+			<li>Equipping Items and Weapons</li>
+			<li>Assigning 'modifiers' based on equipped items</li>
+			<li>Very limited Control Panel</li>
+
+		</ul>
+		
+		
+		<br />You can test drive the Build World function. This will generate a set of 50 locations, including Overall and Local Maps. The colouring is not perfect but suffices for the demonstration (see the example on the right side game panel). Further tweaking to colours, font, etc will produce a better effect. All maps, except the base image, are fully transparent - this will allow a possible underlying image, e.g. the image of a blank scroll/parchment, to be used as a backdrop to the actual map - might be a good effect - the backdrop of course would be different depending on the type of RPG being played. This link will open a new window. This function is not limited by permission level as yet.
+			<br /><br /><a  onclick="window.open(this.href,'_blank');return false;" href="build_world.php?build_universe=1&amp;process=1">Build World</a><br /><br />
+		
+		
+		<a href="{$url_prefix}/qcms/index.php">Return to CMS HomePage</a><br /><br />
+		<a href="logout.php">Logout of {$game_name}</a>
+		</div>
+
+<!--This is the end of the center panel-->
+</td>
+<td id="page_rightpanel">
+<!--This is the right side panel for holding maps and location overview-->
+
+		<!--A location map graphic for the page - generated by build_world.php, stored in /core/maps/-->
+		<table cellspacing="0" class="invisible">
+			<tr>
+				<th>{$location.loc_name}</th>
+			</tr>
+			<tr>
+				<!--I use onclick here with javascript since target="_blank" no longer in XHTML1.1 standard-->
+				<td><a onclick="window.open(this.href,'_blank');return false;" href="{$url_prefix}/core/maps/srbase_game/ref_full.png"><img src="{$url_prefix}/core/maps/srbase_game/sm{$location.loc_id}.png" alt="Location Map" style="border: 1px dashed green;"/></a></td>
+			</tr>
+		</table>
+
+		<br />
+
+		<!--Sample location details table-->
+		<table cellspacing="0" class="invisible">
+			<tr>
+				<th colspan="2">{$location_name}</th>
+			</tr>
+			<tr>
+				<td class="halfwidth">Size:</td>
+				<td class="halfwidth2">Citadel</td>
+			</tr>
+			<tr>
+				<td class="halfwidth">Pop:</td>
+				<td class="halfwidth2">55,674 Souls</td>
+			</tr>
+			<tr>
+				<td class="halfwidth">Race:</td>
+				<td class="halfwidth2">Human/Elf</td>
+			</tr>
+			<tr>
+				<td class="halfwidth">Info:</td>
+				<td class="halfwidth2">Capital City of Human Territory</td>
+			</tr>
+			<tr>
+				<td class="halfwidth">Contacts:</td>
+				<td class="halfwidth2">None</td>
+			</tr>
+		</table>
+
+<!--This is the end of the right side panel-->
+</td>
+</tr>
+<tr>
+<td colspan="3" id="page_footer">
+<!--This is the footer cell visible at the bottom of all pages-->
+
+	<p>
+		<br /><br /><br /><br /><br />
+		{$code_base} &copy; 2004 <a onclick="window.open(this.href,'_blank');return false;" href="{$url_prefix}/docs/copyright.html">Shadows Rising Project Developers</a>
+		<br />
+		Deep Blue Theme &copy; 2004 Maugrim The Reaper and <a onclick="window.open(this.href,'_blank');return false;" href="{$url_prefix}/docs/copyright.html">Shadows Rising Project Developers</a>
+		<br /><br /><br /><br /><br />
+	</p>
+	<div style="text-align: center;">
+		<img src="{$url_prefix}/core/images/standards/valid-xhtml11.png" alt="Valid XHTML 1.1!" /><img src="{$url_prefix}/core/images/standards/vcss.png" alt="Valid CSS!" />
+	</div>
+	
+
+<!--This is the end of the footer cell-->
+</td>
+</tr> 
+</table>
+<!--This is the end of the "holding" table created per Step Three-->
+
+</body>
+</html>

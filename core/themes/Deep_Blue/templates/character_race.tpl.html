@@ -1,0 +1,43 @@
+{include file="location_top.tpl.html"}
+
+<p>
+In order to play Shadows Rising you must first create your character. There are a number of steps in this process. Please consider each carefully before final submission of your character as you will be unable to change these details once the game has started unless you retire and then restart the game from the beginning.
+<p>
+<br />
+<div>
+
+<form method="post" action="{$url_prefix}/core/character_create.php" id="race_choice">
+<input type="hidden" name="op" value="class" />
+
+To which race does your character belong?<br /><br />
+
+{section name=i loop=$char_races}
+	
+	<table cellpadding="0" cellspacing="0" class="invisible" style="border: 1px solid #c0c0c0; width: 500px;">
+		<tr>
+			<td style="width: 20%; vertical-align: middle; text-align: center;">
+				{$char_races[i].name}<br /><input type="radio" name="char_race" value="{$char_races[i].race_id}" />
+			</td>
+			<td style="width: 60%; vertical-align: top; text-align: center;">
+				{$char_races[i].description}
+			</td>
+			<td style="width: 20%; vertical-align: middle; text-align: center;">
+				Str: {$char_races[i].modifiers.str}<br />
+				Dex: {$char_races[i].modifiers.dex}<br />
+				Con: {$char_races[i].modifiers.con}<br />
+				Int: {$char_races[i].modifiers.intel}<br />
+				Wis: {$char_races[i].modifiers.wis}<br />
+				Cha: {$char_races[i].modifiers.cha}
+			</td>
+		</tr>
+	</table>
+	<br />
+
+{/section}
+
+<br />
+<input type="reset" name="reset" value="Reset" /><input type="submit" name="submit" value="Submit" />
+</form>
+</div>
+
+{include file="location_bottom.tpl.html"}
