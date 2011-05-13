@@ -17,9 +17,9 @@ class Q_Smarty extends Smarty {
 	{
 		$this->Smarty();
 		$this->template_dir = $gameroot . "qcms/themes/$theme/templates/";
-		$this->compile_dir = $gameroot . "qcms/themes/$theme/templates_c/";
-		$this->config_dir = $gameroot . "qcms/themes/$theme/configs/";
-		$this->cache_dir = $gameroot . "qcms/themes/$theme/cache/";
+		$this->compile_dir = $gameroot . "qlib/smarty_dir/templates_c/";
+		$this->config_dir = $gameroot . "qlib/smarty_dir/configs/";
+		$this->cache_dir = $gameroot . "qlib/smarty_dir/cache/";
 		$this->caching = false;
 		$this->assign('app_name','Shadows Rising RPG Game Engine');
 	}

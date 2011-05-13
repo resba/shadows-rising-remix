@@ -1,11 +1,11 @@
-<!--Start: Navigation Menu Block-->
-
-{foreach name=i item=navsection from=$navlinks.left}
-<b class="th">~~ {$navsection.name} ~~</b><br />
-{foreach name=j item=details from=$navsection.details}
-<a href="{$details.url}" class="buttonstyle">{$details.title}</a><br>
-{/foreach}
-<br />
-{/foreach}
-
+<!--Start: Navigation Menu Block-->
+
+{foreach name=i item=navsection from=$navlinks.left}
+<b class="th">~~ {$navsection.name} ~~</b><br />
+{foreach name=j item=details from=$navsection.details}
+<a href="{$details.url}" class="buttonstyle">{$details.title}</a><br>
+{/foreach}
+<br />
+{/foreach}
+
 <!--End: Navigation Menu Block-->

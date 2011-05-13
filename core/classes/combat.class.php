@@ -13,7 +13,7 @@ Last Date Edited:	n/a
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 Copyright (c) 2004 by:
 ~~~~~~~~~~~~~~~~~~~~~~~~~
-Pádraic Brady (Maugrim)
+PÃ¡draic Brady (Maugrim)
 Shadows Rising Project
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 (All rights reserved)
@@ -240,7 +240,7 @@ class Creature_Combat extends Combat {
 			$multiplier = 1;
 			if($critical == 1) 
 			{
-				$multiplier = $curr_weapon['critical_multiplier'];
+				 $multiplier = $curr_weapon['critical_multiplier'];
 			}
 			// REM: weapons can either be double, or single. Doubles are held in both hands, and allow two
 			// attacks (with the second evoking a 0.5 penalty to STR). Singles are used normally, unless a 
@@ -282,19 +282,19 @@ class Creature_Combat extends Combat {
 		// now we have completed the attack, we'll send back some relevant stats
 		$stats = array(
 			"damage"=>"$damage",
-			"critical"=>"$critical"
+			"critical"=>"0"
 		);
 		return $stats;
 	}
 
 
 	function Damage_Character($character, $creature) {
-		global $roll, $gameinstance;
 		// we're skipping a little here and making all creature attacks give 1 damage
 		// we're also not harming the player :) - essentially they are invulnerable for now
 
-		//dbn(__FILE__,__LINE__,"update ${gameinstance}_characters set hp = hp - 1 where login_id = '$character[login_id]'");
-		// now we have completed the attack, we'll send back some relevant stats
+		// db(__FILE__,__LINE__,"select hp from ${gameinstance}_characters where login_id = '$character[login_id]'");
+		 // $statichealth = dbr1();
+		// now we have completed the attack, we'll send back some relevant stat
 		$stats = array(
 			"damage"=>"1",
 			"critical"=>"0"

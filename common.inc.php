@@ -1,19 +1,27 @@
 <?php
 /*
 // 
-File:			common.inc.php
-Objective:		This file holds functions and include calls essential to all php script for Shadows Rising
-Version:		SR Alpha
-Author:			Maugrim The Reaper
-Date Committed:	15 May 2004		
-Date Modified:	n/a
+File:				common.inc.php
+Objective:			This file holds functions and include calls essential to all php script for Shadows Rising
+Version:			SR Alpha
+Author:				Maugrim The Reaper
+Date Committed:		15 May 2004		
+Last Date Edited:	20 December 2004 (maugrim)
 
-Shadows Rising is an Open Source Project released under GNU License.
-Copyright (c) 2004 by Pádraic Brady
+~~~~~~~~~~~~~~~~~~~~~~~~~
+Copyright (c) 2004 by:
+~~~~~~~~~~~~~~~~~~~~~~~~~
+Pádraic Brady (Maugrim)
+Programmermatt
+Shadows Rising Project
+~~~~~~~~~~~~~~~~~~~~~~~~~
+(All rights reserved)
+~~~~~~~~~~~~~~~~~~~~~~~~~
 
 This program is free software. You can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
-the Free Software Foundation.
+the FSF; either version 1 of the License, or (at your option) any later version.  
+
 //
 */
 
@@ -29,7 +37,10 @@ require_once("qlib/config/config.inc.php");
 require_once("qlib/auth.class.php");
 // Q-LIB Database Functions with AdoDB
 require_once("qlib/db_funcs.inc.php");
-// Q-LIB Permission System NOTE:Session Start moved here.
+// Q-LIB Permission System 
+/*
+NOTE:Session Start moved here.                                                    <-session start movement
+*/
 require_once("qlib/permissions.php");
 
 
@@ -79,11 +90,21 @@ $db = db_connect($CONFIG['database_host'], $CONFIG['database_user'], $CONFIG['da
 //initialize the perm object
 $perm = new Q_PERM();
 
-/*
 $perm->forum_destroy(true);
-echo "<br>Permission System Debug: <br> ";
-print_array($perm->forum_get(1));
+
+// debug message disabeld for 0.0.5b release
+
+//print_array($perm->forum_get(1));
+
+
+
+
+
+
+/*
+DEV: move to within the actual connection function in db_funcs.inc.php - maybe check if the resulting resource $db is valid? Reminds me to implement the alternate LIMIT function for SR. Using LIMIT explicitly in our sql queries may not always be valid on all databases. ADODB provides a fully compatible alternative.
 */
+
 //lets check and see if the database connection succeded
 //if anyone knows a better way to do this, please feel free to implement it
 if( dbc(__FILE__,__LINE__,"SELECT * FROM {$db_tag}_users_accounts LIMIT 1") ){

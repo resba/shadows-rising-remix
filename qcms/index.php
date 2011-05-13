@@ -40,6 +40,9 @@ require_once("cms.inc.php");
 // how simple does it get? :) - see the include files for the underlying engine
 // since the page layout is constant, we can use generic page starts/ends, and column separators
 
+/*
+$OUTPUT is made equal to "" (i.e. empty string) at the bottom of cms.inc.php file
+*/
 
 $OUTPUT .= $qcms_t->fetch("generic/generic_top.tpl.html");
 

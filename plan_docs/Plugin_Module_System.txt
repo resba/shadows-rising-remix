@@ -1,53 +1,53 @@
-Planning Outline - SR 0.0.6+
-
-Plugin Module System
-=======================
-
-Definitions
---------------
-
-Plugin Modules: Generic, or Game Module specific plugins designed to add additional functionality, features, or events rather than actual game content stored on the Database. It is important to note the distinction between Game Events and Game Content. Content includes text, items, locations, characters, etc. Events include for example (since we have none yet!) weather influences, random events, certain non standard facilities at locations, etc.
-
-Basically if it can't be stored completely on the database, requires the execution of PHP code, and is not already covered by the Game Engine - it should be added as a plugin.
-
-Plugins extend the functionality of the Game Engine, but may be Game Module specific.
-
-Dependencies
----------------
-
-By their very nature plugins have few dependencies, the idea is that all they require to function is a working Game Engine and a Game Module to work within.
-
-Structure?
--------------
-
-Plugins are the second level for user customisation. The primary aim is to enable users extend the possibilities of the game engine but without requiring changes to the core Game Engine. Changes to CORE are a final last resort, since Developers will likely ignore any custom changes by users unless truly beneficial. The core thinking is that the Game Engine should be a standardised concrete work with a touch of minimalism - i.e. if it's not going to be used by every game, why add it to the base engine? - with changes only made by the developers. If users wish to add something extra - they can create a plugin for it and submit this to the Developers for review, or use an already available plugin
-
-PHP Structure
-----------------
-
-Creating a system from scratch would be a real exercise in planning and patience. Being both time pressed and practical I will instead port an already complete version from another source. The source in question is Legend of the Green Dragon which recently implemented a complete plugin system similar to my intentions for SR. LOGD is governed by a Creative Commons license which will be added to the License Notices for the game. Any customised changes will remain under Creative Commons as a result. I'll be contacting JT out of courtesy to check on our obligations under the license.
-
-Yep, another license - we seem to be gathering quite a collection :).
-
-The LOGD system is both PHP definition and database driven. It's fairly simple to implement, however expect some experimentation to ensure it is made suitable for SR.
-
-Potential Plugins
---------------------
-
-Thinks of this as a sort of example list - nothing is definite, and plugins are likely to remain of no huge priority for a while.
-
-1. Weather and effects, e.g. if the weather across a range of locations is rainy, bows will be less effective weapons, combat conditions may be slightly more treacherous, probability of spotting certain special events will be reduced.
-
-2. Additional Facilities. The Game Engine will provide the basic merchant structure for a range of merchant types, however plugins may extend the range of facilities to other unique merchant types - e.g. street vendors, fences, drug dealers, etc.
-
-3. Travel in Style - plugin to create point to point instantaneous travel...for a fee of course. e.g. transportation portals, carriage network, port to port shipping...
-
-4. Special Events - probability based events such as special encounters with NPCs, random events,...
-
-5. Non Standard Locations: adding extra location types such as ancient monuments, burial sites, areas of a particularly evil/good nature.
-
-
-Final word?
---------------
-
+Planning Outline - SR 0.0.6+
+
+Plugin Module System
+=======================
+
+Definitions
+--------------
+
+Plugin Modules: Generic, or Game Module specific plugins designed to add additional functionality, features, or events rather than actual game content stored on the Database. It is important to note the distinction between Game Events and Game Content. Content includes text, items, locations, characters, etc. Events include for example (since we have none yet!) weather influences, random events, certain non standard facilities at locations, etc.
+
+Basically if it can't be stored completely on the database, requires the execution of PHP code, and is not already covered by the Game Engine - it should be added as a plugin.
+
+Plugins extend the functionality of the Game Engine, but may be Game Module specific.
+
+Dependencies
+---------------
+
+By their very nature plugins have few dependencies, the idea is that all they require to function is a working Game Engine and a Game Module to work within.
+
+Structure?
+-------------
+
+Plugins are the second level for user customisation. The primary aim is to enable users extend the possibilities of the game engine but without requiring changes to the core Game Engine. Changes to CORE are a final last resort, since Developers will likely ignore any custom changes by users unless truly beneficial. The core thinking is that the Game Engine should be a standardised concrete work with a touch of minimalism - i.e. if it's not going to be used by every game, why add it to the base engine? - with changes only made by the developers. If users wish to add something extra - they can create a plugin for it and submit this to the Developers for review, or use an already available plugin
+
+PHP Structure
+----------------
+
+Creating a system from scratch would be a real exercise in planning and patience. Being both time pressed and practical I will instead port an already complete version from another source. The source in question is Legend of the Green Dragon which recently implemented a complete plugin system similar to my intentions for SR. LOGD is governed by a Creative Commons license which will be added to the License Notices for the game. Any customised changes will remain under Creative Commons as a result. I'll be contacting JT out of courtesy to check on our obligations under the license.
+
+Yep, another license - we seem to be gathering quite a collection :).
+
+The LOGD system is both PHP definition and database driven. It's fairly simple to implement, however expect some experimentation to ensure it is made suitable for SR.
+
+Potential Plugins
+--------------------
+
+Thinks of this as a sort of example list - nothing is definite, and plugins are likely to remain of no huge priority for a while.
+
+1. Weather and effects, e.g. if the weather across a range of locations is rainy, bows will be less effective weapons, combat conditions may be slightly more treacherous, probability of spotting certain special events will be reduced.
+
+2. Additional Facilities. The Game Engine will provide the basic merchant structure for a range of merchant types, however plugins may extend the range of facilities to other unique merchant types - e.g. street vendors, fences, drug dealers, etc.
+
+3. Travel in Style - plugin to create point to point instantaneous travel...for a fee of course. e.g. transportation portals, carriage network, port to port shipping...
+
+4. Special Events - probability based events such as special encounters with NPCs, random events,...
+
+5. Non Standard Locations: adding extra location types such as ancient monuments, burial sites, areas of a particularly evil/good nature.
+
+
+Final word?
+--------------
+
 If plugins work out as expected, these extension will considerably broaden the depth of possibilities for Game Modules. Users in creating their custom games will also have the ability to add in extra functions, events, places, NPCs, facilities, etc. that are too broad for the Game Engine to cover, or not restricted enough to be added to the database content.

@@ -17,6 +17,8 @@ the Free Software Foundation.
 //
 */
 
+// need to remove any QS specific sections as they're no longer required
+
 /*
 
 This file contains three Classes:
@@ -170,7 +172,7 @@ class Q_Authenticate
 			$db_name = $_POST['game_db'];
 		}
 		if($_SESSION['login_id'] == 1 && !isset($_POST['nd_ad_log'])) //admin login method.
-		{ 
+		{ //DEV: defunct - permissions are active since Nov 04 or earlier
 			//session data
 			$_SESSION['db_name'] = $db_name;
 

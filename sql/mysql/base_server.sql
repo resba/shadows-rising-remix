@@ -191,62 +191,14 @@ CREATE TABLE srbase_challenge_record (
 # ----------------------------------------------------------
 
 #
-# Table structure for table `srbase_cms_perm_users`
+# Table structure for table `srbase_permissions`
 #
 
-DROP TABLE IF EXISTS `srbase_cms_perm_users`;
-CREATE TABLE `srbase_cms_perm_users` (
+DROP TABLE IF EXISTS `srbase_permissions`;
+CREATE TABLE `srbase_permissions` (
   `user_id` mediumint(8) unsigned NOT NULL default 0,
   `perm_option` varchar(15) NOT NULL default '',
   `perm_setting` tinyint(2) NOT NULL default 0,
   KEY `user_id` (`user_id`),
   KEY `auth_option_id` (`perm_option`)
 ) TYPE=MyISAM; 
-
-# ----------------------------------------------------------
-
-#
-# Table structure for table `srbase_cms_perm_users`
-#
-
-DROP TABLE IF EXISTS `srbase_cms_perm_groups`;
-CREATE TABLE `srbase_cms_perm_groups` (
-  `group_id` mediumint(8) unsigned NOT NULL default 0,
-  `perm_option` varchar(15) NOT NULL default '',
-  `perm_setting` tinyint(2) NOT NULL default 0,
-  KEY `user_id` (`group_id`),
-  KEY `auth_option_id` (`perm_option`)
-) TYPE=MyISAM; 
-
-
-
-#
-# Table structure for table `srbase_groups`
-#
-
-DROP TABLE IF EXISTS `srbase_groups`;
-CREATE TABLE `srbase_groups` (
-  `group_id` int(11) unsigned NOT NULL auto_increment,
-  `group_name` varchar(25) NOT NULL default '',
-  `group_desc` varchar(255) NOT NULL default '',
-  `ingame` tinyint(3) NOT NULL default -1,
-  PRIMARY KEY  (`group_id`)
-) TYPE=MyISAM AUTO_INCREMENT=2;
-
-INSERT INTO `srbase_groups` VALUES (1, 'Users', 'Default user group for new users. It is a superglobal group', -1);
-
-#
-# Table structure for table `srbase_forum_groups_users`
-#
-
-DROP TABLE IF EXISTS `srbase_group_users`;
-CREATE TABLE `srbase_group_users` (
-  `group_id` int(11) unsigned NOT NULL ,
-  `user_id` int(11) unsigned NOT NULL,
-  `group_leader` tinyint(1) unsigned NOT NULL default 0,
-  KEY `group_id` (`group_id`),
-  KEY `user_id` (`user_id`),
-  KEY `group_leader` (`group_leader`)
-) TYPE=MyISAM AUTO_INCREMENT=1;
-
-INSERT INTO `srbase_group_users` VALUES (1, 1, 0);

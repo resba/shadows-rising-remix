@@ -1,0 +1,24 @@
+[12-May-2011 20:19:14] PHP Fatal error:  Call to undefined method Merchant::Purchase_Drug() in /home/resbahco/public_html/lab/rpg/core/merchant.php on line 89
+[12-May-2011 21:49:35] PHP Fatal error:  Call to undefined function  db1() in /home/resbahco/public_html/lab/rpg/core/classes/combat.class.php on line 296
+[12-May-2011 21:49:35] PHP Fatal error:  Call to undefined function  db1() in /home/resbahco/public_html/lab/rpg/core/classes/combat.class.php on line 296
+[12-May-2011 21:49:50] PHP Fatal error:  Call to undefined function  db1() in /home/resbahco/public_html/lab/rpg/core/classes/combat.class.php on line 296
+[12-May-2011 21:50:21] PHP Fatal error:  Call to undefined function  db1() in /home/resbahco/public_html/lab/rpg/core/classes/combat.class.php on line 296
+[12-May-2011 21:50:29] PHP Fatal error:  Call to undefined function  db1() in /home/resbahco/public_html/lab/rpg/core/classes/combat.class.php on line 296
+[12-May-2011 21:52:23] PHP Fatal error:  Call to undefined function  db1() in /home/resbahco/public_html/lab/rpg/core/classes/combat.class.php on line 296
+[12-May-2011 21:52:38] PHP Fatal error:  Call to undefined function  db1() in /home/resbahco/public_html/lab/rpg/core/classes/combat.class.php on line 296
+[12-May-2011 21:53:03] PHP Fatal error:  Call to undefined function  db1() in /home/resbahco/public_html/lab/rpg/core/classes/combat.class.php on line 296
+[12-May-2011 21:53:27] PHP Fatal error:  Call to undefined function  db1() in /home/resbahco/public_html/lab/rpg/core/classes/combat.class.php on line 296
+[12-May-2011 21:55:09] PHP Fatal error:  Call to undefined function  db1() in /home/resbahco/public_html/lab/rpg/core/classes/combat.class.php on line 296
+[12-May-2011 21:56:39] PHP Fatal error:  Call to undefined function  db1() in /home/resbahco/public_html/lab/rpg/core/classes/combat.class.php on line 296
+[12-May-2011 21:56:44] PHP Fatal error:  Call to undefined function  db1() in /home/resbahco/public_html/lab/rpg/core/classes/combat.class.php on line 296
+[12-May-2011 21:56:45] PHP Fatal error:  Call to undefined function  db1() in /home/resbahco/public_html/lab/rpg/core/classes/combat.class.php on line 296
+[12-May-2011 21:58:31] PHP Fatal error:  Call to undefined function  db1() in /home/resbahco/public_html/lab/rpg/core/classes/combat.class.php on line 296
+[12-May-2011 21:59:03] PHP Fatal error:  Call to undefined function  db1() in /home/resbahco/public_html/lab/rpg/core/classes/combat.class.php on line 296
+[12-May-2011 21:59:26] PHP Fatal error:  Call to undefined function  db1() in /home/resbahco/public_html/lab/rpg/core/classes/combat.class.php on line 296
+[12-May-2011 22:00:02] PHP Fatal error:  Unsupported operand types in /home/resbahco/public_html/lab/rpg/core/classes/combat.class.php on line 347
+[12-May-2011 22:01:27] PHP Fatal error:  Unsupported operand types in /home/resbahco/public_html/lab/rpg/core/classes/combat.class.php on line 347
+[12-May-2011 22:06:42] PHP Fatal error:  Call to undefined function  db1() in /home/resbahco/public_html/lab/rpg/core/classes/combat.class.php on line 295
+[12-May-2011 22:06:44] PHP Fatal error:  Call to undefined function  db1() in /home/resbahco/public_html/lab/rpg/core/classes/combat.class.php on line 295
+[12-May-2011 22:06:44] PHP Fatal error:  Call to undefined function  db1() in /home/resbahco/public_html/lab/rpg/core/classes/combat.class.php on line 295
+[12-May-2011 22:06:45] PHP Fatal error:  Call to undefined function  db1() in /home/resbahco/public_html/lab/rpg/core/classes/combat.class.php on line 295
+[12-May-2011 22:06:49] PHP Fatal error:  Call to undefined function  db1() in /home/resbahco/public_html/lab/rpg/core/classes/combat.class.php on line 295

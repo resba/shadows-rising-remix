@@ -1,49 +1,49 @@
-Planning Outline - SR 0.0.5+
-
-Character Classes
-===================
-
-Character Classes, and their full implementation within the SR engine is probably one of the most essential facets to the project objectives. Without a clear, concise yet very fluid system the game would quickly bog down into new level = better character = win game. It's a little obscure, but the important thing here is allowing the player to choose their character's path - not leave it up to a developer with heavily restrictive class definitions. For this planning outline we assume the game is using the Prometheus 3.5 SRD (technically the same as d20 3.5 but with a more open license for online games).
-
-How it works?
--------------
-
-1. Classes all have identical traits: levels, name, specific benefits to User's abilities, etc.
-2. A Class will have entry requirements (they only want the best candidates!)
-3. A Class will have a specific levelling requirement
-4. A Class will provide a Character with Feats
-5. A Character may join one or more Classes (this may cause experience penalties)
-
-The Module Class Table
-----------------------
-
-class_id (int 11)[auto_increment]
-name (varchar 64)
-description (text)
-min_attributes (text or blob)[serialised array]
-skill_points (tinyint 3)
-base_attack (tinyint 3)
-levelling (text or blob)[serialised_array]
-
-Joining a Class
----------------
-
-Presumably a player will wish to join one of the available Game Module classes. For example the Wizard Class. When joining we check that the user meets all the entry requirement - for example, you can't be a Wizard with INT below a certain amount.
-
-Assuming the character meets all the requirements, we can add the Class to the character class array (this will be a serialised array of a character's classes, levels in each, and any other special info). I've become less inclined to expend lots of DB table fields for such data, when it can be more easily stored as a serialised PHP array on one field.
-
-Once joined, the player will be able to earn experience, and at each levelling event choose to rise a rank within that Class and spend skill points (which are determined by race, attributes and class) on further skills/feats/spells or so on. Levelling points will be defined by the ruleset used.
-
-
-The Class Definition
---------------------
-
-The Class Definition refers to the serialised array of information utilised during a levelling event to determine what benefits the character may gain from their new level. Most of these are automatically assigned - others, such as feats, can be chosen by the player. It is this information which distinguishes one class from another (outside of base requirements, name and description). Level 1 benefits are usually pre-defined - such as Class Skills.
-
-For example a Class Definition may list SWIM as a basic Class Skill - assuming the terrain maps I have in the works is adopted - a character with the SWIM skill might be able to get around a little easier (think about all the lakes, rivers, ocean you could add to a terrain map :) ). Others might be Spellcraft, Knowledge (various), etc.
-
-
-Shadows Rising Temp Measures
-----------------------------
-
+Planning Outline - SR 0.0.5+
+
+Character Classes
+===================
+
+Character Classes, and their full implementation within the SR engine is probably one of the most essential facets to the project objectives. Without a clear, concise yet very fluid system the game would quickly bog down into new level = better character = win game. It's a little obscure, but the important thing here is allowing the player to choose their character's path - not leave it up to a developer with heavily restrictive class definitions. For this planning outline we assume the game is using the Prometheus 3.5 SRD (technically the same as d20 3.5 but with a more open license for online games).
+
+How it works?
+-------------
+
+1. Classes all have identical traits: levels, name, specific benefits to User's abilities, etc.
+2. A Class will have entry requirements (they only want the best candidates!)
+3. A Class will have a specific levelling requirement
+4. A Class will provide a Character with Feats
+5. A Character may join one or more Classes (this may cause experience penalties)
+
+The Module Class Table
+----------------------
+
+class_id (int 11)[auto_increment]
+name (varchar 64)
+description (text)
+min_attributes (text or blob)[serialised array]
+skill_points (tinyint 3)
+base_attack (tinyint 3)
+levelling (text or blob)[serialised_array]
+
+Joining a Class
+---------------
+
+Presumably a player will wish to join one of the available Game Module classes. For example the Wizard Class. When joining we check that the user meets all the entry requirement - for example, you can't be a Wizard with INT below a certain amount.
+
+Assuming the character meets all the requirements, we can add the Class to the character class array (this will be a serialised array of a character's classes, levels in each, and any other special info). I've become less inclined to expend lots of DB table fields for such data, when it can be more easily stored as a serialised PHP array on one field.
+
+Once joined, the player will be able to earn experience, and at each levelling event choose to rise a rank within that Class and spend skill points (which are determined by race, attributes and class) on further skills/feats/spells or so on. Levelling points will be defined by the ruleset used.
+
+
+The Class Definition
+--------------------
+
+The Class Definition refers to the serialised array of information utilised during a levelling event to determine what benefits the character may gain from their new level. Most of these are automatically assigned - others, such as feats, can be chosen by the player. It is this information which distinguishes one class from another (outside of base requirements, name and description). Level 1 benefits are usually pre-defined - such as Class Skills.
+
+For example a Class Definition may list SWIM as a basic Class Skill - assuming the terrain maps I have in the works is adopted - a character with the SWIM skill might be able to get around a little easier (think about all the lakes, rivers, ocean you could add to a terrain map :) ). Others might be Spellcraft, Knowledge (various), etc.
+
+
+Shadows Rising Temp Measures
+----------------------------
+
 To make the basics work without a lot of "extras" that can be added later - choosing a class will automatically determine starting Skills, Attributes and Health (HP).

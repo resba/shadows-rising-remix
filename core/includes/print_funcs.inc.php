@@ -40,14 +40,6 @@ function SystemMessage($text="Error! Please try again or contact an Administrato
 	//echo(basename($_SERVER['HTTP_REFERER']));
 	// approve referrer as a navlink - only need the basename (no path info)
 	$nv->approvelink(basename($_SERVER['HTTP_REFERER']));
-	//with my firewall, HTTP REFERER isn't sent with the HTTP headers. This will probably
-	//happen with other users, so let us aprove location.php. I don't see any harm.
-	$nv->approvelink("location.php");
-	if( $_SERVER['HTTP_REFERER'] != "" ) {
-	$nv->navlink("left", "Actions", "Back", $_SEVER['HTTP_REFERER']);
-	}
-	//they can always go here.
-	$nv->navlink("left", "Actions", "Location", "location.php");
 	$sr->DisplayPage("system_message.tpl.html");
 	exit();
 }

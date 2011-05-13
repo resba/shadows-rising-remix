@@ -1,0 +1,46 @@
+table.blue {
+    clear: both;
+    border-bottom: 1px solid #d7d7d7;
+    border-collapse: collapse;
+    border-spacing: 0;
+    margin-top: 1em;
+}
+table.blue th {
+    text-align: left;
+    padding: 0 1em .1em 0;
+    font-size: 12px;
+}
+table.blue td {
+    font-family:Arial, "MS Sans Serif", sans-serif;
+    font-size : 1em;
+    border-style : solid;
+    border-width : 1pt;
+    border-color : black;
+    vertical-align : top;
+}
+table.blue tbody td, table.blue tbody th {
+ border: 1px dotted #ddd;
+ padding: .33em .5em;
+ vertical-align: top;
+}
+table.blue tbody td a:hover, table.blue tbody th a:hover {
+ background-color: transparent;
+}
+table.blue tbody tr { border-top: 1px solid #ddd }
+table.blue tbody tr.even { background-color: #fcfcfc }
+table.blue tbody tr.odd { background-color: #f7f7f7 }
+table.blue tbody tr:hover { background: #eed }
+
+td.def {
+    text-align : right;
+}
+
+td.extradef {
+    font-weight: normal;
+    font-style: oblique;
+}
+
+span.deprecated {
+    color: red;
+    font-weight: bold;
+}

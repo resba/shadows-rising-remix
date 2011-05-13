@@ -32,7 +32,7 @@ CREATE TABLE `srbase_forum_forums` (
 ) TYPE=MyISAM AUTO_INCREMENT=2;
 
 INSERT INTO `srbase_forum_forums` VALUES (1, 1, 'Test Forum', 'A test forum', 1, 0, 0, -1, -1);
-INSERT INTO `srbase_forum_forums` VALUES (2, -1, 'The Academy', 'A place for learned citizens of society.', 1, -1, 0, 1, 1);
+INSERT INTO `srbase_forum_forums` VALUES (2, -1, 'Test INGAME Forum', 'A test INGAME forum', 1, -1, 0, 1, 1);
 
 #
 # Table structure for table `srbase_forum_topics`
@@ -99,16 +99,6 @@ INSERT INTO `srbase_forum_perm_users` VALUES (0, 0, 'DELETE', 0);
 INSERT INTO `srbase_forum_perm_users` VALUES (0, 0, 'EDIT_OWN', 1);
 INSERT INTO `srbase_forum_perm_users` VALUES (0, 0, 'EDIT', 0);
 
-INSERT INTO `srbase_forum_perm_users` VALUES (1, 0, 'VIEW', 1);
-INSERT INTO `srbase_forum_perm_users` VALUES (1, 0, 'READ', 1);
-INSERT INTO `srbase_forum_perm_users` VALUES (1, 0, 'POST', 1);
-INSERT INTO `srbase_forum_perm_users` VALUES (1, 0, 'REPLY', 1);
-INSERT INTO `srbase_forum_perm_users` VALUES (1, 0, 'DELETE_OWN', 1);
-INSERT INTO `srbase_forum_perm_users` VALUES (1, 0, 'DELETE', 1);
-INSERT INTO `srbase_forum_perm_users` VALUES (1, 0, 'EDIT_OWN', 1);
-INSERT INTO `srbase_forum_perm_users` VALUES (1, 0, 'EDIT', 1);
-
-
 #
 # Table structure for table `srbase_forum_perm_groups`
 #
@@ -131,6 +121,36 @@ INSERT INTO `srbase_forum_perm_groups` VALUES (0, 0, 'DELETE', 0);
 INSERT INTO `srbase_forum_perm_groups` VALUES (0, 0, 'EDIT_OWN', 1);
 INSERT INTO `srbase_forum_perm_groups` VALUES (0, 0, 'EDIT', 0);
 
+#
+# Table structure for table `srbase_forum_groups`
+#
+
+DROP TABLE IF EXISTS `srbase_forum_groups`;
+CREATE TABLE `srbase_forum_groups` (
+  `group_id` int(11) unsigned NOT NULL auto_increment,
+  `group_name` varchar(25) NOT NULL default '',
+  `group_desc` varchar(255) NOT NULL default '',
+  `ingame` tinyint(3) NOT NULL default -1,
+  PRIMARY KEY  (`group_id`)
+) TYPE=MyISAM AUTO_INCREMENT=2;
+
+INSERT INTO `srbase_forum_groups` VALUES (1, 'Users', 'Default user group for new users. It is a superglobal group', 0);
+
+#
+# Table structure for table `srbase_forum_groups_users`
+#
+
+DROP TABLE IF EXISTS `srbase_forum_group_users`;
+CREATE TABLE `srbase_forum_group_users` (
+  `group_id` int(11) unsigned NOT NULL ,
+  `user_id` int(11) unsigned NOT NULL,
+  `group_leader` tinyint(1) unsigned NOT NULL default 0,
+  KEY `group_id` (`group_id`),
+  KEY `user_id` (`user_id`),
+  KEY `group_leader` (`group_leader`)
+) TYPE=MyISAM AUTO_INCREMENT=1;
+
+INSERT INTO `srbase_forum_group_users` VALUES (1, 1, 0);
 
 #
 # Table structure for table `srbase_forum_privmsgs`
