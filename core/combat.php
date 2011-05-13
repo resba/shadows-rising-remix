@@ -56,14 +56,19 @@ $enemy = array();
 
 db(__FILE__,__LINE__,"select * from ${moduleinstance}_creatures where creature_id = '$_GET[cid]'");
 $creature = dbr();
+// Needs Correct Code Input
+// db243(__FILE__,__LINE__,"select * from ${moduleinstance}_characters where character_id = '$_SESSION[example_Id]'");
+// $character = db243r();
 
 // renew the _combat array only if array is empty (i.e. we are not already fighting)
 if(empty($_SESSION['_combat']) || !is_array($_SESSION['_combat'])) 
 {
 	$_SESSION['_combat'] = array();
 	$_SESSION['_combat']['creature'] = $creature;
+//        $_SESSION['_combat']['character'] = $character;
 }
 $sr->assign("creature",$creature);
+// $sr->assign("character",$character;
 
 // step 2 - who attacks first? - to be tested
 
@@ -148,7 +153,6 @@ for($i=0; $i<$counter; $i++)
 
 		// reload character info for accuracy
 		$character = $sr->Reload_Character();
-		$_SESSION['charhp'] = $character['hp'];
 
 		// new array iteration using $i - store current combat vars for use in template
 		$template_combat_vars[$i] = array(
@@ -157,7 +161,7 @@ for($i=0; $i<$counter; $i++)
 			"char_stats"=>$char_stats,
 			"creat_stats"=>$creat_stats,
 			"creat_health"=>$_SESSION['_combat']['creature']['health'],
-			"char_health"=>$_SESSION['charhp'],
+			"char_health"=>$character[hp],
 		);
 
 		if($char_stats['defeat'] == "true" || $char_stats['victory'] == "true") 
@@ -167,6 +171,7 @@ for($i=0; $i<$counter; $i++)
 			$_SESSION['charhp'] = array();
 			// add start new fight navlink
 			$nv->navlink("left", "Combat", "Fight Again?", "combat.php?cid=$creature[creature_id]");
+                        $nv->navlink("left", "Location", "Return to Map", "location.php");
 			break; 
 		}
 }
@@ -186,7 +191,6 @@ $sr->assign("char_stats",$char_stats);
 // NAVLINKS!!!
 // Generate the page navigation menu here - links displayed in order of defined SECTION then URL
 $nv->navlink("left", "Character", "Backpack", "backpack.php?op=show");
-$nv->navlink("left", "Location", "Return to Location", "location.php");
 $nv->navlink("left", "Account", "Logout", "logout.php");
 
 $sr->DisplayPage("combat.tpl.html");
