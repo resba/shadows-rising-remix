@@ -289,10 +289,9 @@ class Creature_Combat extends Combat {
 
 
 	function Damage_Character($character, $creature) {
-		// we're skipping a little here and making all creature attacks give 1 damage
-		// we're also not harming the player :) - essentially they are invulnerable for now
+                 //quickfix: player takes damage, however he doesn't regenerate HP. TODO: Regen HP.
 
-		// db(__FILE__,__LINE__,"select hp from ${gameinstance}_characters where login_id = '$character[login_id]'");
+		 db(__FILE__,__LINE__,"select hp from ${gameinstance}_characters where login_id = '$character[login_id]'");
 		 // $statichealth = dbr1();
 		// now we have completed the attack, we'll send back some relevant stat
 		$stats = array(
